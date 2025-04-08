@@ -1,0 +1,28 @@
+{
+    "script_tree":
+    [
+    {
+        "act_id": 1,
+        "act_file_name": "Act_1.json",
+        "act_name": "第一幕",
+        "next_act":
+        [
+           
+        ]
+    },
+    {
+        "act_id": 2,
+        "act_file_name": "Act_2.json",
+        "act_name": "第二幕",
+        "next_act": [],
+        "end_name": "end1"
+    },
+    {
+        "act_id": 3,
+        "act_file_name": "Act_3.json",
+        "act_name": "第三幕",
+        "next_act": [],
+        "end_name": "end2"
+    }
+    ]
+}

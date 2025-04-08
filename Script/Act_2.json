@@ -1,0 +1,24 @@
+{
+    "act_id": 2,
+    "name": "name2",
+    "description":"description 2",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "map2-1",
+            "description": "这是第二幕的第一张地图，进行对话可以进入",
+            "background": "",
+            "dialogues": [],
+            "dialogue_trigger": []
+        },
+        {
+            "map_id": 2,
+            "name": "map2-2",
+            "description": "这是第二幕的第二张地图",
+            "background": "",
+            "dialogues": [],
+            "dialogue_trigger": []
+        }
+    ]
+}

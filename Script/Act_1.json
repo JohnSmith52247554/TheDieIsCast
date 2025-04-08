@@ -1,0 +1,24 @@
+{
+    "act_id": 1,
+    "name": "name 1",
+    "description": "description 1",
+    "maps": 
+    [
+        {
+            "map_id": 1,
+            "name": "map1",
+            "description": "",
+            "background": "background3"
+        },
+        {
+            "map_id": 2,
+            "name": "map2",
+            "background": "city"
+        },
+        {
+            "map_id": 3,
+            "name": "map1",
+            "background": "factory"
+        }
+    ]
+}
