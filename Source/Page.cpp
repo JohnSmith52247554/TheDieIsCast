@@ -43,16 +43,57 @@ MainPage::MainPage(sf::RenderWindow* window)
 	: Page::Page(window)
 {
 	window->setMouseCursorVisible(true);
-	ResourceManagement::setBackgroundMusic("TheCrabCanon");
+	ResourceManagement::setBackgroundMusic("V_Everloop");
 	i_interface = new StartInterface;
-	auto file_dir = EXE_DIR / "Resources" / "CG" / "MainPage.png";
+
+	auto save_dir = EXE_DIR / "History" / "save.bin";
+	std::ifstream file(save_dir, std::ios::binary);
+	if (file.is_open())
+		file.read(reinterpret_cast<char*>(&ending_has_achieved), sizeof(ending_has_achieved));
+	else
+		ending_has_achieved = 0;
+	file.close();
+
+	std::filesystem::path file_dir;
+	
+	unsigned char flag = 0U;
+	if (ending_has_achieved & (1 << 2) || ending_has_achieved & (1 << 3))
+		flag += 1U;
+	if (ending_has_achieved & (1 << 4) || ending_has_achieved & (1 << 5))
+		flag += 2U;
+	switch (flag)
+	{
+	case 0U:
+		file_dir = EXE_DIR / "Resources" / "CG" / "MainPage.png";
+		break;
+	case 1U:
+		file_dir = EXE_DIR / "Resources" / "CG" / "MainPage_NormalEnding.png";
+		break;
+	case 2U:
+		file_dir = EXE_DIR / "Resources" / "CG" / "MainPage_TrueEnding.png";
+		break;
+	case 3U:
+		file_dir = EXE_DIR / "Resources" / "CG" / "MainPage_Full.png";
+		break;
+	default:
+		break;
+	}
 	texture.loadFromFile(file_dir.string());
 	background_image.setTexture(texture);
+	if (background_image.getGlobalBounds().width > SCREEN_WIDTH)
+	{
+		float factor = SCREEN_WIDTH / background_image.getGlobalBounds().width;
+		background_image.setScale({ factor, factor });
+	}
 }
 
 MainPage::~MainPage()
 {
 	ResourceManagement::stopBackgroundMusic();
+
+	for (auto& item : items)
+		if (item != nullptr)
+			delete item;
 }
 
 void MainPage::update(sf::RenderWindow* window)
@@ -60,6 +101,16 @@ void MainPage::update(sf::RenderWindow* window)
 	i_interface->update(window);
 
 	checkMailBoxAndReact();
+}
+
+void MainPage::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
+	target.draw(this->background_image, states);
+
+	for (auto& item : items)
+		target.draw(*item, states);
+
+	this->i_interface->draw(target, states);
 }
 
 void MainPage::react()
@@ -119,6 +170,8 @@ void MainPage::react()
 EndingPage::EndingPage(sf::RenderWindow* window, const std::wstring& ending_name)
 	: Page::Page(window)
 {
+	updateEndingHasAchieve(ending_name);
+
 	speed = NORMAL_SPEED;
 
 	ResourceManagement::setBackgroundMusic("TheCrabCanon");
@@ -207,6 +260,7 @@ EndingPage::EndingPage(sf::RenderWindow* window, const std::wstring& ending_name
 EndingPage::~EndingPage()
 {
 	ResourceManagement::stopBackgroundMusic();
+	update_task.get();
 }
 
 void EndingPage::update(sf::RenderWindow* window)
@@ -269,4 +323,37 @@ void EndingPage::moveCast()
 {
 	for (auto& text : cast)
 		text.setPosition(text.getPosition().x, text.getPosition().y - speed);
+}
+
+void EndingPage::updateEndingHasAchieve(std::wstring ending_name)
+{
+	update_task = std::async(std::launch::async, [=](){
+		//update
+		unsigned short flag = 0U;
+		if (ending_name == L"Bad Ending 1")
+			flag = 0;
+		else if (ending_name == L"Bad Ending 2")
+			flag = 1;
+		else if (ending_name == L"Normal Ending 1")
+			flag = 2;
+		else if (ending_name == L"Normal Ending 2")
+			flag = 3;
+		else if (ending_name == L"True Ending 1")
+			flag = 4;
+		else if (ending_name == L"True Ending 2")
+			flag = 5;
+		if (!(ending_has_achieved & (1 << flag)))
+			ending_has_achieved += (1 << flag);
+
+		auto save_file_dir = EXE_DIR / "History" / "save.bin";
+		std::fstream file(save_file_dir, std::ios::binary | std::ios::in | std::ios::out);
+		if (!file.is_open())
+			throw std::logic_error("open save file failed");
+
+		file.seekp(0, std::ios::beg);
+
+		file.write(reinterpret_cast<char*>(&ending_has_achieved), sizeof(ending_has_achieved));
+
+		file.close();
+		});
 }

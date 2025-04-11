@@ -51,10 +51,10 @@ void Game::pollEvent()
 			if (scene != nullptr)
 			{
 				save();
-				send(MessageQueue::scene_code, "save and close window");
+				scene->save();
+				//send(MessageQueue::scene_code, "save and close window");
 			}
-			else
-				window->close();
+			window->close();
 			break;
 		case sf::Event::KeyPressed:
  			switch (this->ev.key.code)
@@ -73,6 +73,8 @@ void Game::pollEvent()
 			case sf::Keyboard::RControl:
 				if (page != nullptr)
 					send(page->getPostalCode(), "control is pressed");
+				else if (scene != nullptr)
+					send(scene->getPostalCode(), "control is pressed");
 				break;
 			case sf::Keyboard::Up:
 				if (page != nullptr)
@@ -219,6 +221,8 @@ void Game::pollEvent()
 #endif
 				if (page != nullptr)
 					send(page->getPostalCode(), "control is released");
+				else if (scene != nullptr)
+					send(scene->getPostalCode(), "control is released");
 				break;
 			case sf::Keyboard::Left:
 			case sf::Keyboard::A:
@@ -416,6 +420,9 @@ void Game::react()
 	{
 		if (mail.message == "game completed")
 		{
+			save();
+			scene->save();
+
 			if (current_scene_id < act.maps.size())
 			{
 				spark_num = 0;
@@ -486,7 +493,7 @@ void Game::react()
 				}
 			}
 		}
-		else if (mail.message == "back to main page")
+		/*else if (mail.message == "back to main page")
 		{
 			if (scene != nullptr)
 			{
@@ -494,7 +501,7 @@ void Game::react()
 				scene = nullptr;
 			}
 			page = new MainPage(window);
-		}
+		}*/
 		else if (mail.message == "close window")
 		{
 			this->window->close();
@@ -579,9 +586,17 @@ void Game::react()
 		}
 		else if (mail.message == "save and exit")
 		{
+			//std::cout << "recieve save and exit\n";
 			MessageQueue::clear();
 			save();
-			send(MessageQueue::scene_code, "save and exit");
+			//send(MessageQueue::scene_code, "save and exit");
+			scene->save();
+			if (scene != nullptr)
+			{
+				delete scene;
+				scene = nullptr;
+			}
+			page = new MainPage(window);
 			return;
 		}
 	}
@@ -617,23 +632,31 @@ void Game::save()
 	file.write(reinterpret_cast<char*>(&player_respwan_point), sizeof(player_respwan_point));
 
 	file.close();
+
+	//std::cout << "game saved end\n";
 }
 
 void Game::load()
 {
-	auto file_dir = EXE_DIR / "History" / "save.bin";
-	std::ifstream file(file_dir, std::ios::binary);
-	if (!file.is_open())
-	{
-		std::cerr << "failed to open save file" << std::endl;
+	try {
+		auto file_dir = EXE_DIR / "History" / "save.bin";
+		std::ifstream file(file_dir, std::ios::binary);
+		if (!file.is_open())
+		{
+			std::cerr << "failed to open save file" << std::endl;
+			throw std::logic_error("failed to open save file");
+		}
+
+		file.read(reinterpret_cast<char*>(&ending_has_achieved), sizeof(ending_has_achieved));
+		file.read(reinterpret_cast<char*>(&current_act_id), sizeof(current_act_id));
+		file.read(reinterpret_cast<char*>(&current_scene_id), sizeof(current_scene_id));
+		file.read(reinterpret_cast<char*>(&spark_num), sizeof(spark_num));
+		file.read(reinterpret_cast<char*>(&points), sizeof(points));
+		file.read(reinterpret_cast<char*>(&player_respwan_point), sizeof(player_respwan_point));
+
+		file.close();
 	}
-
-	file.read(reinterpret_cast<char*>(&ending_has_achieved), sizeof(ending_has_achieved));
-	file.read(reinterpret_cast<char*>(&current_act_id), sizeof(current_act_id));
-	file.read(reinterpret_cast<char*>(&current_scene_id), sizeof(current_scene_id));
-	file.read(reinterpret_cast<char*>(&spark_num), sizeof(spark_num));
-	file.read(reinterpret_cast<char*>(&points), sizeof(points));
-	file.read(reinterpret_cast<char*>(&player_respwan_point), sizeof(player_respwan_point));
-
-	file.close();
+	catch (...) {
+		throw std::logic_error("save file breakdown");
+	}
 }

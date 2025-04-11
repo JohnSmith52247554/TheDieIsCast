@@ -132,7 +132,7 @@ void LaserGun::setFlip(unsigned short code)
 	case 1:
 		shoot_direction = down;
 		this->sprite.setScale(-1, 1);
-		this->sprite.setRotation(90);
+		this->sprite.setRotation(-90);
 		break;
 	case 2:
 		shoot_direction = right;

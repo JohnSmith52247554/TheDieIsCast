@@ -10,6 +10,7 @@ Animation::Animation(int ID, unsigned char total_frame1, sf::Sprite* i_sprite, u
 	texture_width = width;
 	texture_height = height;
 	animation_speed = ANIMATION_SPEED;
+	setFrame();
 }
 
 void Animation::setAnimationSpeed(unsigned char speed)

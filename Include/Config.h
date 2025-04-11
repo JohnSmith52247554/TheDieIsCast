@@ -58,10 +58,10 @@ constexpr unsigned char HELMET_GRAIN_EFFECT_DENSITY = 15;
 constexpr unsigned char CAMERA_SHAKE_TIME = 5;
 
 //调试
-#define SHOW_CONSOLE true
-#define DRAW_HIT_BOX true
-#define DRAW_ZONE true
-#define ALLOCATION_INDICATOR true
+#define SHOW_CONSOLE false
+#define DRAW_HIT_BOX false
+#define DRAW_ZONE false
+#define ALLOCATION_INDICATOR false
 constexpr float VIEW_SIZE = 1;
 #include "Debug.h"
 
@@ -88,8 +88,9 @@ extern unsigned short spark_num;
 extern unsigned int points;
 
 extern unsigned short ending;	//决定进入的结局
+extern unsigned short switch_to_next_scene;	//对话结束后直接进入下一关
 
-extern unsigned char ending_has_achieved;	//记录达成结局的情况
+extern unsigned short ending_has_achieved;	//记录达成结局的情况
 
 extern unsigned char minute, second, fps_counter;	//计时器
 

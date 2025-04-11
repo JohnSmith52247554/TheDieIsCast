@@ -1,4 +1,5 @@
 #include "Helmet.h"
+#include "MessageQueueSubscriber.h"
 
 Helmet::Helmet(int i_x, int i_y, ObjectManagement* i_object_manager)
 	: Drawbar::Drawbar(i_x - CELL_SIZE / 2, i_y + CELL_SIZE / 2, i_object_manager)
@@ -12,7 +13,7 @@ Helmet::Helmet(int i_x, int i_y, ObjectManagement* i_object_manager)
 
 	this->activation_message = "helmet on";
 	this->release_message = "";
-	this->effectors_list.push_back(MessageQueue::game_code);
+	this->effectors_list.push_back(0U);
 
 	this->can_be_affected_by_time_control = false;
 

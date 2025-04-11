@@ -8,12 +8,83 @@
             "map_id": 1,
             "name": "map1",
             "description": "",
-            "background": "background3"
+            "background": "background3",
+            "dialogues":[
+                {
+                    "dialogue_id": 1,
+                    "speaker": "test",
+                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
+                    "choices": [],
+                    "next_dialogue": 2,
+                    "effects":[
+                        {
+                            "variable": "switch_to_next_scene",
+                            "operator": "=",
+                            "value": 1
+                        },
+                        {
+                            "variable": "ending",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "dialogue_id": 2,
+                    "speaker": "test",
+                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
+                    "choice": [
+                        {
+                            "choice_id": 1,
+                            "text": "testtesttest",
+                            "next_dialogue": 3,
+                            "effect":[]
+                        },
+                        {
+                            "choice_id": 2,
+                            "text": "testtesttest",
+                            "next_dialogue": 3,
+                            "effect":[]
+                        }
+                    ],
+                    "next_dialogue": 3,
+                    "effects":[]
+                },
+                {
+                    "dialogue_id": 3,
+                    "speaker": "test",
+                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
+                    "choices": [],
+                    "next_dialogue": 4,
+                    "effects":[]
+                },
+                {
+                    "dialogue_id": 4,
+                    "speaker": "test",
+                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
+                    "choices": [],
+                    "next_dialogue": -1,
+                    "effects":[]
+                }
+            ],
+            "dialogue_trigger":[
+                {
+                    "trigger_zone":{
+                        "left": 100,
+                        "right": 300,
+                        "top": 300,
+                        "bottom": 400
+                    },
+                    "trigger_dialouge_id": 1,
+                    "trigger_id": 0
+                }
+            ]
         },
         {
             "map_id": 2,
             "name": "map2",
-            "background": "city"
+            "background": "city",
+            "be_able_to_rewind_time": false
         },
         {
             "map_id": 3,

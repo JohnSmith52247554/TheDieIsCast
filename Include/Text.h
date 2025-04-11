@@ -34,7 +34,7 @@ public:
 	Text(std::string i_message);
 	~Text();
 
-	void setMessage(std::wstring i_message);
+	void setMessage(std::wstring& i_message);
 	void setFont(int ID);
 	void setPosition(sf::Vector2f coord);
 	void setPosition(float x, float y);
@@ -51,6 +51,9 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 	sf::FloatRect getGloabalBounds() const;
+	sf::FloatRect getTextBounds() const;
+
+	std::wstring getMessage() const;
 
 private:
 	void initBackground();

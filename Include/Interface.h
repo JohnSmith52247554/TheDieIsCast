@@ -104,6 +104,8 @@ private:
 	Script::Dialogue dialogue;
 	bool is_npc_dialogues;
 
+	bool skip_dialogue;
+
 	const short DEFAULT_DIALOGUE_CHARATER_SIZE = 20;
 	const unsigned char DIALOGUE_SHOW_CHARACTER_DELAY = 2;
 

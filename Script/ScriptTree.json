@@ -7,7 +7,26 @@
         "act_name": "第一幕",
         "next_act":
         [
-           
+            {
+                "next_act_id": 2,
+                "enter_condition":[
+                    {
+                        "variable": "ending_has_achieved",
+                        "operator": "<<!&",
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "next_act_id": 3,
+                "enter_condition":[
+                    {
+                        "variable": "ending_has_achieved",
+                        "operator": "<<&",
+                        "value": 0
+                    }
+                ]
+            }
         ]
     },
     {
@@ -15,7 +34,7 @@
         "act_file_name": "Act_2.json",
         "act_name": "第二幕",
         "next_act": [],
-        "end_name": "end1"
+        "end_name": "Bad Ending 1"
     },
     {
         "act_id": 3,

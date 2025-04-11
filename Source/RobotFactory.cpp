@@ -50,6 +50,11 @@ void RobotFactory::update()
 		r->setEdgeCheck(false);
 		generate_counter = GENERATE_ROBOT_DELAY;
 		sprite.setTextureRect({ 64, 0, 64, 96 });
+
+		sf::FloatRect view_port = { view.getCenter().x - view.getSize().x / 2,
+				view.getCenter().y - view.getSize().y / 2, view.getSize().x, view.getSize().y };
+		if (MapCollision::object_collision(&hit_box, &view_port))
+			ResourceManagement::playSound("GenRobot");
 	}
 }
 

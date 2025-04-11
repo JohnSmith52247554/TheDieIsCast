@@ -197,6 +197,8 @@ void ObjectManagement::update()
         player_death_counter = DEATH_COUNTER;
     }
 
+    player->setReferenceSystem(0, 0);
+
     //逐个更新实体
     for (int i = 0; i < object_list.size(); i++)
     {
@@ -211,9 +213,6 @@ void ObjectManagement::update()
         if (object->getShouldUpdate() == true)
         {
             sf::Vector2f object_position = object->getCoord();
-            //检测加载范围
-            /*if (MapCollision::object_collision(object->getHitBox(), &loading_range))
-            {*/
             //检测与玩家相撞
             if (player->getHasFailed() == false)
             {
@@ -227,11 +226,7 @@ void ObjectManagement::update()
                             player->setReferenceSystem(object->getHorizontalSpeed(), object->getVerticalSpeed());
                         /*std::cout << '1' << '\n';*/
                     }
-                    else
-                    {
-                        player->setReferenceSystem(0, 0);
-                        /*std::cout << '0' << '\n';*/
-                    }
+                    
 
                     //检测敌人
                     for (const auto& enemy : enemy_list)
@@ -411,6 +406,8 @@ void ObjectManagement::updateThoseWhoCouldntBeAffectedByTimeControl()
         player_death_counter = DEATH_COUNTER;
     }
 
+    player->setReferenceSystem(0, 0);
+
     //逐个更新实体
     for (auto& object : object_list)
     {
@@ -440,10 +437,7 @@ void ObjectManagement::updateThoseWhoCouldntBeAffectedByTimeControl()
                                 {
                                     player->setReferenceSystem(object->getHorizontalSpeed(), object->getVerticalSpeed());
                                 }
-                                else
-                                {
-                                    player->setReferenceSystem(0, 0);
-                                }
+                                
                             }
 
                             //检测敌人

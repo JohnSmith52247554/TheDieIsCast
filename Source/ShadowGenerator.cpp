@@ -131,9 +131,14 @@ void ShadowGenerator::update()
 			shadow_exist = true;
 
 			listening = false;
+
+			ResourceManagement::playSound("GenShadow");
 		}
 		else if (shadow_exist == false)
+		{
 			listening = true;
+			ResourceManagement::playSound("ShadowGenActive");
+		}
 	}
 
 	if (shadow_exist == true)
@@ -177,13 +182,11 @@ const unsigned short ShadowGenerator::encode() const
 
 void ShadowGenerator::decode(const unsigned short i_eigen_code)
 {
-	if (!listening && i_eigen_code & 1)
-		record_list.clear();
 	listening = i_eigen_code & 1;
 
 	if (shadow_exist)
 	{
-		if (list_ptr > 0)
+		if (list_ptr > 2)
 			list_ptr--;
 		else
 		{
@@ -203,7 +206,7 @@ void ShadowGenerator::decode(const unsigned short i_eigen_code)
 				record_list = std::move(all_shadow_record.back());
 				all_shadow_record.pop_back();
 			}
-			list_ptr = record_list.size() - 2;
+			list_ptr = std::max(static_cast<size_t>(record_list.size() - 2), static_cast<size_t>(0U));
 			gen_shadow_count--;
 			if (gen_shadow_count > 0)
 				asyncLoadRecord();

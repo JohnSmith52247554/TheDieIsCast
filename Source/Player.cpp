@@ -1,10 +1,13 @@
 #include "Player.h"
 
-Player::Player(int x, int y, ObjectManagement* object_manager)
+Player::Player(int x, int y, ObjectManagement* object_manager, bool with_helmet)
 {
+	stand_texture_id = with_helmet ? 20 : 0;
+	jump_texture_id = with_helmet ? 21 : 1;
+
 	this->coord.x = x;
 	this->coord.y = y;
-	this->initTexture(0);
+	this->initTexture(stand_texture_id);
 
 	is_jumping = false;
 	jump_coolen = 0;
@@ -21,8 +24,8 @@ Player::Player(int x, int y, ObjectManagement* object_manager)
 	walk_left_key_pressed = false;
 	walk_right_key_pressed = false;
 
-	player_walking = new Animation(2, 4, this->getSprite(), 32, 32);
-	player_fail = new Animation(3, 2, this->getSprite(), 32, 32);
+	player_walking = new Animation(with_helmet ? 22 : 2, 4, this->getSprite(), 32, 32);
+	player_fail = new Animation(with_helmet ? 23 : 3, 2, this->getSprite(), 32, 32);
 	player_fail->setAnimationSpeed(15);
 
 	this->hit_box.width = PLAYER_TEXTURE_WEIDTH;
@@ -143,7 +146,7 @@ void Player::update()
 		//更新贴图
 		if (is_falling)
 		{
-			this->initTexture(1);
+			this->initTexture(jump_texture_id);
 
 			if (horizontal_speed >= -0.01 + reference_system_horizontal_speed)
 				this->sprite.setScale(1, 1);
@@ -160,7 +163,7 @@ void Player::update()
 		}
 		else
 		{
-			this->initTexture(0);
+			this->initTexture(stand_texture_id);
 			this->sprite.setScale(1, 1);
 		}
 
@@ -552,7 +555,7 @@ void Player::decode(const unsigned short i_eigen_code)
 	//切换跳跃/掉落贴图
 	if (!is_falling && i_eigen_code & (1 << 1))
 	{
-		this->initTexture(1);
+		this->initTexture(jump_texture_id);
 		sprite.setTextureRect(sf::IntRect(0, 0, PLAYER_TEXTURE_WEIDTH, PLAYER_TEXTURE_HEIGHT));
 		if (horizontal_speed >= -0.01)
 			this->sprite.setScale(1, 1);
@@ -583,7 +586,7 @@ void Player::decode(const unsigned short i_eigen_code)
 
 	if (!has_failed && !continue_walking && !is_falling)
 	{
-		initTexture(0);
+		initTexture(stand_texture_id);
 		sprite.setTextureRect(sf::IntRect(0, 0, PLAYER_TEXTURE_WEIDTH, PLAYER_TEXTURE_HEIGHT));
 		//std::cout << "stand\n";
 	}

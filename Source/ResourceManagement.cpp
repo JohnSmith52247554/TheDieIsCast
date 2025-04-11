@@ -28,7 +28,11 @@ std::vector<std::string> ResourceManagement::texture_dir =
 	"ShadowMachine",//16
 	"Shadow",		//17
 	"Heroine",		//18
-	"Villain"		//19
+	"Villain",		//19
+	"PlayerStandWithHelmet",	//20
+	"PlayerJumpWithHelmet",		//21
+	"PlayerWalkWithHelmet",		//22
+	"PlayerFailWithHelmet",		//23
 };
 
 std::vector<std::string> ResourceManagement::font_dir =

@@ -87,7 +87,7 @@ namespace Script
 
                                 if (choiceData.contains("effects"))
                                 {
-                                    for (const auto& i_effect : dialogueData["effects"])
+                                    for (const auto& i_effect : choiceData["effects"])
                                     {
                                         Expression effect;
                                         effect.variable = i_effect["variable"];
@@ -159,6 +159,14 @@ namespace Script
 
                 if (mapData.contains("recorded_timeline_filename"))
                     map.recorded_timeline_filename = mapData["recorded_timeline_filename"];
+
+                if (mapData.contains("forward_time_limit"))
+                {
+                    map.forward_time_limit.second = mapData["forward_time_limit"]["second"];
+                    map.forward_time_limit.message = stringToWstring(mapData["forward_time_limit"]["message"]);
+                }
+                else
+                    map.forward_time_limit.second = -1;
 
                 act.maps.push_back(std::move(map));
             }
@@ -306,35 +314,64 @@ namespace Script
 
     const bool parseEffect(const Expression& expression)
     {
-        if (expression.variable == "ending")
+        if (expression.variable == "reset_game")
         {
-            if (expression.i_operator == "+")
-            {
-                ending += expression.value;
-                return true;
-            }
-            else if (expression.i_operator == "-")
-            {
-                ending -= expression.value;
-                return true;
-            }
-            else if (expression.i_operator == "=")
-            {
-                ending = expression.value;
-                return true;
-            }
-            else if (expression.i_operator == "==")
-                return ending == expression.value;
-            else if (expression.i_operator == ">")
-                return ending > expression.value;
-            else if (expression.i_operator == "<")
-                return ending < expression.value;
-            else if (expression.i_operator == ">=")
-                return ending >= expression.value;
-            else if (expression.i_operator == "<=")
-                return ending <= expression.value;
-        }
-        else if (expression.variable == "reset_game")
             MessageQueue::send(MessageQueue::interface_header << 26, MessageQueue::scene_code, "reset game");
+            return true;
+        }
+        else
+        {
+            unsigned short* variable = nullptr;
+            if (expression.variable == "ending")
+                variable = &ending;
+            else if (expression.variable == "switch_to_next_scene")
+                variable = &switch_to_next_scene;
+            else if (expression.variable == "ending_has_achieved")
+                variable = &ending_has_achieved;
+            return operate(variable, expression);
+        }
+    }
+
+    const bool operate(unsigned short* value, const Expression& expression)
+    {
+        if (value == nullptr)
+            return false;
+
+        if (expression.i_operator == "+")
+        {
+            *value += expression.value;
+            return true;
+        }
+        else if (expression.i_operator == "-")
+        {
+            *value -= expression.value;
+            return true;
+        }
+        else if (expression.i_operator == "=")
+        {
+            *value = expression.value;
+            return true;
+        }
+        else if (expression.i_operator == "==")
+            return *value == expression.value;
+        else if (expression.i_operator == ">")
+            return *value > expression.value;
+        else if (expression.i_operator == "<")
+            return *value < expression.value;
+        else if (expression.i_operator == ">=")
+            return *value >= expression.value;
+        else if (expression.i_operator == "<=")
+            return *value <= expression.value;
+        else if (expression.i_operator == "<<&")
+            return *value & (1 << expression.value);
+        else if (expression.i_operator == "<<!&")
+            return !(*value & (1 << expression.value));
+        else if (expression.i_operator == "+<<")
+        {
+            if (*value & (1 << expression.value))
+                return false;
+            *value += (1 << expression.value);
+            return true;
+        }
     }
 }

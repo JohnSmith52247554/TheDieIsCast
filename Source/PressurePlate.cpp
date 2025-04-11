@@ -14,6 +14,8 @@ PressurePlate::PressurePlate(const MapNote::ReceptorAndEffectors& receptor_info,
 	this->hit_box.top = coord.y + 0.7 * CELL_SIZE;
 
 	this->interactivable = false;
+
+	locked = false;
 }
 
 PressurePlate::~PressurePlate()
@@ -30,7 +32,7 @@ void PressurePlate::update()
 		return;
 	}
 
-	if (this->remained_mail_counter == 0 && state == activation)
+	if (this->remained_mail_counter == 0 && state == activation && !locked)
 	{
 		state = ReceptorState::release;
 		f_release();
@@ -48,7 +50,7 @@ void PressurePlate::react()
 {
 	MessageQueue::Mail mail = check();
 
-	if (mail.from == MessageQueue::blank_code)
+	if (mail.from == MessageQueue::blank_code && !locked)
 	{
 		if (state == activation)
 		{
@@ -59,7 +61,7 @@ void PressurePlate::react()
 		return;
 	}
 
-	if (mail.from == MessageQueue::player_code)
+	if (mail.from == MessageQueue::player_code && !locked)
 	{
 		if (mail.message == "hitted by player")
 		{
@@ -71,7 +73,7 @@ void PressurePlate::react()
 			}
 		}
 	}
-	else if (MessageQueue::computeInterclassicCode(mail.from) == MessageQueue::robot_header)
+	else if (MessageQueue::computeInterclassicCode(mail.from) == MessageQueue::robot_header && !locked)
 	{
 		if (mail.message == "hitted by enemy")
 		{
@@ -92,12 +94,14 @@ void PressurePlate::react()
 				state = ReceptorState::release;
 				f_release();
 				delay_counter = RECEPTOR_DELAY;
+				locked = false;
 			}
 			else
 			{
 				state = activation;
 				delay_counter = RECEPTOR_DELAY;
 				f_activation();
+				locked = true;
 			}
 		}
 	}

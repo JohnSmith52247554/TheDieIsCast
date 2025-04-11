@@ -11,6 +11,8 @@
 #include "MessageQueueSubscriber.h"
 #include "File.h"
 
+#include <future>
+
 class Page : public sf::Drawable, public sf::Transformable, public MessageQueueSubscriber
 {
 protected:
@@ -31,11 +33,16 @@ public:
 
 class MainPage : public Page
 {
+private:
+	std::vector<sf::Sprite*> items;
+
 public:
 	MainPage(sf::RenderWindow* window);
 	~MainPage();
 
 	virtual void update(sf::RenderWindow* window) override;
+
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
 private:
 	virtual void react() override;
@@ -46,7 +53,9 @@ class EndingPage : public Page
 private:
 	std::vector<sf::Text> cast;
 	float speed;
-	const float NORMAL_SPEED = 0.3f;
+	const float NORMAL_SPEED = 0.5f;
+
+	std::future<void> update_task;
 
 public:
 	EndingPage(sf::RenderWindow* window, const std::wstring& ending_name);
@@ -58,4 +67,6 @@ public:
 private:
 	virtual void react() override;
 	void moveCast();
+
+	void updateEndingHasAchieve(std::wstring ending_name);
 };

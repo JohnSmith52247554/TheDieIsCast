@@ -54,11 +54,18 @@ void Interface::update(sf::RenderWindow* window)
 		return;
 	}
 
+	if (delay != 0)
+	{
+		delay--;
+	}
+
 	if (button_num > 0)
 	{
 		//??????
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && window->hasFocus())
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && window->hasFocus() && delay == 0)
 		{
+			delay = INTERFACE_KEYBOARD_SELECT_DELAY;
+
 			sf::Vector2i mousePosWindow = sf::Mouse::getPosition(*window);
 			sf::Vector2f mousePosView = window->mapPixelToCoords(mousePosWindow);
 			float scale_factor = view.getSize().x / SCREEN_WIDTH;
@@ -84,57 +91,8 @@ void Interface::update(sf::RenderWindow* window)
 			}
 		}
 
-		if (delay != 0)
-			delay--;
-
-		//???????
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			if (delay == 0)
-			{
-				if (current_button > 0)
-					current_button--;
-				else
-					current_button = button_num - 1;
-				delay = INTERFACE_KEYBOARD_SELECT_DELAY;
-			}
-			else
-				delay--;
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			if (delay == 0)
-			{
-				if (current_button < button_num - 1)
-					current_button++;
-				else
-					current_button = 0;
-				delay = INTERFACE_KEYBOARD_SELECT_DELAY;
-			}
-			else
-				delay--;
-		}*/
-
 		setChooseBox();
 
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-		{
-			for (int i = 0; i < element_list.size(); i++)
-			{
-				if (element_list.at(i).can_be_press)
-				{
-					if (current_button == 0)
-					{
-						element_list.at(i).function();
-						return;
-					}
-					else
-					{
-						current_button--;
-					}
-				}
-			}
-		}*/
 	}
 
 	checkMailBoxAndReact();
@@ -217,19 +175,23 @@ void Interface::react()
 	}
 	else if (mail.message == "enter is pressed")
 	{
-		for (int i = 0; i < element_list.size(); i++)
+		if (delay == 0)
 		{
-			if (element_list.at(i).can_be_press)
+			for (int i = 0; i < element_list.size(); i++)
 			{
-				if (current_button == 0)
+				if (element_list.at(i).can_be_press)
 				{
-					element_list.at(i).function();
-					return;
+					if (current_button == 0)
+					{
+						element_list.at(i).function();
+						return;
+					}
+					else
+					{
+						current_button--;
+					}
 				}
-				else
-				{
-					current_button--;
-				}
+				delay = INTERFACE_KEYBOARD_SELECT_DELAY;
 			}
 		}
 	}
@@ -284,7 +246,7 @@ PauseInterface::PauseInterface()
 		L"回到游戏",
 		sf::Vector2f({ SCREEN_WIDTH / 2, 4 * SCREEN_HEIGHT / 9}),
 		true,
-		DEFAULT_CHARACTER_SIZE,
+		static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 		0,
 		std::bind(&PauseInterface::backToGame, this)
 	};
@@ -294,7 +256,7 @@ PauseInterface::PauseInterface()
 		L"重置本局",
 		sf::Vector2f({SCREEN_WIDTH / 2, 5 * SCREEN_HEIGHT / 9}),
 		true,
-		DEFAULT_CHARACTER_SIZE,
+		static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 		0,
 		std::bind(&PauseInterface::reset, this)  // ???std::bind????????
 	};
@@ -303,7 +265,7 @@ PauseInterface::PauseInterface()
 		L"保存并回到主界面",
 		sf::Vector2f({ SCREEN_WIDTH / 2, 6 * SCREEN_HEIGHT / 9}),
 		true,
-		DEFAULT_CHARACTER_SIZE,
+		static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 		0,
 		std::bind(&PauseInterface::saveAndExit, this)
 	};
@@ -340,9 +302,9 @@ StartInterface::StartInterface()
 		InterfaceElement new_game_button =
 		{
 			L"新游戏",
-			sf::Vector2f({SCREEN_WIDTH / 2, 3 * SCREEN_HEIGHT / 4}),
+			sf::Vector2f({SCREEN_WIDTH / 2, 0.7 * SCREEN_HEIGHT}),
 			true,
-			DEFAULT_CHARACTER_SIZE,
+			static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 			0,
 			std::bind(&StartInterface::newGame, this)
 		};
@@ -350,9 +312,9 @@ StartInterface::StartInterface()
 		InterfaceElement quit_button =
 		{
 			L"退出游戏",
-			sf::Vector2f({SCREEN_WIDTH / 2, 6 * SCREEN_HEIGHT / 7}),
+			sf::Vector2f({SCREEN_WIDTH / 2, 0.8 * SCREEN_HEIGHT}),
 			true,
-			DEFAULT_CHARACTER_SIZE,
+			static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 			0,
 			std::bind(&StartInterface::quit, this)
 		};
@@ -365,9 +327,9 @@ StartInterface::StartInterface()
 		InterfaceElement continue_game_button =
 		{
 			L"继续游戏",
-			sf::Vector2f({SCREEN_WIDTH / 2, 5 * SCREEN_HEIGHT / 7}),
+			sf::Vector2f({SCREEN_WIDTH / 2, 0.6 * SCREEN_HEIGHT}),
 			true,
-			DEFAULT_CHARACTER_SIZE,
+			static_cast<unsigned char>(static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE)),
 			0,
 			std::bind(&StartInterface::continueGame, this)
 		};
@@ -375,9 +337,9 @@ StartInterface::StartInterface()
 		InterfaceElement new_game_button =
 		{
 			L"新游戏",
-			sf::Vector2f({SCREEN_WIDTH / 2, 113 * SCREEN_HEIGHT / 140}),
+			sf::Vector2f({SCREEN_WIDTH / 2, 0.7 * SCREEN_HEIGHT}),
 			true,
-			DEFAULT_CHARACTER_SIZE,
+			static_cast<unsigned char>(static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE)),
 			0,
 			std::bind(&StartInterface::confirmAndNewGame, this)
 		};
@@ -385,9 +347,9 @@ StartInterface::StartInterface()
 		InterfaceElement quit_button =
 		{
 			L"退出游戏",
-			sf::Vector2f({SCREEN_WIDTH / 2, 9 * SCREEN_HEIGHT / 10}),
+			sf::Vector2f({SCREEN_WIDTH / 2, 0.8 * SCREEN_HEIGHT}),
 			true,
-			DEFAULT_CHARACTER_SIZE,
+			static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 			0,
 			std::bind(&StartInterface::quit, this)
 		};
@@ -434,9 +396,9 @@ ConfirmInterface::ConfirmInterface(const std::string confirm_message, const std:
 	InterfaceElement confirm =
 	{
 		Script::stringToWstring(confirm_message),
-		sf::Vector2f({SCREEN_WIDTH / 2, 5 * SCREEN_HEIGHT / 7}),
+		sf::Vector2f({SCREEN_WIDTH / 2, 0.6 * SCREEN_HEIGHT}),
 		false,
-		DEFAULT_CHARACTER_SIZE,
+		static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 		0,
 		nullptr
 	};
@@ -444,9 +406,9 @@ ConfirmInterface::ConfirmInterface(const std::string confirm_message, const std:
 	InterfaceElement yes_button =
 	{
 		L"确定",
-		sf::Vector2f({SCREEN_WIDTH / 2, 113 * SCREEN_HEIGHT / 140}),
+		sf::Vector2f({SCREEN_WIDTH / 2, 0.7 * SCREEN_HEIGHT}),
 		true,
-		DEFAULT_CHARACTER_SIZE,
+		static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 		0,
 		std::bind(&ConfirmInterface::yes, this)
 	};
@@ -454,9 +416,9 @@ ConfirmInterface::ConfirmInterface(const std::string confirm_message, const std:
 	InterfaceElement no_button =
 	{
 		L"返回",
-		sf::Vector2f({SCREEN_WIDTH / 2, 9 * SCREEN_HEIGHT / 10}),
+		sf::Vector2f({SCREEN_WIDTH / 2, 0.8 * SCREEN_HEIGHT}),
 		true,
-		DEFAULT_CHARACTER_SIZE,
+		static_cast<unsigned char>(DEFAULT_CHARACTER_SIZE),
 		0,
 		std::bind(&ConfirmInterface::no, this)
 	};
@@ -539,8 +501,20 @@ void DialogueInterface::initChoices()
 
 void DialogueInterface::react()
 {
-	MessageQueue::Mail mail = check();
-	if (dialogue_text_finish == false || mail.from == MessageQueue::blank_code)
+ 	MessageQueue::Mail mail = check();
+	if (mail.from == MessageQueue::blank_code)
+		return;
+
+	if (mail.message == "control is pressed")
+	{
+		skip_dialogue = true;
+	}
+	else if (mail.message == "control is released")
+	{
+		skip_dialogue = false;
+	}
+
+	if (dialogue_text_finish == false)
 		return;
 
 	if (button_num > 0)
@@ -588,7 +562,7 @@ void DialogueInterface::react()
 	}
 	else
 	{
-		if (mail.message == "enter is pressed" || mail.message == "space is pressed")
+		if (mail.message == "enter is pressed" || mail.message == "space is pressed" || skip_dialogue)
 		{
 			std::stringstream message;
 			message << "goto dialogue " << next_dialogue_id;
@@ -615,17 +589,19 @@ DialogueInterface::DialogueInterface(Script::Dialogue i_dialogue, bool i_is_npc_
 	dialogue_text_finish = false;
 	is_npc_dialogues = i_is_npc_dialogues;
 
+	skip_dialogue = false;
+
 	std::wstring text;
 	if (dialogue.speaker != L"")
 		text = dialogue.speaker + L":\n";
 
-	char_num = dialogue.text.size();
+	char_num = 0;
 	InterfaceElement dialogue_text =
 	{
 		text,
 		sf::Vector2f(SCREEN_WIDTH / 2, 6 * SCREEN_HEIGHT / 7),
 		false,
-		DEFAULT_DIALOGUE_CHARATER_SIZE,
+		static_cast<unsigned char>(DEFAULT_DIALOGUE_CHARATER_SIZE),
 		0,
 		nullptr,
 		false
@@ -650,23 +626,33 @@ void DialogueInterface::update(sf::RenderWindow* window)
 			return;
 		}
 
-		if (char_num > 0)
+		if (char_num <= dialogue.text.size())
 		{
 			dialogue_delay = DIALOGUE_SHOW_CHARACTER_DELAY;
-			char_num -= 1;
-			std::wstring text;
-			if (dialogue.speaker != L"")
-				text = dialogue.speaker + L":\n" +
-					dialogue.text.substr(0, dialogue.text.size() - char_num);
+			short prev_char_num = char_num;
+
+			if (!skip_dialogue)
+				char_num += 1;
 			else
-				text = dialogue.text.substr(0, dialogue.text.size() - char_num);
-			text_list.at(0)->setMessage(text);
+			{
+				char_num += 15;
+			}
+			
+			//延迟出字
+			std::wstring text = text_list.at(0)->getMessage();
+			for (; prev_char_num < std::min(static_cast<size_t>(char_num), static_cast<size_t>(dialogue.text.size()));
+				prev_char_num++)
+			{
+				if (text_list.at(0)->getTextBounds().width > 740)
+					text.insert(std::max(text.size() - 1U, static_cast<size_t>(0)), L"\n");
+				text += dialogue.text[prev_char_num];
+				text_list.at(0)->setMessage(text);
+			}
 		}
-		else if (char_num == 0)
+		else
 		{
 			dialogue_text_finish = true;
 			char_num--;
-			//延迟出字
 			if (dialogue.choices.size() > 0)
 			{
 				for (int i = 0; i < dialogue.choices.size(); i++)
@@ -680,7 +666,7 @@ void DialogueInterface::update(sf::RenderWindow* window)
 						dialogue.choices.at(i).text,
 						sf::Vector2f(SCREEN_WIDTH / 5, SCREEN_HEIGHT * height_factor),
 						true,
-						DEFAULT_DIALOGUE_CHARATER_SIZE,
+						static_cast<unsigned char>(DEFAULT_DIALOGUE_CHARATER_SIZE),
 						0,
 						std::bind([](auto ptr, std::string msg, const auto& choice) 
 							{
@@ -727,72 +713,11 @@ void DialogueInterface::update(sf::RenderWindow* window)
 			if (delay > 0)
 				delay--;
 
-			//???????
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			{
-				if (delay == 0)
-				{
-					if (current_button > 0)
-						current_button--;
-					else
-						current_button = button_num - 1;
-					delay = INTERFACE_KEYBOARD_SELECT_DELAY;
-				}
-				else
-					delay--;
-			}
-			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			{
-				if (delay == 0)
-				{
-					if (current_button < button_num - 1)
-						current_button++;
-					else
-						current_button = 0;
-					delay = INTERFACE_KEYBOARD_SELECT_DELAY;
-				}
-				else
-					delay--;
-			}*/
-
 			setChooseBox();
 
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-			{
-				for (int i = 0; i < element_list.size(); i++)
-				{
-					if (element_list.at(i).can_be_press)
-					{
-						if (current_button == 0)
-						{
-							element_list.at(i).function();
-							return;
-						}
-						else
-						{
-							current_button--;
-						}
-					}
-				}
-			}*/
+			
 		}
-		//?????????????????????
-		/*else
-		{
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-			{
-				std::stringstream message;
-				message << "goto dialogue " << next_dialogue_id;
-				send(MessageQueue::scene_code, message.str());
-				if (dialogue.effect.size() > 0)
-				{
-					for (const auto& effect : dialogue.effect)
-					{
-						Script::parseEffect(effect);
-					}
-				}
-			}
-		}*/
+		
 	}
 
 	checkMailBoxAndReact();

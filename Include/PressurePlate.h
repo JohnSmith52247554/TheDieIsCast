@@ -15,6 +15,9 @@
 
 class PressurePlate : public Receptor
 {
+private:
+	bool locked;
+
 public:
 	PressurePlate(const MapNote::ReceptorAndEffectors& receptor_info, ObjectManagement* i_object_manager);
 	~PressurePlate();

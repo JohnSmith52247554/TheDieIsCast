@@ -33,7 +33,7 @@ namespace MapNote
                     movable_wall.move_direction = static_cast<Direction>(stringToEnum(i_movable_wall["move_direction"]));
                     movable_wall.move_distance = i_movable_wall["move_distance"];
                     movable_wall.speed = i_movable_wall["speed"];
-
+                   
                     if (i_movable_wall.contains("can_be_affected_by_time_control"))
                         movable_wall.set_can_be_affected_by_time_control = i_movable_wall["can_be_affected_by_time_control"];
                     else
@@ -103,9 +103,36 @@ namespace MapNote
                                 choice.text = Script::stringToWstring(choiceData["text"]);
                                 choice.next_dialogue = choiceData["next_dialogue"];
 
+                                if (choiceData.contains("effects"))
+                                {
+                                    for (const auto& i_effect : choiceData["effects"])
+                                    {
+                                        Script::Expression effect;
+                                        effect.variable = i_effect["variable"];
+                                        effect.i_operator = i_effect["operator"];
+                                        effect.value = i_effect["value"];
+
+                                        choice.effect.push_back(effect);
+                                    }
+                                }
+
                                 dialogue.choices.push_back(choice);
                             }
                         }
+
+                        if (dialogueData.contains("effects"))
+                        {
+                            for (const auto& i_effect : dialogueData["effects"])
+                            {
+                                Script::Expression effect;
+                                effect.variable = i_effect["variable"];
+                                effect.i_operator = i_effect["operator"];
+                                effect.value = i_effect["value"];
+
+                                dialogue.effect.push_back(effect);
+                            }
+                        }
+
 
                         npc.dialogues.push_back(dialogue);
                     }

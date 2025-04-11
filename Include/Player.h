@@ -31,11 +31,13 @@ private:
 
 	const short PLAYER_TEXTURE_WEIDTH = 32;
 	const short PLAYER_TEXTURE_HEIGHT = 32;
+
+	unsigned short stand_texture_id, jump_texture_id;
 	
 	//函数
 public:
 	//构造析构
-	Player(int x = 0, int y = 0, ObjectManagement* object_manager = nullptr);
+	Player(int x, int y, ObjectManagement* object_manager, bool with_helmet);
 	virtual ~Player() override;
 
 	//更新

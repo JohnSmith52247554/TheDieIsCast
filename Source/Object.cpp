@@ -122,6 +122,11 @@ void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	this->sprite.setPosition(coord);
 	target.draw(this->sprite, states);
+
+	/*sf::RectangleShape rect({ 2, 2 });
+	rect.setPosition(coord.x - 1, coord.y - 1);
+	rect.setFillColor(sf::Color::Red);
+	target.draw(rect);*/
 }
 
 const bool Object::getShouldUpdate() const

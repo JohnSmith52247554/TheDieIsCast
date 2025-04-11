@@ -1,5 +1,7 @@
 #include "Scene.h"
 
+#include <exception>
+
 void Scene::initVar()
 {
 	//初始化变量
@@ -58,8 +60,11 @@ void Scene::initVar()
 #endif
 
 	move_camera_speed = 0.f;
+	moving_camera = 0;
 
 	force_rewind = false;
+
+	forward_time_counter = 0;
 }
 
 void Scene::initWin(sf::RenderWindow* i_render_window)
@@ -117,7 +122,7 @@ void Scene::initObject(std::string i_map_name)
 
 	map.loadFromFile(i_map_name, object_manager);
 
-	this->player = new Player(player_respwan_point.x, player_respwan_point.y, object_manager);
+	this->player = new Player(player_respwan_point.x, player_respwan_point.y, object_manager, script_map.be_able_to_rewind_time);
 
 	map.spawnObject(object_manager, script_map.name, map_note, final, player);
 
@@ -128,7 +133,12 @@ void Scene::initObject(std::string i_map_name)
 		this->text = new sf::Text;	//展示地图描述
 		this->text->setFont(*ResourceManagement::getFont(0));
 		this->text->setString(script_map.description);
-		this->text->setCharacterSize(30 * 4);
+		float scale_factor = 1.f;
+		if (script_map.global_mode)
+		{
+			scale_factor = map.getMapWidthBlocks() * CELL_SIZE / SCREEN_WIDTH;
+		}
+		this->text->setCharacterSize(scale_factor * 30 * 4);
 		this->text->setScale(0.25, 0.25);
 		this->text->setFillColor(sf::Color::White);
 		this->text->setPosition(SCREEN_WIDTH / 2 - this->text->getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - this->text->getGlobalBounds().height / 2 - 6);
@@ -155,6 +165,8 @@ void Scene::initObject(std::string i_map_name)
 
 void Scene::setView(sf::Vector2f coord)
 {
+	if (script_map.global_mode)
+		return;
 	view.setCenter(coord);
 	this->window->setView(view);
 }
@@ -177,14 +189,12 @@ void Scene::react()
 				send(i_interface->getPostalCode(), mail.message);
 			else if (dialogue_interface != nullptr)
 				send(dialogue_interface->getPostalCode(), mail.message);
-			/*else if (player != nullptr)
-				send(MessageQueue::player_code, mail.message);*/
 		}
-		/*else if (mail.message == "a is pressed" || mail.message == "d is pressed")
+		else if (mail.message == "control is pressed" || mail.message == "control is released")
 		{
-			if (player != nullptr)
-				send(MessageQueue::player_code, mail.message);
-		}*/
+			if (dialogue_interface != nullptr)
+				send(dialogue_interface->getPostalCode(), mail.message);
+		}
 		else if (mail.message == "escape is pressed")
 		{
 			// 恢复鼠标光标
@@ -202,6 +212,9 @@ void Scene::react()
 			ResourceManagement::pauseBackgroundMusic();
 
 			player->stop();
+
+			if (dialogue_interface != nullptr)
+				send(dialogue_interface->getPostalCode(), "control is released");
 			//send(MessageQueue::player_code, "stop all motion");
 		}
 		else if (mail.message == "shift is pressed")
@@ -230,38 +243,22 @@ void Scene::react()
 				force_rewind = false;
 			}
 		}
-		else if (mail.message == "save and exit")
-		{
-			/*if (i_interface != nullptr)
-			{
-				delete i_interface;
-				i_interface = nullptr;
-			}*/
+		//else if (mail.message == "save and close window")
+		//{
+		//	//if (i_interface != nullptr)
+		//	//{
+		//	//	delete i_interface;
+		//	//	i_interface = nullptr;
+		//	//}
 
-			//show_interface = false;
-			game_pause = false;
+		//	//show_interface = false;
+		//	//game_pause = false;
 
-			//保存的逻辑
-			save();
+		//	////保存的逻辑
+		//	//save();
 
-			send(MessageQueue::game_code, "back to main page");
-		}
-		else if (mail.message == "save and close window")
-		{
-			if (i_interface != nullptr)
-			{
-				delete i_interface;
-				i_interface = nullptr;
-			}
-
-			show_interface = false;
-			game_pause = false;
-
-			//保存的逻辑
-			save();
-
-			send(MessageQueue::game_code, "close window");
-		}
+		//	//send(MessageQueue::game_code, "close window");
+		//}
 	}
 	//筛选出来自界面的消息
 	else if (MessageQueue::computeInterclassicCode(mail.from) == MessageQueue::interface_header)
@@ -294,17 +291,21 @@ void Scene::react()
 			minute = 0;
 			fps_counter = 0;
 
+			forward_time_counter = 0;
+
 			MessageQueue::resetPostalCodeCounter();
 
 			setDialogueTrigger();
 
 			if (player != nullptr)
 				delete player;
-			player = new Player(player_respwan_point.x, player_respwan_point.y, object_manager);
+			player = new Player(player_respwan_point.x, player_respwan_point.y, object_manager, script_map.be_able_to_rewind_time);
 			map.spawnObject(object_manager, script_map.name, map_note, final, player);
 			
 			delete time_manager;
 			time_manager = new TimeManagement;
+			if (script_map.recorded_timeline_filename != "")
+				loadRecord();
 
 			if (full_screen_quad != nullptr)
 			{
@@ -317,7 +318,7 @@ void Scene::react()
 
 			ResourceManagement::setBackgroundMusic(script_map.bgm);
 
-			if (script_map.move_camera)
+			if (script_map.move_camera && !script_map.global_mode)
 			{
 				moving_camera = 1;
 				move_camera_speed = 0.f;
@@ -328,6 +329,7 @@ void Scene::react()
 				//设置视角
 				setViewToPlayer();
 			}
+
 		}
 		else if (mail.message == "back to game")
 		{
@@ -433,6 +435,11 @@ void Scene::react()
 				dialogue_interface = nullptr;
 				//退出剧情模式
 				send(MessageQueue::player_code, "dialogue mode end");
+				if (switch_to_next_scene != 0)
+				{
+					MessageQueue::send(MessageQueue::player_code, MessageQueue::scene_code, "complete the game");
+					switch_to_next_scene = 0;
+				}
 				//隐藏鼠标
 				this->window->setMouseCursorVisible(false);
 				//剧情相当于存档点，无法倒流到剧情之前
@@ -454,6 +461,11 @@ void Scene::react()
 				send(MessageQueue::player_code, "dialogue mode end");
 				//隐藏鼠标
 				this->window->setMouseCursorVisible(false);
+				if (switch_to_next_scene != 0)
+				{
+					MessageQueue::send(MessageQueue::player_code, MessageQueue::scene_code, "complete the game");
+					switch_to_next_scene = 0;
+				}
 			}
 		}
 		else if (mail.message.substr(0, prefix.size()) == prefix)
@@ -542,7 +554,7 @@ void Scene::trackPlayer()
 	sf::Vector2f target = this->player->getCoord();
 	if (earthquake || camera_shake_counter > 0U)
 	{
-		if (play_quake_music == false)
+		if (play_quake_music == false && earthquake)
 		{
 			play_quake_music = true;
 			ResourceManagement::setBackgroundMusic("IV_Freed");
@@ -692,6 +704,9 @@ void Scene::setGlobalMode()
 
 	if (background != nullptr)
 		background->setPosition(view.getCenter().x - background->getGlobalBounds().width / 2, view.getCenter().y - background->getGlobalBounds().height / 2);
+
+	if (text != nullptr)
+		text->setPosition(view.getCenter().x - text->getGlobalBounds().width / 2, view.getCenter().y - text->getGlobalBounds().height / 2 - 6);
 }
 
 Scene::Scene(Script::Map& i_script_map, sf::RenderWindow* i_render_window)
@@ -719,7 +734,7 @@ Scene::Scene(Script::Map& i_script_map, sf::RenderWindow* i_render_window)
 			setGlobalMode();
 	}
 
-	if (script_map.move_camera == true)
+	if (script_map.move_camera == true && !script_map.global_mode)
 		moving_camera = 1;
 
 	if (script_map.recorded_timeline_filename != "")
@@ -757,7 +772,12 @@ Scene::Scene(Script::Map& i_script_map, sf::RenderWindow* i_render_window, bool 
 			this->text = new sf::Text;	//展示地图描述
 			this->text->setFont(*ResourceManagement::getFont(0));
 			this->text->setString(script_map.description);
-			this->text->setCharacterSize(30 * 4);
+			float scale_factor = 1.f;
+			if (script_map.global_mode)
+			{
+				scale_factor = map.getMapWidthBlocks() * CELL_SIZE / SCREEN_WIDTH;
+			}
+			this->text->setCharacterSize(scale_factor * 30 * 4);
 			this->text->setScale(0.25, 0.25);
 			this->text->setFillColor(sf::Color::White);
 			this->text->setPosition(SCREEN_WIDTH / 2 - this->text->getGlobalBounds().width / 2, SCREEN_HEIGHT / 2 - this->text->getGlobalBounds().height / 2 - 6);
@@ -792,7 +812,7 @@ Scene::Scene(Script::Map& i_script_map, sf::RenderWindow* i_render_window, bool 
 		background->setTexture(*background_texture);
 	}
 
-	moving_camera = false;
+	moving_camera = 0;
 	if (script_map.global_mode && script_map.description == L"" && i_load == true)
 		setGlobalMode();
 }
@@ -816,8 +836,6 @@ Scene::~Scene()
 		delete dialogue_interface;
 	if (press_f_reminder != nullptr)
 		delete press_f_reminder;
-	if (cheating_mode_reminder != nullptr)
-		delete cheating_mode_reminder;
 
 #if SHOW_CONSOLE
 	if (cheating_mode_reminder == nullptr)
@@ -963,20 +981,20 @@ void Scene::update()
 				//计时
 				if (!(minute == '\0' && second == '\0'))
 				{
-					if (fps_counter != 0)
+					if (fps_counter != '\0')
 					{
 						fps_counter--;
 					}
 					else
 					{
 						fps_counter = FPS;
-						if (second != 0)
+						if (second != '\0')
 						{
 							second--;
 						}
 						else
 						{
-							second = 59;
+							second = static_cast<unsigned char>(59);
 							minute--;
 						}
 					}
@@ -1006,13 +1024,13 @@ void Scene::update()
 			{
 				//计时
 				fps_counter++;
-				if (fps_counter == FPS)
+				if (fps_counter >= FPS)
 				{
-					fps_counter = 0;
+					fps_counter = '\0';
 					second++;
-					if (second == 60)
+					if (second == (unsigned char)60)
 					{
-						second = 0;
+						second = '\0';
 						minute++;
 					}
 				}
@@ -1023,10 +1041,25 @@ void Scene::update()
 					Script::Dialogue time_limit_info = {
 						0,
 						L"",
-							script_map.time_limit.message
+						script_map.time_limit.message
 					};
 					time_limit_info.effect.push_back(Script::Expression({ "reset_game", "", 0 }));
 					dialogue_interface = new DialogueInterface(time_limit_info, false);
+					player->stop();
+				}
+
+				forward_time_counter++;
+				if (script_map.forward_time_limit.second >= 0 && forward_time_counter == script_map.forward_time_limit.second * FPS)
+				{
+					if (dialogue_interface != nullptr)
+						delete dialogue_interface;
+					Script::Dialogue info = {
+						0,
+						L"",
+						script_map.forward_time_limit.message
+					};
+					info.effect.push_back(Script::Expression({ "reset_game", "", 0 }));
+					dialogue_interface = new DialogueInterface(info, false);
 					player->stop();
 				}
 
@@ -1295,78 +1328,91 @@ void Scene::save()
 	if (!file.is_open())
 	{
 		std::cerr << "failed to open save file" << std::endl;
+		throw std::logic_error("failed to open save file");
 		return;
 	}
 
-	file.write(reinterpret_cast<char*>(&ending), sizeof(ending));
+	try {
+		/*unsigned char signal = 255;
+		file.write(reinterpret_cast<char*>(&signal), sizeof(signal));*/
 
-	//写入终点信息
-	file.write(reinterpret_cast<char*>(&final), sizeof(final));
+		file.write(reinterpret_cast<char*>(&ending), sizeof(ending));
+		file.write(reinterpret_cast<char*>(&forward_time_counter), sizeof(forward_time_counter));
 
-	file.write(reinterpret_cast<char*>(&has_player_failed), sizeof(has_player_failed));
+		//写入终点信息
+		file.write(reinterpret_cast<char*>(&final), sizeof(final));
 
-	file.write(reinterpret_cast<char*>(&fps_counter), sizeof(fps_counter));
-	file.write(reinterpret_cast<char*>(&second), sizeof(second));
-	file.write(reinterpret_cast<char*>(&minute), sizeof(minute));
+		file.write(reinterpret_cast<char*>(&has_player_failed), sizeof(has_player_failed));
 
-	MessageQueue::savePostalCodeCounter(file);
+		file.write(reinterpret_cast<char*>(&fps_counter), sizeof(fps_counter));
+		file.write(reinterpret_cast<char*>(&second), sizeof(second));
+		file.write(reinterpret_cast<char*>(&minute), sizeof(minute));
 
-	std::vector<short> trigger_ids;
-	for (auto& trigger : dialogue_trigger_zones)
-	{
-		trigger_ids.push_back(trigger.trigger_id);
-	}
+		MessageQueue::savePostalCodeCounter(file);
 
-	//写入向量的大小并写入向量
-	size_t size = trigger_ids.size();
-	file.write(reinterpret_cast<char*>(&size), sizeof(size));
-	file.write(reinterpret_cast<char*>(trigger_ids.data()), size * sizeof(short));
+		std::vector<short> trigger_ids;
+		for (auto& trigger : dialogue_trigger_zones)
+		{
+			trigger_ids.push_back(trigger.trigger_id);
+		}
 
-	//记录所有实体的信息
-	Snap::ObjectSnap object_snap;
-	Snap::WorldSnap world_snap;
+		//写入向量的大小并写入向量
+		size_t size = trigger_ids.size();
+		file.write(reinterpret_cast<char*>(&size), sizeof(size));
+		file.write(reinterpret_cast<char*>(trigger_ids.data()), size * sizeof(short));
 
-	object_snap.coord = player->getCoord();
-	object_snap.horizontal_speed = player->getHorizontalSpeed();
-	object_snap.vertical_speed = player->getVerticalSpeed();
-	object_snap.postal_code = player->getPostalCode();
-	object_snap.eigen_code = player->saveCode();
-	world_snap.object.push_back(object_snap);
-	//将玩家数据储存在第一位
-	//接下来储存敌人信息和其他实体的信息
+		//记录所有实体的信息
+		Snap::ObjectSnap object_snap;
+		Snap::WorldSnap world_snap;
 
-	for (auto& enemy : object_manager->getEnemyList())
-	{
-		object_snap.coord = enemy->getCoord();
-		object_snap.horizontal_speed = enemy->getHorizontalSpeed();
-		object_snap.vertical_speed = enemy->getVerticalSpeed();
-		object_snap.postal_code = enemy->getPostalCode();
-		object_snap.eigen_code = enemy->saveCode();
+		object_snap.coord = player->getCoord();
+		object_snap.horizontal_speed = player->getHorizontalSpeed();
+		object_snap.vertical_speed = player->getVerticalSpeed();
+		object_snap.postal_code = player->getPostalCode();
+		object_snap.eigen_code = player->saveCode();
 		world_snap.object.push_back(object_snap);
-	}
+		//将玩家数据储存在第一位
+		//接下来储存敌人信息和其他实体的信息
 
-	for (auto& object : object_manager->getObjectList())
-	{
-		object_snap.coord = object->getCoord();
-		object_snap.horizontal_speed = object->getHorizontalSpeed();
-		object_snap.vertical_speed = object->getVerticalSpeed();
-		object_snap.postal_code = object->getPostalCode();
-		object_snap.eigen_code = object->saveCode();
-		world_snap.object.push_back(object_snap);
-	}
-	
-	//写入向量的大小并写入向量
-	size = world_snap.object.size();
-	file.write(reinterpret_cast<char*>(&size), sizeof(size));
-	
-	for (auto& object_snap : world_snap.object) 
-	{
-		file.write(reinterpret_cast<char*>(&object_snap), sizeof(object_snap));
-	}
+		for (auto& enemy : object_manager->getEnemyList())
+		{
+			object_snap.coord = enemy->getCoord();
+			object_snap.horizontal_speed = enemy->getHorizontalSpeed();
+			object_snap.vertical_speed = enemy->getVerticalSpeed();
+			object_snap.postal_code = enemy->getPostalCode();
+			object_snap.eigen_code = enemy->saveCode();
+			world_snap.object.push_back(object_snap);
+		}
 
-	file.close();
+		for (auto& object : object_manager->getObjectList())
+		{
+			object_snap.coord = object->getCoord();
+			object_snap.horizontal_speed = object->getHorizontalSpeed();
+			object_snap.vertical_speed = object->getVerticalSpeed();
+			object_snap.postal_code = object->getPostalCode();
+			object_snap.eigen_code = object->saveCode();
+			world_snap.object.push_back(object_snap);
+		}
 
-	time_manager->asyncSaveAllToFile();
+		//写入向量的大小并写入向量
+		size = world_snap.object.size();
+		file.write(reinterpret_cast<char*>(&size), sizeof(size));
+
+		for (auto& object_snap : world_snap.object)
+		{
+			file.write(reinterpret_cast<char*>(&object_snap), sizeof(object_snap));
+		}
+
+		//file.flush();
+		file.close();
+
+		time_manager->asyncSaveAllToFile();
+
+		/*std::cout << "\n\nsaved\n\n" << file_dir << "\n\n";*/
+	}
+	catch (...) {
+		throw std::logic_error("save file breakdown");
+	}
 }
 
 void Scene::load()
@@ -1382,6 +1428,7 @@ void Scene::load()
 	file.seekg(size, std::ios::beg);
 
 	file.read(reinterpret_cast<char*>(&ending), sizeof(ending));
+	file.read(reinterpret_cast<char*>(&forward_time_counter), sizeof(forward_time_counter));
 	file.read(reinterpret_cast<char*>(&final), sizeof(final));
 	file.read(reinterpret_cast<char*>(&has_player_failed), sizeof(has_player_failed));
 	file.read(reinterpret_cast<char*>(&fps_counter), sizeof(fps_counter));
@@ -1546,15 +1593,9 @@ void Scene::load()
 			break;
 		}
 		
-		/*if (object_snap.postal_code == MessageQueue::flag_code)
-		{
-			Flag* f = new Flag(object_snap.coord.x, object_snap.coord.y, object_manager);
-			f->decode(object_snap.eigen_code);
-			continue;
-		}*/
 		if (object_snap.postal_code == MessageQueue::player_code)
 		{
-			this->player = new Player(object_snap.coord.x, object_snap.coord.y, object_manager);
+			this->player = new Player(object_snap.coord.x, object_snap.coord.y, object_manager, script_map.be_able_to_rewind_time);
 			this->player->setState(object_snap.coord, object_snap.horizontal_speed, object_snap.vertical_speed);
 			this->player->decode(object_snap.eigen_code);
 			continue;

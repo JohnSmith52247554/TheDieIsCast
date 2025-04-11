@@ -44,7 +44,7 @@ Text::~Text()
 	}
 }
 
-void Text::setMessage(std::wstring i_message)
+void Text::setMessage(std::wstring& i_message)
 {
 	text.setString(i_message);
 	initBackground();
@@ -150,6 +150,16 @@ sf::FloatRect Text::getGloabalBounds() const
 		textBounds.width = background_width;
 	}
 	return textBounds;
+}
+
+sf::FloatRect Text::getTextBounds() const 
+{
+	return text.getGlobalBounds();
+}
+
+std::wstring Text::getMessage() const
+{
+	return text.getString();
 }
 
 void Text::initBackground()

@@ -25,8 +25,11 @@
 
 class Scene : public MessageQueueSubscriber
 {
+private:
+	friend class Game;
+
 	//锟斤拷锟斤拷
-protected:
+private:
 	sf::RenderWindow* window;	//锟斤拷为锟斤拷Game锟斤拷锟斤拷
 	/*sf::View* view;*/
 
@@ -51,8 +54,8 @@ protected:
 	struct DialogueTriggerZoneAndTriggerID
 	{
 		sf::FloatRect dialogue_trigger_zone;
-		short trigger_dialouge_id;
-		short trigger_id;
+		int trigger_dialouge_id;
+		int trigger_id;
 	};
 	std::vector<DialogueTriggerZoneAndTriggerID> dialogue_trigger_zones;	//锟皆伙拷锟斤拷锟斤拷锟斤拷围
 
@@ -84,7 +87,7 @@ protected:
 	struct NPCinfo
 	{
 		short current_speaking_npc_id;
-		unsigned short current_speaking_npc_postal_code;
+		unsigned int current_speaking_npc_postal_code;
 	} npc_info;
 
 	unsigned short auto_rewind_time_counter;
@@ -107,6 +110,8 @@ protected:
 	float move_camera_speed;
 
 	bool force_rewind;
+
+	unsigned int forward_time_counter;
 
 	//锟斤拷锟斤拷
 private:

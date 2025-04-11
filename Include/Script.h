@@ -55,11 +55,11 @@ namespace Script
 	//储存一句对话，以及附属的选项
 	struct Dialogue
 	{
-		short dialogue_id;
+		int dialogue_id;
 		std::wstring speaker;
 		std::wstring text;
 		std::vector<Choice> choices;
-		short next_dialogue = -1; //决定下一句对话，没有选项时使用
+		int next_dialogue = -1; //决定下一句对话，没有选项时使用
 		std::vector<Expression> effect;
 	};
 
@@ -69,8 +69,8 @@ namespace Script
 		{
 			short left, right, top, bottom;
 		}trigger_zone;
-		short trigger_dialogue_id;	//触发的对话的ID
-		short trigger_id;	//触发器的ID
+		int trigger_dialogue_id;	//触发的对话的ID
+		int trigger_id;	//触发器的ID
 	};
 
 	struct TimeLimit
@@ -96,6 +96,11 @@ namespace Script
 		bool global_mode;
 		TimeLimit time_limit;
 		std::string recorded_timeline_filename;	//若不为空，则会在History目录中读取此文件，并复制到timeline.bin
+		struct ForwardTimeLimit
+		{
+			int second;
+			std::wstring message;
+		} forward_time_limit;
 	};
 
 	//储存一幕的信息
@@ -152,4 +157,6 @@ namespace Script
 
 	//解析effect
 	const bool parseEffect(const Expression& expression);
+
+	const bool operate(unsigned short* value, const Expression& expression);
 }
