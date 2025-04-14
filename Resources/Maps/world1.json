@@ -1,0 +1,210 @@
+{
+    "MovableWall":[],
+    "ReceptorAndEffectors":[],
+    "NPCs":
+    [
+        {
+            "npc_id": 1,
+            "npc_skin_id": 19,
+            "name": "？？？",
+            "x": 33,
+            "y": 26,
+            "dialogues":
+            [
+                {
+					"dialogue_id": 12,
+					"speaker": "？？？",
+					"text": "“你知道吗？僧帽水母在衰老时会重新退化成胚胎，等待下一次的生命。” ",
+					"choice" : [] ,
+					"next_dialogue" : 13
+				},
+				{
+					"dialogue_id": 13,
+					"speaker": "",
+					"text": "面前是一位身穿纯黑卫衣的少女。黑暗的水族馆内，我看不清她的容颜。不过少女看到我转过头来，便继续说了下去。",
+					"choice" : [] ,
+					"next_dialogue" : 14
+				},
+				{
+					"dialogue_id": 14,
+					"speaker": "喜欢水母的少女",
+					"text": "它们是可以永生的生命哦~要是我也可以永生就好了。",
+					"choice" : [] ,
+					"next_dialogue" : 15
+				},
+				{
+					"dialogue_id": 15,
+					"speaker": "喜欢水母的少女",
+					"text": "我想坐着游艇，到一个地方下船，住上一百年，再坐上游艇换个地方继续住一百年，直到永远。",
+					"choice" : [] ,
+					"next_dialogue" : 16
+				},
+				{
+					"dialogue_id": 16,
+					"speaker": "",
+					"text": "少女的声音有些低沉，但很轻快。要是我也拥有了无限时间，我还会像现在这样生活吗？",
+					"choice" : [] ,
+					"next_dialogue" : 17
+				},
+				{
+					"dialogue_id": 17,
+					"speaker": "",
+					"text": "不过，说起时间，比起无限时间，其实我还有更希望能做到的事情。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+            ]
+        },
+        {
+            "npc_id": 2,
+            "npc_skin_id": 18,
+            "name": "？？？",
+            "x": 55,
+            "y": 24,
+            "dialogues":
+            [
+                {
+					"dialogue_id": 25,
+					"speaker": "？？？",
+					"text": "哇，原来是你！Kyrion！",
+					"choice" : [] ,
+					"next_dialogue" : 26
+				},
+				{
+					"dialogue_id": 26,
+					"speaker": "？？？",
+					"text": "你也睡不着来甲板散心吗？",
+					"choice" : [] ,
+					"next_dialogue" : 27
+				},
+				{
+					"dialogue_id": 27,
+					"speaker": "",
+					"text": "我停下脚步，有点惊讶她竟然知道我的名字。",
+					"choice" : [] ,
+					"next_dialogue" : 28
+				},
+				{
+					"dialogue_id": 28,
+					"speaker": "",
+					"text": "Kyrion Veyle——一个古典到家的名字。不过，她知道难道不是一件很正常的事情吗？我为什么会感到惊讶呢？",
+					"choice" : [] ,
+					"next_dialogue" : 29
+				},
+				{
+					"dialogue_id": 29,
+					"speaker": "？？？",
+					"text": "“还记得你第一次呼唤我的名字的时候吗？” ",
+					"choice" : [] ,
+					"next_dialogue" : 30
+				},
+				{
+					"dialogue_id": 30,
+					"speaker": "？？？",
+					"text": "“在我印象里，你还是一个胆怯的高中生呢。真没想到你竟然会在学校操场上当众向我表白。” ",
+					"choice" : [] ,
+					"next_dialogue" : 31
+				},
+				{
+					"dialogue_id": 31,
+					"speaker": "",
+					"text": "我努力回忆着，但脑中一片混沌。一定是我没睡好的缘故。",
+					"choice" : [] ,
+					"next_dialogue" : 32
+				},
+				{
+					"dialogue_id": 32,
+					"speaker": "？？？",
+					"text": "“那时我真的好惊讶。没想到你竟然如此勇敢。” ",
+					"choice" : [] ,
+					"next_dialogue" : 33
+				},
+				{
+					"dialogue_id": 33,
+					"speaker": "",
+					"text": "如果我真的这样做了，那确实还蛮勇敢的呢。",
+					"choice" : [] ,
+					"next_dialogue" : 34
+				},
+				{
+					"dialogue_id": 34,
+					"speaker": "我",
+					"text": "啊哈哈哈，我可是鼓了好久的勇气呢。",
+					"choice" : [] ,
+					"next_dialogue" : 35
+				},
+				{
+					"dialogue_id": 35,
+					"speaker": "",
+					"text": "我只好应付着。为什么我什么都想不起来呢？以后真的不能再熬夜了。",
+					"choice" : [] ,
+					"next_dialogue" : 36
+				},
+				{
+					"dialogue_id": 36,
+					"speaker": "？？？",
+					"text": "不过说起来有点失落呢，我已经好久没有听过你用那样的语气呼唤我的名字了。",
+					"choice" : [] ,
+					"next_dialogue" : 37
+				},
+				{
+					"dialogue_id": 37,
+					"speaker": "？？？",
+					"text": "“好想重温以下那时的心动啊~可以请你再像高中时那样，大声呼喊出我的名字吗？” ",
+					"choice" : [] ,
+					"next_dialogue" : 38
+				},
+				{
+					"dialogue_id": 38,
+					"speaker": "",
+					"text": "你的名字，那个我最熟悉不过的单词。那个我曾魂牵梦萦的单词。 ",
+					"choice" : [] ,
+					"next_dialogue" : 39
+				},
+				{
+					"dialogue_id": 39,
+					"speaker": "",
+					"text": "你是…… ",
+					"choice" : [] ,
+					"next_dialogue" : 40
+				},
+				{
+					"dialogue_id": 40,
+					"speaker": "",
+					"text": "…………",
+					"choice" : [] ,
+					"next_dialogue" : 41
+				},
+				{
+					"dialogue_id": 41,
+					"speaker": "",
+					"text": "糟了，我怎么想不起来了？！ ",
+					"choice" : [] ,
+					"next_dialogue" : 42
+				},
+				{
+					"dialogue_id": 42,
+					"speaker": "？？？",
+					"text": "“是你害羞了嘛？没关系的，游艇上其他人不认识我们的。” ",
+					"choice" : [] ,
+					"next_dialogue" : 43
+				},
+				{
+					"dialogue_id": 43,
+					"speaker": "？？？",
+					"text": "“Call me by my name~” ",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+                    "effects":
+                    [
+                        {
+                            "variable": "switch_to_next_scene",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				}
+            ]
+        }
+    ]
+}

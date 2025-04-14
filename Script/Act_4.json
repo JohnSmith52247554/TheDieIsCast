@@ -1,0 +1,81 @@
+{
+    "act_id": 4,
+    "name": "Act4",
+    "description":"???",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "world9",
+            "description": "地图9",
+            "background": "",
+            "dialogues":[],
+            "dialogue_trigger": [],
+            "global_mode": true,
+            "recorded_timeline_filename": "timeline_world_9.bin",
+            "forward_time_limit":
+            {
+                "second": 10,
+                "message": "他们要追上来了！快倒流时间阻止他们！"
+            }
+        },
+        {
+            "map_id": 2,
+            "name": "black",
+            "description": "地图9",
+            "background": "",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 500,
+					"speaker": "我",
+					"text": "现在当务之急是怎么停止时空稳定局的追杀？——容我想想。",
+					"choice" : [] ,
+					"next_dialogue" : 501
+				},
+                {
+					"dialogue_id": 501,
+					"speaker": "我",
+					"text": "我知道了！我们只要把时间逆转器的技术基础也删掉就好。它的技术基础是那个虫洞理论……那是什么时候发现的？",
+					"choice" : [] ,
+					"next_dialogue" : 502
+				},
+                {
+					"dialogue_id": 502,
+					"speaker": "AI",
+					"text": "我将为您检索”虫洞控制技术“的发现时间与地址。——第一篇划时代的论文发表于2012年7月，作者是Nana Daiba，UTokyo。",
+					"choice" : [] ,
+					"next_dialogue" : 503
+				},
+                {
+					"dialogue_id": 503,
+					"speaker": "我",
+					"text": "所以我只要退回到发表前，这个世界上就只有我头上这唯一一个时间逆转器了，对吧！",
+					"choice" : [] ,
+					"next_dialogue" : 504
+				},
+                {
+					"dialogue_id": 504,
+					"speaker": "我",
+					"text": "理论上并不是……他们依然拥有时间逆转器，因为这是从平行世界回退时间的机器，并不随现实世界时间点变动。——不过他们确实找不到你了，因为还未创造出时间逆转器的时空中，他们无法获取完整的世界情报数据，你的行踪对于他们而言是不透明的。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 929,
+					  "right": 960,
+					  "top": 929,
+					  "bottom": 960
+					},
+					"trigger_id": 40101,
+					"trigger_dialouge_id": -1
+				}
+            ]
+        }
+    ]
+}

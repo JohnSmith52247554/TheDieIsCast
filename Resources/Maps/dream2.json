@@ -1,0 +1,263 @@
+{
+    "MovableWall":[],
+    "ReceptorAndEffectors":[],
+    "NPCs":
+    [
+        {
+            "npc_id": 1,
+            "npc_skin_id": 18,
+            "name": "？？？",
+            "x": 55,
+            "y": 24,
+            "dialogues":
+            [
+                {
+					"dialogue_id": 138,
+					"speaker": "？？？",
+					"text": "哇，原来是你！Kyrion！",
+					"choice" : [] ,
+					"next_dialogue" : 139
+				},
+				{
+					"dialogue_id": 139,
+					"speaker": "？？？",
+					"text": "你也睡不着来甲板散心吗？",
+					"choice" : [] ,
+					"next_dialogue" : 140
+				},
+				{
+					"dialogue_id": 140,
+					"speaker": "我",
+					"text": "是呀，最近事情好多，有些心烦意乱的。",
+					"choice" : [] ,
+					"next_dialogue" : 141
+				},
+				{
+					"dialogue_id": 141,
+					"speaker": "",
+					"text": "虽然是逢场作戏，但这也确实是实话。",
+					"choice" : [] ,
+					"next_dialogue" : 142
+				},
+				{
+					"dialogue_id": 142,
+					"speaker": "？？？",
+					"text": "你还好吗？要不我们聊点轻松的话题，换换心情吧！",
+					"choice" : [] ,
+					"next_dialogue" : 143
+				},
+				{
+					"dialogue_id": 143,
+					"speaker": "？？？",
+					"text": "“还记得你第一次呼唤我的名字的时候吗？” ",
+					"choice" : [] ,
+					"next_dialogue" : 144
+				},
+				{
+					"dialogue_id": 144,
+					"speaker": "我",
+					"text": "我当然记得！",
+					"choice" : [] ,
+					"next_dialogue" : 145
+				},
+				{
+					"dialogue_id": 145,
+					"speaker": "",
+					"text": "与此同时我的大脑正在飞速回忆着。",
+					"choice" : [] ,
+					"next_dialogue" : 146
+				},
+				{
+					"dialogue_id": 146,
+					"speaker": "？？？",
+					"text": "“在我印象里，你还是一个胆怯的大学生呢。真没想到你竟然会在学校操场上当众向我表白。” ",
+					"choice" : [] ,
+					"next_dialogue" : 147
+				},
+				{
+					"dialogue_id": 147,
+					"speaker": "",
+					"text": "我想起来了。这个世界线上的我的一切，我都想起来了。",
+					"choice" : [] ,
+					"next_dialogue" : 148
+				},
+				{
+					"dialogue_id": 148,
+					"speaker": "",
+					"text": "那是一个新雨初霁的黄昏。当我终于完成了一项艰难的实验，从实验室中轻快地赶回公寓的路上，忽然听到了一阵清脆而有些生涩的歌声。",
+					"choice" : [] ,
+					"next_dialogue" : 149
+				},
+				{
+					"dialogue_id": 149,
+					"speaker": "",
+					"text": "那时的我远远地望过去，清寂的运动场的一角，金色的发梢溶解在金黄色的晚霞之中，一个活泼的身影正在忘情地歌唱着——",
+					"choice" : [] ,
+					"next_dialogue" : 150
+				},
+				{
+					"dialogue_id": 150,
+					"speaker": "",
+					"text": "我不知当时呆呆向她的方向望了多长时间，但当我回过神来，我已经站在她的身后，满怀希望地鼓起勇气。",
+					"choice" : [] ,
+					"next_dialogue" : 151
+				},
+				{
+					"dialogue_id": 151,
+					"speaker": "",
+					"text": "她爽快地加了我的联系方式。第二天我心怀此生未有的勇气，邀请她一起去天象厅看星星。她很喜欢仙后座，像是一曲华尔兹一样简洁而完美。",
+					"choice" : [] ,
+					"next_dialogue" : 152
+				},
+				{
+					"dialogue_id": 152,
+					"speaker": "",
+					"text": "三个星期之后，我被舍友怂恿着，作出了此生最大胆的一个决定——",
+					"choice" : [] ,
+					"next_dialogue" : 153
+				},
+				{
+					"dialogue_id": 153,
+					"speaker": "",
+					"text": "在操场上当众向她表白。",
+					"choice" : [] ,
+					"next_dialogue" : 154
+				},
+				{
+					"dialogue_id": 154,
+					"speaker": "",
+					"text": "就在第一次听到她唱歌的那个角落。",
+					"choice" : [] ,
+					"next_dialogue" : 155
+				},
+				{
+					"dialogue_id": 155,
+					"speaker": "？？？",
+					"text": "“那时我真的好惊讶。没想到你竟然如此勇敢。” ",
+					"choice" : [] ,
+					"next_dialogue" : 156
+				},
+				{
+					"dialogue_id": 156,
+					"speaker": "",
+					"text": "那天她笑得很开心。我从未见过如此灿烂明媚的笑容。",
+					"choice" : [] ,
+					"next_dialogue" : 157
+				},
+				{
+					"dialogue_id": 157,
+					"speaker": "我",
+					"text": "啊哈哈哈，我可是鼓了好久的勇气呢。",
+					"choice" : [] ,
+					"next_dialogue" : 158
+				},
+				{
+					"dialogue_id": 158,
+					"speaker": "",
+					"text": "是呀，那天所有课程，我可是一个字都没有听进去。",
+					"choice" : [] ,
+					"next_dialogue" : 159
+				},
+				{
+					"dialogue_id": 159,
+					"speaker": "？？？",
+					"text": "不过说起来有点失落呢，我已经好久没有听过你用那样的语气呼唤我的名字了。",
+					"choice" : [] ,
+					"next_dialogue" : 160
+				},
+				{
+					"dialogue_id": 160,
+					"speaker": "我",
+					"text": "大概是科研太过忙碌了吧~我以后会尽量抽出时间多陪陪你的！",
+					"choice" : [] ,
+					"next_dialogue" : 161
+				},
+				{
+					"dialogue_id": 161,
+					"speaker": "？？？",
+					"text": "没关系的，我理解的，大物理学家~",
+					"choice" : [] ,
+					"next_dialogue" : 162
+				},
+				{
+					"dialogue_id": 162,
+					"speaker": "？？？",
+					"text": "“不过，我好想重温以下那时的心动啊~可以请你再像高中时那样，大声呼喊出我的名字吗？” ",
+					"choice" : [] ,
+					"next_dialogue" : 163
+				},
+				{
+					"dialogue_id": 163,
+					"speaker": "",
+					"text": "你的名字，那个我最熟悉不过的单词。那个我曾魂牵梦萦的单词。 ",
+					"choice" : [] ,
+					"next_dialogue" : 164
+				},
+				{
+					"dialogue_id": 164,
+					"speaker": "",
+					"text": "你是…… ",
+					"choice" : [] ,
+					"next_dialogue" : 165
+				},
+				{
+					"dialogue_id": 165,
+					"speaker": "我",
+					"text": "Mnema Sorel，我爱你！",
+					"choice" : [] ,
+					"next_dialogue" : 166
+				},
+				{
+					"dialogue_id": 166,
+					"speaker": "",
+					"text": "Mnema，那个希腊神话般完美的名字。",
+					"choice" : [] ,
+					"next_dialogue" : 167
+				},
+				{
+					"dialogue_id": 167,
+					"speaker": "",
+					"text": "Mne-ma，像是轻轻吐出微风般的气流，然后用双唇深深亲吻。",
+					"choice" : [] ,
+					"next_dialogue" : 168
+				},
+				{
+					"dialogue_id": 168,
+					"speaker": "",
+					"text": "我不会再像梦中一样忘记了。这么完美的名字，我之前怎么会想不起来呢！",
+					"choice" : [] ,
+					"next_dialogue" : 169
+				},
+				{
+					"dialogue_id": 169,
+					"speaker": "Mnema",
+					"text": "……Kyrion Veyle，我也爱你……",
+					"choice" : [] ,
+					"next_dialogue" : 170
+				},
+				{
+					"dialogue_id": 170,
+					"speaker": "",
+					"text": "Mnema紫罗兰色的眼瞳中渗出晶莹的泪水，我伸出双臂，轻轻抱住她。",
+					"choice" : [] ,
+					"next_dialogue" : 171
+				},
+				{
+					"dialogue_id": 171,
+					"speaker": "",
+					"text": "真希望这一刻可以永远持续下去啊……",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				}
+            ]
+        }
+    ]
+}

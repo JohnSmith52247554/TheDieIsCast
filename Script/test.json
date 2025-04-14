@@ -1,0 +1,15 @@
+{
+    "act_id": 13,
+    "name": "test",
+    "description":"Mnema",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "world6-world2",
+            "background": "city",
+            "dialogues":[],
+            "dialogue_trigger": []
+        }
+    ]
+}

@@ -1,0 +1,178 @@
+{
+    "act_id": 3,
+    "name": "name3",
+    "description":"加入组织后做任务",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "world7",
+            "description": "地图7",
+            "background": "",
+			"global_mode": true,
+            "dialogues":
+            [
+                {
+					"dialogue_id": 240,
+					"speaker": "AI",
+					"text": "当前时间为2011年3月11日14：30，世界代码World 57",
+					"choice" : [] ,
+					"next_dialogue" : 241
+				},
+				{
+					"dialogue_id": 241,
+					"speaker": "AI",
+					"text": "虽然我觉得这样并不好。不过也请你找到办法关停机组，避免即将来临的东日本大地震造成的核泄漏。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 242,
+					"speaker": "AI",
+					"text": "恭喜你完成任务。由于世界线变动很小，将快进您的时间直至回溯前的位置。",
+					"choice" : [] ,
+					"next_dialogue" : 243
+				},
+				{
+					"dialogue_id": 243,
+					"speaker": "AI",
+					"text": "不过，听我一句劝。Kyrion，你可能会失去一切。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 193,
+					  "right": 224,
+					  "top": 481,
+					  "bottom": 512
+					},
+					"trigger_id": 30101,
+					"trigger_dialouge_id": 240
+				},
+                {
+					"trigger_zone":
+					{
+					  "left": 705,
+					  "right": 768,
+					  "top": 65,
+					  "bottom": 128
+					},
+					"trigger_id": 30102,
+					"trigger_dialouge_id": 242
+				}
+            ]
+        },
+        {
+            "map_id": 2,
+            "name": "world7-world6",
+            "description": "地图6",
+            "background": "",
+            "dialogues":[],
+            "dialogue_trigger": []
+        },
+        {
+            "map_id": 3,
+            "name": "world8",
+            "description": "地图8",
+            "background": "lab",
+            "dialogues":
+            [
+                {
+					"dialogue_id": 252,
+					"speaker": "AI",
+					"text": "现在是2029年12月27日15：00，世界代码World 55",
+					"choice" : [] ,
+					"next_dialogue" : 253
+				},
+				{
+					"dialogue_id": 253,
+					"speaker": "AI",
+					"text": "……事已至此，也只好完成你的工作。你会明白的，失去一切。",
+					"choice" : [] ,
+					"next_dialogue" : 254
+				},
+				{
+					"dialogue_id": 254,
+					"speaker": "我",
+					"text": "……？AI你为什么会这么说？你的依据是？——而且你真的是AI吗？",
+					"choice" : [] ,
+					"next_dialogue" : 255
+				},
+				{
+					"dialogue_id": 255,
+					"speaker": "AI",
+					"text": "没什么，请你继续完成你的操作。",
+					"choice" : [] ,
+					"next_dialogue" : 256
+				},
+				{
+					"dialogue_id": 256,
+					"speaker": "",
+					"text": "我四年的研究成果啊……就这么删除，我的心血岂不是白费了……",
+					"choice" : [] ,
+					"next_dialogue" : 257
+				},
+				{
+					"dialogue_id": 257,
+					"speaker": "",
+					"text": "唉……不过为了几十亿人的生命，好吧，我删掉它。",
+					"choice" : [] ,
+					"next_dialogue" : 258
+				},
+				{
+					"dialogue_id": 258,
+					"speaker": "我",
+					"text": "新的论文真的发过来了！还好你没有骗我。欸不过我为什么会这么想？为什么我一直在抓着我的头？",
+					"choice" : [] ,
+					"next_dialogue" : 259
+				},
+				{
+					"dialogue_id": 259,
+					"speaker": "我",
+					"text": "……是不是发生了什么重要的事情？——唉算了不管了，先接着做实验吧，再不完成要延毕了。",
+					"choice" : [] ,
+					"next_dialogue" : 260
+				},
+				{
+					"dialogue_id": 260,
+					"speaker": "我",
+					"text": "这里，似乎发生过很多奇妙的事情。像是一个无限循环的梦境一样。——唉，不想这些了，一定都是我没做出成果的幻觉罢了。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						},
+						{
+							"variable": "Normal Ending 1",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 129,
+					  "right": 160,
+					  "top": 353,
+					  "bottom": 384
+					},
+					"trigger_id": 30301,
+					"trigger_dialouge_id": 252
+				}
+            ]
+        }
+    ]
+}

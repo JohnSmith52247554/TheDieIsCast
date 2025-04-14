@@ -1,0 +1,139 @@
+{
+    "act_id": 3,
+    "name": "name3",
+    "description":"加入组织后做任务",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "world10",
+            "description": "地图10",
+            "background": "city",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 267,
+					"speaker": "AI",
+					"text": "已为您逆转时间至2012年7月14日13：00，地点为东京都千代田区，世界代码World 7X",
+					"choice" : [] ,
+					"next_dialogue" : 268
+				},
+				{
+					"dialogue_id": 268,
+					"speaker": "我",
+					"text": "好，现在论文不会有了，时空稳定局也不复存在了。只要我把那篇论文彻底销毁，一切就都不会发生了。",
+					"choice" : [] ,
+					"next_dialogue" : 269
+				},
+				{
+					"dialogue_id": 269,
+					"speaker": "我",
+					"text": "AI，请给我两篇其他世界线上最优秀的物理学论文，我要以此为筹码交换Nana的成果。",
+					"choice" : [] ,
+					"next_dialogue" : 270
+				},
+				{
+					"dialogue_id": 270,
+					"speaker": "AI",
+					"text": "好的，已经搜集了两篇符合您标准的文章，发在您的随身u盘中了。祝您成功。时间逆转器的能量将要耗尽，届时它即将不复存在。",
+					"choice" : [] ,
+					"next_dialogue" : 271
+				},
+				{
+					"dialogue_id": 271,
+					"speaker": "我",
+					"text": "既然我无法在那个世界生存，那么世界大战就让它发生吧。反正我已经读取了先前的存档，能够找到不被战争波及的村落，安然度过此生。",
+					"choice" : [] ,
+					"next_dialogue" : 272
+				},
+				{
+					"dialogue_id": 272,
+					"speaker": "我",
+					"text": "对了，我还能和Mnema重逢。这么想，平凡的一生也很好嘛！",
+					"choice" : [] ,
+					"next_dialogue" : 273
+				},
+				{
+					"dialogue_id": 273,
+					"speaker": "",
+					"text": "【世界大战在2038年如期发生，反物质炸弹被引燃。世界失去了80%的人口，与50年以上的文明倒退】",
+					"choice" : [] ,
+					"next_dialogue" : 274
+				},
+				{
+					"dialogue_id": 274,
+					"speaker": "",
+					"text": "【Kyrion和Mnema躲在挪威北部的村落躲过了这场浩劫。】",
+					"choice" : [] ,
+					"next_dialogue" : 275
+				},
+				{
+					"dialogue_id": 275,
+					"speaker": "",
+					"text": "【——本该这样结束。】",
+					"choice" : [] ,
+					"next_dialogue" : 276
+				},
+				{
+					"dialogue_id": 276,
+					"speaker": "",
+					"text": "【2085年，UC Berkeley。《微型虫洞的信号操控》发表。】",
+					"choice" : [] ,
+					"next_dialogue" : 277
+				},
+				{
+					"dialogue_id": 277,
+					"speaker": "",
+					"text": "【2092年，时空稳定局成立。】",
+					"choice" : [] ,
+					"next_dialogue" : 278
+				},
+				{
+					"dialogue_id": 278,
+					"speaker": "",
+					"text": "【2095年，时空稳定局依靠反复的时空回溯，毫无错漏地成为世界权力的中心。】",
+					"choice" : [] ,
+					"next_dialogue" : 279,
+					"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						},
+						{
+                            "variable": "Normal Ending 2",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				}
+            ],
+            "dialogue_trigger":
+            [
+				{
+					"trigger_zone":
+					{
+					  "left": 161,
+					  "right": 192,
+					  "top": 673,
+					  "bottom": 704
+					},
+					"trigger_id": 70101,
+					"trigger_dialouge_id": 267
+				},
+                {
+					"trigger_zone":
+					{
+					  "left": 129,
+					  "right": 160,
+					  "top": 353,
+					  "bottom": 384
+					},
+					"trigger_id": 70201,
+					"trigger_dialouge_id": 268
+				}
+            ]
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "MovableWall":
+    [
+        {
+            "x": 10,
+            "y": 4,
+            "structure_direction": "right",
+            "length": 3,
+            "move_direction": "right",
+            "move_distance": 3,
+            "speed": 0.6
+        }
+    ],
+    "ReceptorAndEffectors": [],
+    "NPCs": []
+}

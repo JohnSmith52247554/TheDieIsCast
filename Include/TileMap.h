@@ -33,9 +33,21 @@ private:
         unsigned char flip;
     };
 
-    sf::Texture m_tileset;
+    struct SourceInfo
+    {
+        int firstgid;
+        std::string source;
+    };
+
+    struct VertexArrayInfo
+    {
+        sf::VertexArray v_array;
+        int texture_id;
+    };
+
+    std::vector<sf::Texture> m_tileset;
     int m_tileWidth, m_tileHeight, m_mapWidth, m_mapHeight;
-    std::vector<sf::VertexArray> m_layers; // 存储所有图层的顶点数组
+    std::vector<VertexArrayInfo> m_layers; // 存储所有图层的顶点数组
 
     std::vector<ObjectInfo> object_spawn_info;
 
@@ -50,7 +62,7 @@ public:
 
 private:
     bool parseTSX(const std::string& tsxFile, std::string& tilesetImage);
-    bool parseTMX(const std::string& tmxFile, std::vector<std::vector<uint32_t>>& layersData, std::string& tsx_file_name);
+    bool parseTMX(const std::string& tmxFile, std::vector<std::vector<uint32_t>>& layersData, std::vector<SourceInfo>& tsx_source);
 
     //渲染地图
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

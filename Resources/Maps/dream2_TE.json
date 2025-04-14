@@ -1,0 +1,15 @@
+{
+    "MovableWall":[],
+    "ReceptorAndEffectors":[],
+    "NPCs":
+    [
+        {
+            "npc_id": 1,
+            "npc_skin_id": 18,
+            "name": "Mnema",
+            "x": 55,
+            "y": 24,
+            "dialogues":[]
+        }
+    ]
+}

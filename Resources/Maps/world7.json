@@ -1,0 +1,44 @@
+{
+    "MovableWall":
+    [
+        {
+            "x": 2,
+            "y": 15,
+            "structure_direction": "right",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 3,
+            "speed": 0.5,
+            "can_be_affected_by_time_control": true
+        }
+    ],
+    "ReceptorAndEffectors":
+    [
+        {
+            "receptor":
+            {
+                "type": "drawbar",
+                "activation_message": "move up 12",
+                "release_message": "move down 12",
+                "x": 9,
+                "y": 7
+            },
+            "effector_postal_codes":
+            [
+               603979776
+            ]
+        },
+        {
+            "receptor":
+            {
+                "type": "drawbar",
+                "activation_message": "",
+                "release_message": "",
+                "x": 21,
+                "y": 3
+            },
+            "effector_postal_codes":[]
+        }
+    ],
+    "NPCs": []
+}

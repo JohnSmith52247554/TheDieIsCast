@@ -1,0 +1,79 @@
+{
+    "MovableWall":[],
+    "ReceptorAndEffectors":[],
+    "NPCs":
+    [
+        {
+            "npc_id": 1,
+            "npc_skin_id": 9,
+            "name": "Ichigo",
+            "x": 4,
+            "y": 7,
+            "dialogues":
+            [
+                {
+					"dialogue_id": 244,
+					"speaker": "Asami",
+					"text": "恭喜你完成任务。核事故被阻止了，我们挽救了上千人的生命。你是不是觉得像是成为救世主了一样？",
+					"choice" : [] ,
+					"next_dialogue" : 245
+				},
+				{
+					"dialogue_id": 245,
+					"speaker": "Asami",
+					"text": "那么，接下来，我们要彻底杀灭反物质炸弹产生的可能性。",
+					"choice" : [] ,
+					"next_dialogue" : 246
+				},
+				{
+					"dialogue_id": 246,
+					"speaker": "",
+					"text": "我开始有点隐隐的担心。",
+					"choice" : [] ,
+					"next_dialogue" : 247
+				},
+				{
+					"dialogue_id": 247,
+					"speaker": "Asami",
+					"text": "请你回到你博士毕业前，把你的论文删掉。不要让任何物理学家看到你的成果。",
+					"choice" : [] ,
+					"next_dialogue" : 248
+				},
+				{
+					"dialogue_id": 248,
+					"speaker": "",
+					"text": "果然。",
+					"choice" : [] ,
+					"next_dialogue" : 249
+				},
+				{
+					"dialogue_id": 249,
+					"speaker": "我",
+					"text": "那可是我花了整整四年才做出的成果啊！",
+					"choice" : [] ,
+					"next_dialogue" : 250
+				},
+				{
+					"dialogue_id": 250,
+					"speaker": "Asami",
+					"text": "那可是几十亿人的生命啊。——不过没关系，我理解你的心情，慢慢来，不着急。放心，你删掉之后，你的邮箱里会多出一篇很棒的论文，足够你博士毕业了。那篇论文来自其他世界线，所以你不必担心抄袭。",
+					"choice" : [] ,
+					"next_dialogue" : 251
+				},
+				{
+					"dialogue_id": 251,
+					"speaker": "我",
+					"text": "……好，我删掉它。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+                    "effects":
+                    {
+                        "variable": "switch_to_next_scene",
+                        "operator": "=",
+                        "value": true
+                    }
+				}
+            ]
+        }
+    ]
+}

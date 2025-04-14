@@ -1,0 +1,100 @@
+{
+    "act_id": 9,
+    "name": "True Ending 1",
+    "description":"Mnema",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "3",
+            "description": "地图3-TE1",
+            "background": "",
+            "dialogues":
+            [
+                {
+					"dialogue_id": 304,
+					"speaker": "我",
+					"text": "说到底，我还是不想放弃你啊……Mnema Sorel，我的挚爱。",
+					"choice" : [] ,
+					"next_dialogue" : 305
+				},
+				{
+					"dialogue_id": 305,
+					"speaker": "我",
+					"text": "那只好，允许一切发生了。希望人类能够从这场战争中吸取教训吧。",
+					"choice" : [] ,
+					"next_dialogue" : 306
+				},
+				{
+					"dialogue_id": 306,
+					"speaker": "我",
+					"text": "Mnema，我突然有些厌倦这永无终结般的科研生涯了。再过五年，我们去Norway吧，找个幽静的小村落，一起去过平凡的生活吧。",
+					"choice" : [] ,
+					"next_dialogue" : 307
+				},
+				{
+					"dialogue_id": 307,
+					"speaker": "Mnema",
+					"text": "Kyrion，哦我的挚爱，虽然不知道你的工作发生了什么，不过，这尘世的喧嚣，我也有些厌倦。我们一起去那里躲起来吧。",
+					"choice" : [] ,
+					"next_dialogue" : 308
+				},
+				{
+					"dialogue_id": 308,
+					"speaker": "",
+					"text": "当然，那里是我所记得的，不会被战争波及的世界边缘。我想，我们会度过安宁而平淡的一生的。",
+					"choice" : [] ,
+					"next_dialogue" : 309
+				},
+				{
+					"dialogue_id": 309,
+					"speaker": "",
+					"text": "也或许，战后我会回来，和这个世界上的所有痛恨战争的人们一起，重建我们的家园。——所幸，反物质炸弹不会有放射性物质残留。重建只是时间问题。",
+					"choice" : [] ,
+					"next_dialogue" : 310
+				},
+				{
+					"dialogue_id": 310,
+					"speaker": "",
+					"text": "……像这样，允许一切发生，真的好吗？",
+					"choice" : [] ,
+					"next_dialogue" : 311
+				},
+				{
+					"dialogue_id": 311,
+					"speaker": "",
+					"text": "——宇宙原本就是这样度过它漫长的岁月啊。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						},
+						{
+                            "variable": "True Ending 1",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 1665,
+					  "right": 1696,
+					  "top": 769,
+					  "bottom": 800
+					},
+					"trigger_id": 90101,
+					"trigger_dialouge_id": 304
+				}
+            ]
+        }
+    ]
+}

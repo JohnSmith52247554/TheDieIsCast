@@ -1,16 +1,456 @@
 {
     "act_id": 2,
     "name": "name2",
-    "description":"description 2",
+    "description":"地图4-6，主要的游戏关卡",
     "maps":
     [
-        {
+		{
+			"map_id": 1,
+			"name": "pre_world3",
+			"background": "factory",
+			"description": "进入游戏之前",
+			"dialogues":
+			[
+				{
+					"dialogue_id": 188,
+					"speaker": "我",
+					"text": "终于还是来到了这个该死的组织的大门前了。",
+					"choice" : [],
+					"next_dialogue" : 189
+				},
+				{
+					"dialogue_id": 189,
+					"speaker": "AI",
+					"text": "这里就是掌握时间逆转技术的组织驻地了。很抱歉，接下来，就只能靠你自己走到最深处了。",
+					"choice" : [] ,
+					"next_dialogue" : 190
+				},
+				{
+					"dialogue_id": 190,
+					"speaker": "我",
+					"text": "感谢你的协助。——不过你为什么要帮我啊？",
+					"choice" : [] ,
+					"next_dialogue" : 191
+				},
+				{
+					"dialogue_id": 191,
+					"speaker": "AI",
+					"text": "作为人工智能，我并非没有立场。",
+					"choice" : [] ,
+					"next_dialogue" : 192
+				},
+				{
+					"dialogue_id": 192,
+					"speaker": "AI",
+					"text": "——不过，接下来你也不必担心，毕竟——你拥有无限的反悔的机会，这是毋庸置疑的。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+			],
+			"dialogue_trigger":
+			[
+				{
+					"trigger_zone":
+					{
+					  "left": 65,
+					  "right": 96,
+					  "top": 193,
+					  "bottom": 224
+					},
+					"trigger_id": 20401,
+					"trigger_dialouge_id": 188
+				}
+			]
+		},
+		{
             "map_id": 1,
-            "name": "test1",
+            "name": "world3",
+            "description": "地图3",
+            "background": "base",
+            "dialogues": [],
+			"forward_time_limit": 
+			{
+				"second": 100,
+				"message": "时间已用完"
+			}
+		},
+        {
+            "map_id": 2,
+            "name": "world4",
+            "description": "地图4",
+            "background": "",
+            "dialogues":
+            [
+                {
+                    "dialogue_id": 193,
+                    "speaker": "*2028.1.14 world7",
+                    "text": "……记忆档案存储可能？其实有些东西我并不想遗忘在再也不会发生的世界线上的……",
+                    "choice" : [] ,
+                    "next_dialogue" : 195
+                },
+                {
+                    "dialogue_id": 195,
+                    "speaker": "*2041.12.4 world11",
+                    "text": "……Ryona的父亲通过时间逆转复活了，躲过了那场该死的连环车祸。虽然他大概不知道发生了什么，不过看到Ryona平静地生活着已经很快乐了。",
+                    "choice" : [] ,
+                    "next_dialogue" : 197
+                },
+                {
+                    "dialogue_id": 197,
+                    "speaker": "*2035.2.19 world24",
+                    "text": "……没想到恢复了灭绝的鹤类，短短五年，西野湿地的变化这么大啊。以后看来要考虑复活其他物种了……",
+                    "choice" : [] ,
+                    "next_dialogue" : 199
+                },
+                {
+                    "dialogue_id": 199,
+                    "speaker": "",
+                    "text": "……不过，似乎还有更要紧的事情……",
+                    "choice" : [] ,
+                    "next_dialogue" : 200
+                },
+                {
+                    "dialogue_id": 200,
+                    "speaker": "*2012.9.15 world31",
+                    "text": "……反物质创生装置终于被我们从源头上根绝了。以后应该万无一失了。我相信代价是值得的……",
+                    "choice" : [] ,
+                    "next_dialogue" : 202
+                },
+                {
+                    "dialogue_id": 202,
+                    "speaker": "*2021.11.19 world31",
+                    "text": "……反物质创生装置还是被创造出来了。我是否要考虑说服部长削减高能物理经费？没想到只是推迟了……",
+                    "choice" : [] ,
+                    "next_dialogue" : 204
+                },
+                {
+                    "dialogue_id": 204,
+                    "speaker": "",
+                    "text": "……真没想到控制时间就能通过蝴蝶效应控制如此之多的一切，我好像开始慢慢享受这种感觉了……",
+                    "choice" : [] ,
+                    "next_dialogue" : 205
+                },
+                {
+                    "dialogue_id": 205,
+                    "speaker": "*2008.12.16 world34",
+                    "text": "……似乎这个世界上存在一些“锚点”，它们的变化随世界线更新的幅度很小。在先前对东京都港区有记录的21个世界里，无论在哪个世界线，那位黑发的贝斯手永远会和她的兔子久别重逢，度过幸福的时光。而那位XX学园的橙色扎着双马尾的姑娘，也总是会向一个远在英国的地址发送数不清的信件。原来羁绊的力量真的可以超越时光吗？是否可以当作一个稳定的空间锚点？要是我和他的时间线也可以永远这样就好了……",
+                    "choice" : [] ,
+                    "next_dialogue" : 207
+                },
+                {
+                    "dialogue_id": 207,
+                    "speaker": "*2020.6.16 world37",
+                    "text": "……控制蝴蝶效应尽可能小还是太困难了，而且长时间的倒流似乎有一些副作用……",
+                    "choice" : [] ,
+                    "next_dialogue" : 209
+                },
+                {
+                    "dialogue_id": 209,
+                    "speaker": "",
+                    "text": "…………",
+                    "choice" : [] ,
+                    "next_dialogue" : -1
+                }
+            ],
+            "dialogue_trigger":
+            [
+				{
+					"trigger_zone":
+					{
+					  "left": 577,
+					  "right": 640,
+					  "top": 353,
+					  "bottom": 416
+					},
+					"trigger_id": 20101,
+					"trigger_dialouge_id": 193
+				}
+            ]
+        },
+        {
+            "map_id": 3,
+            "name": "world5",
             "description": "",
             "background": "",
-            "dialogues": [],
-            "dialogue_trigger": []
+            "dialogues":
+            [
+                {
+					"dialogue_id": 210,
+					"speaker": "",
+					"text": "……平行世界能够规避逻辑悖论？可是要如何进入呢？需要其他空间维度的力矢量才能完成向平行世界的跃迁吧？而且如何控制呢？……",
+					"choice" : [] ,
+					"next_dialogue" : 211
+				},
+				{
+					"dialogue_id": 211,
+					"speaker": "",
+					"text": "……没想到操控平行世界中的微虫洞并添加正反物质湮灭能量可以将虫洞扩展至宏观尺度，看来我们的实验要成功了？一周后亲自去尝试一下吧……",
+					"choice" : [] ,
+					"next_dialogue" : 212
+				},
+				{
+					"dialogue_id": 212,
+					"speaker": "",
+					"text": "……可是我怎么知道已经倒退时间了呢？我的记忆并没有保留啊？难道说我已经回溯了无数次时间只是我根本不记得？这也太可怕了。怎么保留记忆呢？当前世界的虫洞只能存在于微观尺度，使用平行世界倒流时间又无法保存当前数据。……对了，微观尺度的虫洞能不能传递电磁场？要是可以我们是不是可以精准向过去的信号接收器传递无线电波？……",
+					"choice" : [] ,
+					"next_dialogue" : 213
+				}
+            ],
+            "dialogue_trigger":
+            [
+				{
+					"trigger_zone":
+					{
+					  "left": 545,
+					  "right": 576,
+					  "top": 129,
+					  "bottom": 224
+					},
+					"trigger_id": 20201,
+					"trigger_dialouge_id": 210
+				}
+
+            ]
+        },
+        {
+            "map_id": 4,
+            "name": "world6",
+            "background": "base",
+            "description": "进入记忆之前，全黑",
+            "dialogues":
+            [
+                {
+					"dialogue_id": 213,
+					"speaker": "？？？",
+					"text": "你终于来了",
+					"choice" : [] ,
+					"next_dialogue" : 214
+				},
+				{
+					"dialogue_id": 214,
+					"speaker": "我",
+					"text": "你就是这个该死的组织头目？把我的人生还给我！",
+					"choice" : [] ,
+					"next_dialogue" : 215
+				},
+				{
+					"dialogue_id": 215,
+					"speaker": "？？？",
+					"text": "别急。——我先自我介绍一下。我是「时空稳定局」的负责人，Asami。",
+					"choice" : [] ,
+					"next_dialogue" : 216
+				},
+				{
+					"dialogue_id": 216,
+					"speaker": "Asami",
+					"text": "你知道我们为什么要一遍遍逆转时空吗？",
+					"choice" : [] ,
+					"next_dialogue" : 217
+				},
+				{
+					"dialogue_id": 217,
+					"speaker": "我",
+					"text": "就为了整我？",
+					"choice" : [] ,
+					"next_dialogue" : 218
+				},
+				{
+					"dialogue_id": 218,
+					"speaker": "Asami",
+					"text": "当然不是。不过确实和你有关。你还记得你在曾经的世界线做了什么研究吗？",
+					"choice" : [] ,
+					"next_dialogue" : 219
+				},
+				{
+					"dialogue_id": 219,
+					"speaker": "",
+					"text": "我努力回想着“重塑记忆”中的我的科研成就。我的博士论文。",
+					"choice" : [] ,
+					"next_dialogue" : 220
+				},
+				{
+					"dialogue_id": 220,
+					"speaker": "我",
+					"text": "反中子的快速稳定生成？",
+					"choice" : [] ,
+					"next_dialogue" : 221
+				},
+				{
+					"dialogue_id": 221,
+					"speaker": "Asami",
+					"text": "是的。你知道它在原来的世界线引发了多么恐怖的后果吗？",
+					"choice" : [] ,
+					"next_dialogue" : 222
+				},
+				{
+					"dialogue_id": 222,
+					"speaker": "Asami",
+					"text": "Mnema的父母，受到你的论文启发，合作在环形加速器中实现了反粒子的宏观构建。",
+					"choice" : [] ,
+					"next_dialogue" : 223
+				},
+				{
+					"dialogue_id": 223,
+					"speaker": "我",
+					"text": "那不是好事吗？以后高能物理学家再也不用头疼反粒子生成的问题了。",
+					"choice" : [] ,
+					"next_dialogue" : 224
+				},
+				{
+					"dialogue_id": 224,
+					"speaker": "Asami",
+					"text": "……别太天真了。你是物理学家，你应该知道宏观级别的反物质如果发生湮灭能释放多大的能量吧。",
+					"choice" : [] ,
+					"next_dialogue" : 225
+				},
+				{
+					"dialogue_id": 225,
+					"speaker": "",
+					"text": "10g左右的能量即可彻底摧毁一个中等大小国家。",
+					"choice" : [] ,
+					"next_dialogue" : 226
+				},
+				{
+					"dialogue_id": 226,
+					"speaker": "Asami",
+					"text": "我想你肯定明白。那之后，毁灭一个国家的代价，不过是七位数的人民币。如果你是第一个发明反物质炸弹的国家，你会引爆它，还是等到其他国家也研发出反物质炸弹，最后两败俱伤？",
+					"choice" : [] ,
+					"next_dialogue" : 227
+				},
+				{
+					"dialogue_id": 227,
+					"speaker": "Asami",
+					"text": "原本的世界，2038年发生了一场世界大战。我们失去了80%的人口。",
+					"choice" : [] ,
+					"next_dialogue" : 228
+				},
+				{
+					"dialogue_id": 228,
+					"speaker": "Asami",
+					"text": "现在你还觉得你的女朋友有那么重要吗？",
+					"choice" : [] ,
+					"next_dialogue" : 229
+				},
+				{
+					"dialogue_id": 229,
+					"speaker": "我",
+					"text": "……那为什么你们要让她从未存在？",
+					"choice" : [] ,
+					"next_dialogue" : 230
+				},
+				{
+					"dialogue_id": 230,
+					"speaker": "",
+					"text": "话音刚落，我就明白为什么了。",
+					"choice" : [] ,
+					"next_dialogue" : 231
+				},
+				{
+					"dialogue_id": 231,
+					"speaker": "",
+					"text": "我能猜到，他们阻止战争的方式是阻碍Mnema的父母相遇、相恋。这样，Mnema当然也不会出生了。",
+					"choice" : [] ,
+					"next_dialogue" : 232
+				},
+				{
+					"dialogue_id": 232,
+					"speaker": "Asami",
+					"text": "你已经猜到了吧。毕竟你是被我们选中的人。我正式向你发出邀请，欢迎你加入时空稳定局。",
+					"choice" : [] ,
+					"next_dialogue" : 233
+				},
+				{
+					"dialogue_id": 233,
+					"speaker": "我",
+					"text": "什么？",
+					"choice" : [] ,
+					"next_dialogue" : 234
+				},
+				{
+					"dialogue_id": 234,
+					"speaker": "Asami",
+					"text": "在更遥远的未来，这场战争依旧会发生。如果要彻底阻止它，有些事情只有你能做到。我希望你加入我们。",
+					"choice" : [] ,
+					"next_dialogue" : 235
+				},
+				{
+					"dialogue_id": 235,
+					"speaker": "我",
+					"text": "请容我思考一下。",
+					"choice" :
+                    [
+                        {
+							"choice_id": 2351,
+							"text": "加入",
+							"next_dialogue": 236
+						},
+                        {
+							"choice_id": 2352,
+							"text": "不加入",
+							"next_dialogue": 238
+						}
+                    ],
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 236,
+					"speaker": "Asami",
+					"text": "很好。现在你是我们的一员了。接下来我会带领你做一些简单的时空逆转操作，帮助你熟悉一下你的工作。",
+					"choice" : [] ,
+					"next_dialogue" : 237
+				},
+				{
+					"dialogue_id": 237,
+					"speaker": "Asami",
+					"text": "你还记得福岛核事故吗？现在你有机会阻止它。我将为你配备更高效的逆转能源，帮助你回溯到更早的过去。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+                    "effects":
+                    [
+                        {
+                            "variable": "opt_join_association",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				},
+				{
+					"dialogue_id": 238,
+					"speaker": "Asami",
+					"text": "很遗憾。你真的不考虑加入吗？——若是这样，我们只好将你抹杀了。",
+					"choice" : [] ,
+					"next_dialogue" : 239
+				},
+				{
+					"dialogue_id": 239,
+					"speaker": "AI",
+					"text": "别怕，你还有一条路！快逆转时间！",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+                    "effects":
+                    [
+                        {
+                            "variable": "opt_join_association",
+                            "operator": "=",
+                            "value": 0
+                        }
+                    ]
+				}
+            ],
+            "dialogue_trigger":
+            [
+				{
+					"trigger_zone":
+					{
+					  "left": 193,
+					  "right": 224,
+					  "top": 225,
+					  "bottom": 256
+					},
+					"trigger_id": 20301,
+					"trigger_dialouge_id": 213
+				}
+            ]
         }
     ]
 }

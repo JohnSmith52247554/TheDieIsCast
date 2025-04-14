@@ -1,0 +1,79 @@
+{
+    "NPCs":
+    [
+        {
+            "npc_id": 1,
+            "npc_skin_id": 9,
+            "name": "Ichigo",
+            "x": 47,
+            "y": 19,
+            "dialogues":
+            [
+                {
+                    "dialogue_id": 88,
+                    "speaker": "Ichigo",
+                    "text": "最近在实验室还是一无所成啊……",
+                    "choice" : [] ,
+                    "next_dialogue" : 89
+            },
+            {
+                    "dialogue_id": 89,
+                    "speaker": "我",
+                    "text": "我也是啊……感觉再这样下去我也得秃头了……",
+                    "choice" : [] ,
+                    "next_dialogue" : 90
+            },
+            {
+                    "dialogue_id": 90,
+                    "speaker": "Ichigo",
+                    "text": "不过话说回来，Kyrion你在大学的时候做出了那么厉害的成果，怎么现在……",
+                    "choice" : [] ,
+                    "next_dialogue" : 91
+            },
+            {
+                    "dialogue_id": 91,
+                    "speaker": "我",
+                    "text": "再厉害也只是个博士生啊，进研究所还是比不过老资历啦。过了这么些年，我已经释怀啦。",
+                    "choice" : [] ,
+                    "next_dialogue" : 92
+            },
+            {
+                    "dialogue_id": 92,
+                    "speaker": "Ichigo",
+                    "text": "瞧你说的，还这么些年呢！连30岁都不到这么老气！",
+                    "choice" : [] ,
+                    "next_dialogue" : 93
+            },
+            {
+                    "dialogue_id": 93,
+                    "speaker": "Erica",
+                    "text": "说起来最近高能实验室砍了不少项目啊，也不知道为什么。",
+                    "choice" : [] ,
+                    "next_dialogue" : 94
+            },
+            {
+                    "dialogue_id": 94,
+                    "speaker": "我",
+                    "text": "是因为建大型装置太烧钱了吗？",
+                    "choice" : [] ,
+                    "next_dialogue" : 95
+            },
+            {
+                    "dialogue_id": 95,
+                    "speaker": "Erica",
+                    "text": "好像也不是啊，砍的项目经费也给其他课题了。五年了，反粒子研究几乎毫无进展，经费几乎全砍掉了，到底是为什么呢？",
+                    "choice" : [] ,
+                    "next_dialogue" : 96
+            },
+            {
+                    "dialogue_id": 96,
+                    "speaker": "",
+                    "text": "将近十年的科研生涯，我早已不再是那个充满不服输斗志的那个少年了。每天帮老物理学家们做做实验，寻找一点自己研究方向的蛛丝马迹，然后不断地失败、重来。这便是我的生活。",
+                    "choice" : [] ,
+                    "next_dialogue" : 97
+            }
+            ]
+        }
+    ]
+}
+

@@ -1,0 +1,161 @@
+{
+    "MovableWall":
+    [
+        {
+            "x": 27,
+            "y": 22,
+            "structure_direction": "up",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 3,
+            "speed": 1,
+            "can_be_affected_by_time_control": true
+        },
+        {
+            "x": 29,
+            "y": 22,
+            "structure_direction": "up",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 3,
+            "speed": 1,
+            "can_be_affected_by_time_control": true
+        },
+        {
+            "x": 12,
+            "y": 6,
+            "structure_direction": "up",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 3,
+            "speed": 1,
+            "can_be_affected_by_time_control": true
+        },
+        {
+            "x": 14,
+            "y": 6,
+            "structure_direction": "up",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 3,
+            "speed": 1,
+            "can_be_affected_by_time_control": true
+        },
+        {
+            "x": 16,
+            "y": 6,
+            "structure_direction": "up",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 3,
+            "speed": 1,
+            "can_be_affected_by_time_control": true
+        }
+    ],
+    "ReceptorAndEffectors":
+    [
+        {
+            "receptor":
+            {
+                "type": "pressure_plate",
+                "activation_message": "move down 3",
+                "release_message": "move up 3",
+                "x": 30,
+                "y": 18
+            },
+            "effector_postal_codes":
+            [
+               603979776
+            ]
+        },
+        {
+            "receptor":
+            {
+                "type": "pressure_plate",
+                "activation_message": "move down 3",
+                "release_message": "move up 3",
+                "x": 30,
+                "y": 14
+            },
+            "effector_postal_codes":
+            [
+               603979777
+            ]
+        },
+        {
+            "receptor":
+            {
+                "type": "pressure_plate",
+                "activation_message": "move up 3",
+                "release_message": "move down 3",
+                "x": 30,
+                "y": 18
+            },
+            "effector_postal_codes":
+            [
+               603979778
+            ]
+        },
+        {
+            "receptor":
+            {
+                "type": "pressure_plate",
+                "activation_message": "move up 3",
+                "release_message": "move down 3",
+                "x": 30,
+                "y": 14
+            },
+            "effector_postal_codes":
+            [
+               603979779
+            ]
+        },
+        {
+            "receptor":
+            {
+                "type": "pressure_plate",
+                "activation_message": "move up 3",
+                "release_message": "move down 3",
+                "x": 30,
+                "y": 10
+            },
+            "effector_postal_codes":
+            [
+               603979780
+            ]
+        }
+    ],
+    "NPCs":
+    [
+        {
+            "npc_id": 2,
+            "npc_skin_id": 18,
+            "name": "？？？",
+            "x": 33,
+            "y": 26,
+            "dialogues":
+            [
+                {
+					"dialogue_id": 510,
+					"speaker": "",
+					"text": "收集到隐藏能源",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+                    "effects":
+                    [
+                        {
+                            "variable": "bonus_energy",
+                            "operator": "=",
+                            "value": 1
+                        },
+                        {
+                            "variable": "switch_to_next_scene",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				}  
+            ]
+        }
+    ]
+}

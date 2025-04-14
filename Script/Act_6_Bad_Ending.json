@@ -1,0 +1,66 @@
+{
+    "act_id": 6,
+    "name": "BadEnding",
+    "description":"BE",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "world6-world2",
+            "description": "二周目地图2",
+            "background": "city",
+			"be_able_to_rewind_time": false,
+            "dialogues":
+            [
+				{
+					"dialogue_id": 184,
+					"speaker": "Asami",
+					"text": "终于抓到你了！现在你已经退无可退了！——你应当知道你的结局吧。",
+					"choice" : [] ,
+					"next_dialogue" : 185
+				},
+				{
+					"dialogue_id": 185,
+					"speaker": "",
+					"text": "恐惧淹没了我的大脑。难道我的人生就要以这种方式终结吗？不，不要啊。",
+					"choice" : [] ,
+					"next_dialogue" : 186
+				},
+				{
+					"dialogue_id": 186,
+					"speaker": "Asami",
+					"text": "你难道以为我会杀死你？不，我可不是刽子手。我会退回你出生之前，搅黄你父母的婚姻，让你从未存在！",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+                    [
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						},
+						{
+                            "variable": "Bad Ending 1",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 929,
+					  "right": 960,
+					  "top": 673,
+					  "bottom": 704
+					},
+					"trigger_id": 60101,
+					"trigger_dialouge_id": 184
+				}
+            ]
+        }
+    ]
+}

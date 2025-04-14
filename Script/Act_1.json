@@ -1,95 +1,1158 @@
 {
     "act_id": 1,
-    "name": "name 1",
-    "description": "description 1",
+    "name": "第一幕",
+    "description": "地图1-3",
     "maps": 
     [
         {
             "map_id": 1,
-            "name": "map1",
-            "description": "",
-            "background": "background3",
-            "dialogues":[
+            "name": "world1",
+            "description": "地图一",
+            "background": "day",
+			"be_able_to_rewind_time": false,
+            "dialogues":
+            [
                 {
-                    "dialogue_id": 1,
-                    "speaker": "test",
-                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
-                    "choices": [],
-                    "next_dialogue": 2,
-                    "effects":[
-                        {
-                            "variable": "switch_to_next_scene",
-                            "operator": "=",
-                            "value": 1
-                        },
-                        {
-                            "variable": "ending",
-                            "operator": "=",
-                            "value": 1
-                        }
-                    ]
-                },
-                {
-                    "dialogue_id": 2,
-                    "speaker": "test",
-                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
-                    "choice": [
-                        {
-                            "choice_id": 1,
-                            "text": "testtesttest",
-                            "next_dialogue": 3,
-                            "effect":[]
-                        },
-                        {
-                            "choice_id": 2,
-                            "text": "testtesttest",
-                            "next_dialogue": 3,
-                            "effect":[]
-                        }
-                    ],
-                    "next_dialogue": 3,
-                    "effects":[]
-                },
-                {
-                    "dialogue_id": 3,
-                    "speaker": "test",
-                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
-                    "choices": [],
-                    "next_dialogue": 4,
-                    "effects":[]
-                },
-                {
-                    "dialogue_id": 4,
-                    "speaker": "test",
-                    "text": "testtesttesttesttesttesttesttest\ntesttesttesttesttesttesttest\ntesttesttesttesttesttest",
-                    "choices": [],
-                    "next_dialogue": -1,
-                    "effects":[]
-                }
+					"dialogue_id": 1,
+					"speaker": "我",
+					"text": "啊～终于醒过来了！刚才好像做了一个好长好长的梦啊。",
+					"choice" : [] ,
+					"next_dialogue" : 2
+				},
+				{
+					"dialogue_id": 2,
+					"speaker": "我",
+					"text": "明明是难得的假期，在梦里也不能好好休息吗？果然昼夜颠倒的生活还是太反人类了！",
+					"choice" : [] ,
+					"next_dialogue" : 3
+				},
+				{
+					"dialogue_id": 3,
+					"speaker": "我",
+					"text": "好吧，既然醒过来了，那就先去甲板上吹吹海风吧。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 4,
+					"speaker": "",
+					"text": "满月的辉光倾泻在海岸边，将浪花点染成梦幻的银色。",
+					"choice" : [] ,
+					"next_dialogue" : 5
+				},
+				{
+					"dialogue_id": 5,
+					"speaker": "",
+					"text": "轻柔的海风夹杂着些许腥味，轻抚着我的面颊。",
+					"choice" : [] ,
+					"next_dialogue" : 6
+				},
+				{
+					"dialogue_id": 6,
+					"speaker": "",
+					"text": "海浪悄无声息地拍打着我们所在的游艇上，像是古老的岁月折痕对现代科技柔弱的反抗。",
+					"choice" : [] ,
+					"next_dialogue" : 7
+				},
+				{
+					"dialogue_id": 7,
+					"speaker": "我",
+					"text": "终于清醒过来了，那就趁此机会随便逛逛游艇上的设施吧。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 8,
+					"speaker": "",
+					"text": "巨大的水族箱内，无数水母在灯光的照耀下五彩斑斓地闪烁着。",
+					"choice" : [] ,
+					"next_dialogue" : 9
+				},
+				{
+					"dialogue_id": 9,
+					"speaker": "我",
+					"text": "水母真漂亮啊……",
+					"choice" : [] ,
+					"next_dialogue" : 10
+				},
+				{
+					"dialogue_id": 10,
+					"speaker": "",
+					"text": "即使是不会发光的生物，反射着来自四面八方的光芒，也能够变得美丽而闪耀。",
+					"choice" : [] ,
+					"next_dialogue" : 11
+				},
+				{
+					"dialogue_id": 11,
+					"speaker": "",
+					"text": "曾经的我，好像也曾闪耀过呢。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 18,
+					"speaker": "",
+					"text": "尽管我身处体型庞大的豪华游艇上，可是和辽阔无垠的大海相比，还是太过渺小了。 ",
+					"choice" : [] ,
+					"next_dialogue" : 19
+				},
+				{
+					"dialogue_id": 19,
+					"speaker": "",
+					"text": "渺小得仿佛大海随时可以将我们吞下。 ",
+					"choice" : [] ,
+					"next_dialogue" : 20
+				},
+				{
+					"dialogue_id": 20,
+					"speaker": "",
+					"text": "我的视线越过甲板上的人群，转向船头。那里指向着未知的深海。",
+					"choice" : [] ,
+					"next_dialogue" : 21
+				},
+				{
+					"dialogue_id": 21,
+					"speaker": "",
+					"text": "不过，我在视线穿越的刹那间，瞥见了一抹亮金色。",
+					"choice" : [] ,
+					"next_dialogue" : 22
+				},
+				{
+					"dialogue_id": 22,
+					"speaker": "",
+					"text": "我定睛一看。金色的长发，与紫罗兰色的眼瞳。",
+					"choice" : [] ,
+					"next_dialogue" : 23
+				},
+				{
+					"dialogue_id": 23,
+					"speaker": "",
+					"text": "那是她。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
             ],
-            "dialogue_trigger":[
+            "dialogue_trigger":
+            [
+              {
+                "trigger_zone":
                 {
-                    "trigger_zone":{
-                        "left": 100,
-                        "right": 300,
-                        "top": 300,
-                        "bottom": 400
-                    },
-                    "trigger_dialouge_id": 1,
-                    "trigger_id": 0
-                }
+                  "left": 545,
+                  "right": 576,
+                  "top": 1025,
+                  "bottom": 1056
+                },
+                "trigger_id": 10101,
+                "trigger_dialouge_id": 1
+              },
+              {
+                "trigger_zone":
+                {
+                  "left": 737,
+                  "right": 864,
+                  "top": 833,
+                  "bottom": 864
+                },
+                "trigger_id": 10102,
+                "trigger_dialouge_id": 4
+              },
+              {
+                "trigger_zone":
+                {
+                  "left": 897,
+                  "right": 928,
+                  "top": 705,
+                  "bottom": 864
+                },
+                "trigger_id": 10103,
+                "trigger_dialouge_id": 8
+              },
+              {
+                "trigger_zone":
+                {
+                  "left": 1057,
+                  "right": 1088,
+                  "top": 833,
+                  "bottom": 864
+                },
+                "trigger_id": 10104,
+                "trigger_dialouge_id": 12
+              },
+              {
+                "trigger_zone":
+                {
+                  "left": 1377,
+                  "right": 1408,
+                  "top": 641,
+                  "bottom": 800
+                },
+                "trigger_id": 10105,
+                "trigger_dialouge_id": 18
+              }
             ]
         },
         {
             "map_id": 2,
-            "name": "map2",
+            "name": "world2",
             "background": "city",
-            "be_able_to_rewind_time": false
+			"be_able_to_rewind_time": false,
+            "dialogues":
+			[
+				{
+					"dialogue_id": 44,
+					"speaker": "",
+					"text": "一阵清脆的玻璃碎裂声把我从梦境中惊醒。房间有些晃动，之后慢慢停下来，静止不动。",
+					"choice" : [] ,
+					"next_dialogue" : 45
+				},
+				{
+					"dialogue_id": 45,
+					"speaker": "",
+					"text": "刚刚是地震吗？我赶忙从床上爬起，环顾四周。",
+					"choice" : [] ,
+					"next_dialogue" : 46
+				},
+				{
+					"dialogue_id": 46,
+					"speaker": "",
+					"text": "还好只有桌子上的玻璃杯砸在地上碎了，其他一切完好。我松了一口气，打开手机。",
+					"choice" : [] ,
+					"next_dialogue" : 47
+				},
+				{
+					"dialogue_id": 47,
+					"speaker": "",
+					"text": "（地震速报：今晨7：27分，Sumita省Misumi市发生里氏6.3级地震，暂无人员伤亡报告。）",
+					"choice" : [] ,
+					"next_dialogue" : 48
+				},
+				{
+					"dialogue_id": 48,
+					"speaker": "",
+					"text": "虽然地震在这里很常见，但6级以上的地震还是第一次遇到。还好城市里的房屋抗震性能很好，就是不知道无线供电系统还能不能正常使用。",
+					"choice" : [] ,
+					"next_dialogue" : 49
+				},
+				{
+					"dialogue_id": 49,
+					"speaker": "",
+					"text": "（速报：Misumi市核聚变装置由于地震影响暂时关闭，无线供电系统将在7：40停止供电，请使用飞行汽车的市民尽快回到地面。今日全城暂停工作一天。此外，请广大市民尽量避免靠近地面大型基础设施，以免发生危险。）",
+					"choice" : [] ,
+					"next_dialogue" : 50
+				},
+				{
+					"dialogue_id": 50,
+					"speaker": "",
+					"text": "果不其然，无线供电暂停了。不过好处是今天不用上班了！",
+					"choice" : [] ,
+					"next_dialogue" : 51
+				},
+				{
+					"dialogue_id": 51,
+					"speaker": "我",
+					"text": "Yanagi，请帮我把玻璃渣清理一下！",
+					"choice" : [] ,
+					"next_dialogue" : 52
+				},
+				{
+					"dialogue_id": 52,
+					"speaker": "",
+					"text": "我的机器人迅速开始清扫现场。我坐回床上，开始回味之前的梦境。",
+					"choice" : [] ,
+					"next_dialogue" : 53
+				},
+				{
+					"dialogue_id": 53,
+					"speaker": "我",
+					"text": "怎么又是这个梦啊！",
+					"choice" : [] ,
+					"next_dialogue" : 54
+				},
+				{
+					"dialogue_id": 54,
+					"speaker": "",
+					"text": "已经连续三个星期做同样的梦了。 ",
+					"choice" : [] ,
+					"next_dialogue" : 55
+				},
+				{
+					"dialogue_id": 55,
+					"speaker": "",
+					"text": "每一次都是在想不出来她的名字的时候醒来。",
+					"choice" : [] ,
+					"next_dialogue" : 56
+				},
+				{
+					"dialogue_id": 56,
+					"speaker": "",
+					"text": "每次醒来，喉咙都会瘙痒难耐。 ",
+					"choice" : [] ,
+					"next_dialogue" : 57
+				},
+				{
+					"dialogue_id": 57,
+					"speaker": "",
+					"text": "像是喝了很烈的酒一样。 ",
+					"choice" : [] ,
+					"next_dialogue" : 58
+				},
+				{
+					"dialogue_id": 58,
+					"speaker": "",
+					"text": "或者说，像是想要在梦里呐喊什么一样。 ",
+					"choice" : [] ,
+					"next_dialogue" : 59
+				},
+				{
+					"dialogue_id": 59,
+					"speaker": "",
+					"text": "可是我在梦里明明没有回答她啊。而且，我根本不知道她的名字。甚而一醒过来，连容貌都不记得了。",
+					"choice" : [] ,
+					"next_dialogue" : 60
+				},
+				{
+					"dialogue_id": 60,
+					"speaker": "",
+					"text": "所以她到底是谁啊？ 一次次地闯入我的梦境。",
+					"choice" : [] ,
+					"next_dialogue" : 61
+				},
+				{
+					"dialogue_id": 61,
+					"speaker": "",
+					"text": "不过话说回来。",
+					"choice" : [] ,
+					"next_dialogue" : 62
+				},
+				{
+					"dialogue_id": 62,
+					"speaker": "",
+					"text": "虽然不知道她到底是谁，可是每一次在梦里遇见她，总是会带给我现实中从未有过的平静，以及我说不上来的那种快乐。 ",
+					"choice" : [] ,
+					"next_dialogue" : 63
+				},
+				{
+					"dialogue_id": 63,
+					"speaker": "",
+					"text": "可是，说到底我记忆中，从小到大从未谈过恋爱，更别提见过她、知道她的名字了。 ",
+					"choice" : [] ,
+					"next_dialogue" : 64
+				},
+				{
+					"dialogue_id": 64,
+					"speaker": "",
+					"text": "她到底是谁？ ",
+					"choice" : [] ,
+					"next_dialogue" : 65
+				},
+				{
+					"dialogue_id": 65,
+					"speaker": "",
+					"text": "算了，既然这么早醒来了，不如先下楼随便逛逛吧。毕竟自从十年前核聚变带来无限能源，使飞行汽车成为可能之后，我已经好几年没有在地面上散步了。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 66,
+					"speaker": "",
+					"text": "一时间不知道去哪里。那就试一试在地面上从家走到常去的咖啡厅吧。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 67,
+					"speaker": "我",
+					"text": "这是什么？",
+					"choice" : [] ,
+					"next_dialogue" : 68
+				},
+				{
+					"dialogue_id": 68,
+					"speaker": "我",
+					"text": "怎么现在还有人在用头盔的？",
+					"choice" : [] ,
+					"next_dialogue" : 69
+				},
+				{
+					"dialogue_id": 69,
+					"speaker": "",
+					"text": "难道是现在还在骑自行车的极端复古派？真少见啊。",
+					"choice" : [] ,
+					"next_dialogue" : 70
+				},
+				{
+					"dialogue_id": 70,
+					"speaker": "",
+					"text": "我回想了一下大学时被两节课间赶教室时飞速前进的自行车潮裹挟的日子，不禁打了个寒战。",
+					"choice" : [] ,
+					"next_dialogue" : 71
+				},
+				{
+					"dialogue_id": 71,
+					"speaker": "",
+					"text": "不过直觉告诉我应该不会这么简单。",
+					"choice" : [] ,
+					"next_dialogue" : 72
+				},
+				{
+					"dialogue_id": 72,
+					"speaker": "我",
+					"text": "总之先捡起来看一看。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 73,
+					"speaker": "",
+					"text": "一个内部布满触点的奇怪的头盔，上面写着“Time Reserver”。",
+					"choice" : [] ,
+					"next_dialogue" : 74
+				},
+				{
+					"dialogue_id": 74,
+					"speaker": "我",
+					"text": "好奇怪，戴上试试。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+			],
+			"dialogue_trigger":
+            [
+              {
+                "trigger_zone":
+                {
+                  "left": 161,
+                  "right": 192,
+                  "top": 673,
+                  "bottom": 704
+                },
+                "trigger_id": 10201,
+                "trigger_dialouge_id": 44 
+              },
+              {
+                "trigger_zone":
+                {
+                  "left": 385,
+                  "right": 416,
+                  "top": 577,
+                  "bottom": 704
+                },
+                "trigger_id": 10202,
+                "trigger_dialouge_id": 66
+              },
+              {
+                "trigger_zone":
+                {
+                  "left": 833,
+                  "right": 864,
+                  "top": 545,
+                  "bottom": 704
+                },
+                "trigger_id": 10203,
+                "trigger_dialouge_id": 67
+              },
+			  {
+                "trigger_zone":
+                {
+                  "left": 929,
+                  "right": 1024,
+                  "top": 641,
+                  "bottom": 704
+                },
+                "trigger_id": 10204,
+                "trigger_dialouge_id": 73
+              }
+			]
+		},
+		{
+            "map_id": 3,
+            "name": "world2-2",
+            "background": "city",
+			"be_able_to_rewind_time": true,
+            "dialogues":
+			[
+				{
+					"dialogue_id": 75,
+					"speaker": "？？？",
+					"text": "欢迎使用弦卷科技有限公司研发的时间逆转器，本时间逆转器功能强大、操作简单，我是搭载在本时间逆转器上的AI-Sakiko，接下来请跟随我了解一下时间逆转器的使用方法。",
+					"choice" : [] ,
+					"next_dialogue" : 76
+				},
+				{
+					"dialogue_id": 76,
+					"speaker": "我",
+					"text": "时间逆转器？什么意思？",
+					"choice" : [] ,
+					"next_dialogue" : 77
+				},
+				{
+					"dialogue_id": 77,
+					"speaker": "AI",
+					"text": "看来您是第一次使用本产品哦！下面由我来简单介绍一下本产品的功能：本产品为便携式时间逆转器，使用者只需按动一个按钮即可短时间倒流时间，同时倒流完毕后可保留记忆，无副作用，快速帮您解决生活中的一切遗憾！",
+					"choice" : [] ,
+					"next_dialogue" : 78
+				},
+				{
+					"dialogue_id": 78,
+					"speaker": "我",
+					"text": "时间倒流？这是真的吗？你不会是给我创造幻境骗我吧？",
+					"choice" : [] ,
+					"next_dialogue" : 79
+				},
+				{
+					"dialogue_id": 79,
+					"speaker": "AI",
+					"text": "那怎么会呢desuwa！如果您还是不相信的话，我正好检测到前方道路由于地震产生桥梁塌陷，您如果一次没跳过去、落入坑中的话，可以尝试一下时间倒流，帮助自己重新回到地面！",
+					"choice" : [] ,
+					"next_dialogue" : 80
+				},
+				{
+					"dialogue_id": 80,
+					"speaker": "我",
+					"text": "你怎么可以让我冒着生命危险尝试你的产品？！——不过，也没关系，毕竟我身上还有便携飞行装置，就算掉下去也能安全着陆。",
+					"choice" : [] ,
+					"next_dialogue" : 81
+				},
+				{
+					"dialogue_id": 81,
+					"speaker": "我",
+					"text": "那就试试看吧~",
+					"choice" : [] ,
+					"next_dialogue" : 82
+				},
+				{
+					"dialogue_id": 82,
+					"speaker": "下方文本框",
+					"text": "按住shift即可倒流时间，松开shift倒流终止，时间恢复正向。活用时间倒流，跳过前方的两个深坑吧！",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 83,
+					"speaker": "AI",
+					"text": "看吧~我没有骗你吧，这可是货真价实的时间倒流装置！",
+					"choice" : [] ,
+					"next_dialogue" : 84
+				},
+				{
+					"dialogue_id": 84,
+					"speaker": "我",
+					"text": "我暂且相信了，不过疑点还是很多。",
+					"choice" : [] ,
+					"next_dialogue" : 85
+				},
+				{
+					"dialogue_id": 85,
+					"speaker": "",
+					"text": "说到底，时间倒流之后为什么记忆还会保留呢？不过相比起这个可疑的机器，这似乎都是小事了。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 86,
+					"speaker": "我",
+					"text": "终于到咖啡厅了，这一路上也太离奇了。",
+					"choice" : [] ,
+					"next_dialogue" : 87
+				},
+				{
+					"dialogue_id": 87,
+					"speaker": "",
+					"text": "我和平常一样点了一杯摩卡，并开始在咖啡厅寻找认识的同行。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 97,
+					"speaker": "我",
+					"text": "算了不想这些了，今天可是难得的休假！我要好好放松一下，换换脑子！",
+					"choice" : [] ,
+					"next_dialogue" : 98
+				},
+				{
+					"dialogue_id": 98,
+					"speaker": "我",
+					"text": "那我就来探索一下是不是有其他功能吧。",
+					"choice":
+					[
+						{
+                            "choice_id": 981,
+                            "text": "重塑记忆",
+                            "next_dialogue": 99
+                        }
+					],
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 99,
+					"speaker": "AI",
+					"text": "欢迎使用“重塑记忆”功能！在此功能模块下，保存着每一次时间倒流操作留下的世界线数据，您可以使用该功能进入原世界线内进行观测，恢复时间倒流前的记忆。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 100,
+					"speaker": "",
+					"text": "之前还有几个记忆世界，看来是曾经使用者的操作痕迹。",
+					"choice" : 
+					[
+						{
+							"choice_id": 1001,
+							"text": "World 42. 回溯日期：2008.01.22 17：32：27：256. 持续时间：9825day 05h 52min 29s",
+							"next_dialogue": 102
+						},
+						{
+							"choice_id": 1002,
+							"text": "World 42. 回溯日期：2008.01.22 17：32：27：256. 持续时间：9825day 05h 52min 29s",
+							"next_dialogue": 101
+						},
+						{
+							"choice_id": 1003,
+							"text": "World 42. 回溯日期：2008.01.22 17：32：27：256. 持续时间：9825day 05h 52min 29s",
+							"next_dialogue": 101
+						}
+					] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 101,
+					"speaker": "",
+					"text": "（暂时无法打开）",
+					"choice" : [] ,
+					"next_dialogue" : 100
+				},
+				{
+					"dialogue_id": 102,
+					"speaker": "AI",
+					"text": "检测到您开启了非本人操作的重塑记忆世界线，已自动为您匹配该世界线中您的视角。请尽情沉浸式观览这个世界线的您的生活。",
+					"choice" : [],
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+					
+				}
+			],
+			"dialogue_trigger":
+            [
+			  {
+                "trigger_zone":
+                {
+                  "left": 97,
+                  "right": 128,
+                  "top": 609,
+                  "bottom": 640
+                },
+                "trigger_id": 10205,
+                "trigger_dialouge_id": 75
+              },
+			  {
+                "trigger_zone":
+                {
+                  "left": 1089,
+                  "right": 1120,
+                  "top": 481,
+                  "bottom": 640
+                },
+                "trigger_id": 10206,
+                "trigger_dialouge_id": 83
+              },
+			  {
+                "trigger_zone":
+                {
+                  "left": 1377,
+                  "right": 1408,
+                  "top": 545,
+                  "bottom": 640
+                },
+                "trigger_id": 10207,
+                "trigger_dialouge_id": 86
+              },
+			  {
+                "trigger_zone":
+                {
+                  "left": 1569,
+                  "right": 1600,
+                  "top": 609,
+                  "bottom": 640
+                },
+                "trigger_id": 10208,
+                "trigger_dialouge_id": 97
+              }
+            ]
         },
         {
-            "map_id": 3,
-            "name": "map1",
-            "background": "factory"
-        }
+            "map_id": 4,
+            "name": "black",
+            "background": "",
+			"description": "进入记忆之前，全黑",
+			"dialogues":
+			[
+				{
+					"dialogue_id": 103,
+					"speaker": "AI",
+					"text": "检测到该世界线与当前世界差异较大，为节省您的宝贵时间，小祥将自动使用靶向电波为您导入该世界线中您的记忆，请您选择进入该世界线的时间节点，范围为时间回溯终点2012.01.22至世界线变更点2034.12.16。小祥将为你自动导入所需要的记忆内容~",
+					"choice" : [] ,
+					"next_dialogue" : 104
+				},
+				{
+					"dialogue_id": 104,
+					"speaker": "",
+					"text": "靶向电波是近两年刚刚兴起成熟的技术，得益于飞速发展的生命科学，人类掌握了大脑存储记忆的底层逻辑。",
+					"choice" : [] ,
+					"next_dialogue" : 105
+				},
+				{
+					"dialogue_id": 105,
+					"speaker": "",
+					"text": "它通过在不同方向向大脑发射电波，在靶向点电波叠加形成强大能量，以此改变神经元突触，达到写入记忆的功能。相应地，视觉、触觉与其他感官也可以通过靶向电波精准地为使用者模拟真实世界的感官信号。",
+					"choice" : [] ,
+					"next_dialogue" : 106
+				},
+				{
+					"dialogue_id": 106,
+					"speaker": "",
+					"text": "这是一项伟大的发明，从此以后人类彻底摆脱了痛苦的记忆与背诵，同时让异世界的冒险成为可能。",
+					"choice" : [] ,
+					"next_dialogue" : 107
+				},
+				{
+					"dialogue_id": 107,
+					"speaker": "",
+					"text": "——既然是要选择一个时间节点，那不如就选择世界线变更前的最后一天吧。正好我可以快速获取这个世界线上的全部记忆。",
+					"choice" : [] ,
+					"next_dialogue" : 108
+				},
+				{
+					"dialogue_id": 108,
+					"speaker": "我",
+					"text": "从世界线变更前的最后一天开始。",
+					"choice" : [] ,
+					"next_dialogue" : 109
+				},
+				{
+					"dialogue_id": 109,
+					"speaker": "AI",
+					"text": "好的。即将为您生成2034年12月16日的世界线，并为您写入该日期之前的记忆。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				}
+			],
+			"dialogue_trigger":
+			[
+				{
+					"trigger_zone":
+					{
+					  "left": 929,
+					  "right": 960,
+					  "top": 929,
+					  "bottom": 960
+					},
+					"trigger_id": 10311,
+					"trigger_dialouge_id": 99
+				}
+				
+			]
+        },
+		{
+            "map_id": 5,
+            "name": "dream2",
+            "background": "night",
+			"description": "进入记忆之后",
+			"dialogues":
+			[
+				{
+					"dialogue_id": 110,
+					"speaker": "我",
+					"text": "啊～终于醒过来了！刚才好像做了一个好长好长的梦啊。",
+					"choice" : [] ,
+					"next_dialogue" : 111
+				},
+				{
+					"dialogue_id": 111,
+					"speaker": "我",
+					"text": "明明是难得的假期，在梦里也不能好好休息吗？果然昼夜颠倒的生活还是太反人类了！",
+					"choice" : [] ,
+					"next_dialogue" : 112
+				},
+				{
+					"dialogue_id": 112,
+					"speaker": "我",
+					"text": "不对！我不是刚刚还在咖啡厅和同事们吐槽该死的研究所吗？我这是在哪啊！",
+					"choice" : [] ,
+					"next_dialogue" : 113
+				},
+				{
+					"dialogue_id": 113,
+					"speaker": "AI",
+					"text": "您现在正在时间逆转器的记忆空间中哦！现在您可以尝试回忆一下过去发生的事情，靶向电波已为您在记忆不冲突的前提下为您写入该世界线中的记忆了。",
+					"choice" : [] ,
+					"next_dialogue" : 114
+				},
+				{
+					"dialogue_id": 114,
+					"speaker": "",
+					"text": "我开始努力回想曾经“发生”过的事情。度假、科研、恋爱、无穷无尽的实验，还有……",
+					"choice" : [] ,
+					"next_dialogue" : 115
+				},
+				{
+					"dialogue_id": 115,
+					"speaker": "",
+					"text": "所有的记忆瞬间涌上来，令我一时间陷入混乱。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 116,
+					"speaker": "我",
+					"text": "首先我要弄清楚我为什么会在这艘游艇上。",
+					"choice" : [] ,
+					"next_dialogue" : 117
+				},
+				{
+					"dialogue_id": 117,
+					"speaker": "",
+					"text": "我努力从混乱的记忆中搜寻着时序。还好，写入的记忆似乎也是遵循大脑的记忆顺序的。",
+					"choice" : [] ,
+					"next_dialogue" : 118
+				},
+				{
+					"dialogue_id": 118,
+					"speaker": "",
+					"text": "…………",
+					"choice" : [] ,
+					"next_dialogue" : 119
+				},
+				{
+					"dialogue_id": 119,
+					"speaker": "",
+					"text": "这是一场由世界顶级物理学家们主办的超大型学术沙龙，在这艘游艇上汇集了世界上最出色的物理学家、数学家和交叉学科翘楚们。",
+					"choice" : [] ,
+					"next_dialogue" : 120
+				},
+				{
+					"dialogue_id": 120,
+					"speaker": "",
+					"text": "而我作为年轻而已有重要成果的新晋成员，接受了拥有诺奖级发现的物理学家夫妇的邀请，有幸参与其中。而这对卓有成就的夫妇，正是我深爱的女友的父母。",
+					"choice" : [] ,
+					"next_dialogue" : 121
+				},
+				{
+					"dialogue_id": 121,
+					"speaker": "",
+					"text": "原来我在这个世界线的学术道路这么顺利啊。得益于女友父母在反物质创生上的开创性研究，我所参与的高能物理研究拥有了十分优质的发射源，目前“击穿夸克”终极实验的设计也看到了曙光。",
+					"choice" : [] ,
+					"next_dialogue" : 122
+				},
+				{
+					"dialogue_id": 122,
+					"speaker": "",
+					"text": "所以为什么“现实世界”里我连经费都难以申请呢……是因为我现实所处的世界线上还没有这项发现吗？",
+					"choice" : [] ,
+					"next_dialogue" : 123
+				},
+				{
+					"dialogue_id": 123,
+					"speaker": "",
+					"text": "作为微观物理学家，我对近年的重大发现全都有所了解——不，近年根本没有重大发现啊，研究几乎全部处于停滞状态。",
+					"choice" : [] ,
+					"next_dialogue" : 124
+				},
+				{
+					"dialogue_id": 124,
+					"speaker": "",
+					"text": "时空逆转器的上一任主人究竟想要做什么啊，连这么伟大的发现都因为长时间时空逆转的蝴蝶效应凭空消失了。不过……",
+					"choice" : [] ,
+					"next_dialogue" : 125
+				},
+				{
+					"dialogue_id": 125,
+					"speaker": "我",
+					"text": "唉……要不要试试看看他们的论文，然后把这项研究带到”现实世界“？",
+					"choice" : [] ,
+					"next_dialogue" : 126
+				},
+				{
+					"dialogue_id": 126,
+					"speaker": "",
+					"text": "等等。",
+					"choice" : [] ,
+					"next_dialogue" : 127
+				},
+				{
+					"dialogue_id": 127,
+					"speaker": "",
+					"text": "女友父母的邀请。",
+					"choice" : [] ,
+					"next_dialogue" : 128
+				},
+				{
+					"dialogue_id": 128,
+					"speaker": "",
+					"text": "我在这个世界居然是有女朋友的！！！",
+					"choice" : [] ,
+					"next_dialogue" : 129
+				},
+				{
+					"dialogue_id": 129,
+					"speaker": "",
+					"text": "在现在的世界线，作为29岁的科研牛马，我的前半生甚至连恋爱都没有谈过。已经马上就要晋升大魔法师了。",
+					"choice" : [] ,
+					"next_dialogue" : 130
+				},
+				{
+					"dialogue_id": 130,
+					"speaker": "",
+					"text": "可是这个世界线的我，不仅学术有成，而且竟然还收获了美好的爱情。",
+					"choice" : [] ,
+					"next_dialogue" : 131
+				},
+				{
+					"dialogue_id": 131,
+					"speaker": "我",
+					"text": "——我不甘心啊！",
+					"choice" : [] ,
+					"next_dialogue" : 132
+				},
+				{
+					"dialogue_id": 132,
+					"speaker": "",
+					"text": "我突然开始有些愤懑。为什么我不能就像在这个世界线上一样，过上堪称完美的生活呢？为什么我要在研究所受着前辈们的压力，做着几乎毫无希望的研究，而且快要30岁了却连一场甜甜的恋爱都没有谈过……",
+					"choice" : [] ,
+					"next_dialogue" : 133
+				},
+				{
+					"dialogue_id": 133,
+					"speaker": "我",
+					"text": "不过，还是先见她一面吧。",
+					"choice" : [] ,
+					"next_dialogue" : 134
+				},
+				{
+					"dialogue_id": 134,
+					"speaker": "",
+					"text": "愤懑之余，我还是对这个世界线上的女友身世有些好奇。当然，我不得不承认，其实我想看看我这只咸鱼是如何在这个世界翻身的。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 135,
+					"speaker": "",
+					"text": "星光闪烁下的海色，依旧平静而深不可测。",
+					"choice" : [] ,
+					"next_dialogue" : 136
+				},
+				{
+					"dialogue_id": 136,
+					"speaker": "",
+					"text": "金色的长发、紫罗兰色的眼瞳。和先前梦中的景色一模一样。",
+					"choice" : [] ,
+					"next_dialogue" : 137
+				},
+				{
+					"dialogue_id": 137,
+					"speaker": "",
+					"text": "我凭着本能慢慢向她走去。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+			],
+			"dialogue_trigger":
+			[
+				{
+					"trigger_zone":
+					{
+						"left": 545,
+						"right": 576,
+						"top": 1025,
+						"bottom": 1056
+					  },
+					"trigger_id": 10321,
+					"trigger_dialouge_id": 110
+				},
+				{
+					"trigger_zone":
+					{
+						"left": 737,
+						"right": 864,
+						"top": 833,
+						"bottom": 864
+					},
+					"trigger_id": 10322,
+					"trigger_dialouge_id": 116
+				},
+				{
+					"trigger_zone":
+					{
+						"left": 1377,
+						"right": 1408,
+						"top": 641,
+						"bottom": 800
+					  },
+					"trigger_id": 10323,
+					"trigger_dialouge_id": 135
+				}
+			]
+        },
+		{
+            "map_id": 6,
+            "name": "black",
+            "background": "factory",
+			"description": "记忆结束，全黑",
+			"dialogues":
+			[
+				{
+					"dialogue_id": 172,
+					"speaker": "AI",
+					"text": "现在是2034年12月16日23：24：56：288，时间回溯开启，本世界线结束。",
+					"choice": [],
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				}
+			],
+			"dialogue_trigger":
+			[
+				{
+					"trigger_zone":
+					{
+						"left": 929,
+						"right": 960,
+						"top": 929,
+						"bottom": 960
+					},
+					  "trigger_id": 10331,
+					"trigger_dialouge_id": 172
+				}
+			]
+        },
+		{
+			"map_id": 7,
+			"name": "dream2-world2",
+			"background": "city",
+			"description": "走出记忆",
+			"dialogues":
+			[
+				{
+					"dialogue_id": 173,
+					"speaker": "我",
+					"text": "该死的AI！你就不能多让我停留哪怕一小会吗！这可是我此生未有的幸福时刻啊！",
+					"choice" : [] ,
+					"next_dialogue" : 174
+				},
+				{
+					"dialogue_id": 174,
+					"speaker": "AI",
+					"text": "非常抱歉，由于该世界线已经结束，我没有能力继续为您编辑此后世界线的内容。",
+					"choice" : [] ,
+					"next_dialogue" : 175
+				},
+				{
+					"dialogue_id": 175,
+					"speaker": "我",
+					"text": "你知道那个世界的我，比起现在这个鬼样子，要幸福不知道多少倍吗！",
+					"choice" : [] ,
+					"next_dialogue" : 176
+				},
+				{
+					"dialogue_id": 176,
+					"speaker": "AI",
+					"text": "服务器繁忙，请稍后再试。",
+					"choice" : [] ,
+					"next_dialogue" : 177
+				},
+				{
+					"dialogue_id": 177,
+					"speaker": "我",
+					"text": "——唉，不过也不怪你。所以你之前的使用者，他为什么要重塑如此完美的世界！",
+					"choice" : [] ,
+					"next_dialogue" : 178
+				},
+				{
+					"dialogue_id": 178,
+					"speaker": "",
+					"text": "我恨不得马上把那个更改世界线的家伙找到，然后逼着他把世界线修改回去。你偷走了我的人生！",
+					"choice" : [] ,
+					"next_dialogue" : 179
+				},
+				{
+					"dialogue_id": 179,
+					"speaker": "AI",
+					"text": "作为人工智能，我并不清楚他的目的。不过我可以理解您的不满。",
+					"choice" : [] ,
+					"next_dialogue" : 180
+				},
+				{
+					"dialogue_id": 180,
+					"speaker": "AI",
+					"text": "作为补偿，且这并不违反隐私权限，我可以为您提供上一位使用者所属组织的大致地址，您可以当面向他请教。",
+					"choice" : [] ,
+					"next_dialogue" : 181
+				},
+				{
+					"dialogue_id": 181,
+					"speaker": "我",
+					"text": "请务必为我提供！我现在就去找他！——不过，可以顺便问一下，我的那位“女友”，Mnema小姐，在这个世界线居住在哪里吗？",
+					"choice" : [] ,
+					"next_dialogue" : 182
+				},
+				{
+					"dialogue_id": 182,
+					"speaker": "AI",
+					"text": "很抱歉，我无法向您提供个人隐私。——不过经过我的搜索，该问题并不设计隐私。",
+					"choice" : [] ,
+					"next_dialogue" : 183
+				},
+				{
+					"dialogue_id": 183,
+					"speaker": "AI",
+					"text": "十分抱歉地告知您，Mnema Sorel在当前的世界并不存在。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				}
+			],
+			"dialogue_trigger":
+			[
+				{
+					"trigger_zone":
+					{
+						"left": 1569,
+						"right": 1600,
+						"top": 609,
+						"bottom": 640
+					},
+					"trigger_id": 10401,
+					"trigger_dialouge_id": 173
+				}
+			]
+		}
     ]
 }

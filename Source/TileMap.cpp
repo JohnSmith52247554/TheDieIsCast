@@ -17,8 +17,8 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
     std::string tilesetImage;
 
     // 解析 TMX 文件获取地图数据（所有图层）
-    std::string tsx_file_name;
-    if (!parseTMX(full_dir.string(), layersData, tsx_file_name))
+    std::vector<SourceInfo> tsx_source;
+    if (!parseTMX(full_dir.string(), layersData, tsx_source))
     {
         std::string str =  "Failed to parse TMX file: " + full_dir.string();
         std::cerr << str << std::endl;
@@ -31,172 +31,197 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
     MapCollision::setMapSize(m_mapWidth, m_mapHeight);
 
     // 解析 TSX 文件获取纹理路径
-
-    full_dir = EXE_DIR / "Resources" / "Maps" / tsx_file_name;
-    if (!parseTSX(full_dir.string(), tilesetImage))
-    { 
-        std::string str = "Failed to parse TSX file: " + full_dir.string();
-        std::cerr << str << std::endl;
-        throw std::logic_error(str);
-        return false;
-    }
-
-    // 加载纹理
-    full_dir = EXE_DIR / "Resources" / "Maps" / tilesetImage;
-    if (!m_tileset.loadFromFile(full_dir.string())) 
+    for(const auto& tsx : tsx_source)
     {
-        
-        std::cerr << "Failed to load texture: " << full_dir << std::endl;
-        return false;
+        full_dir = EXE_DIR / "Resources" / "Maps" / tsx.source;
+        if (!parseTSX(full_dir.string(), tilesetImage))
+        {
+            std::string str = "Failed to parse TSX file: " + full_dir.string();
+            std::cerr << str << std::endl;
+            throw std::logic_error(str);
+            return false;
+        }
+
+        // 加载纹理
+        full_dir = EXE_DIR / "Resources" / "Maps" / tilesetImage;
+        sf::Texture tileset;
+        if (!tileset.loadFromFile(full_dir.string()))
+        {
+
+            std::cerr << "Failed to load texture: " << full_dir << std::endl;
+            return false;
+        }
+        m_tileset.push_back(tileset);
     }
 
     // 清空旧的图层数据
     m_layers.clear();
 
     // 处理每个图层的数据
-    for (const auto& tileData : layersData) 
+    for (const auto& tileData : layersData)
     {
-        sf::VertexArray vertices;
-        vertices.setPrimitiveType(sf::Quads);
-        vertices.resize(m_mapWidth * m_mapHeight * 4);
-
-        // 填充顶点数组
-        for (int y = 0; y < m_mapHeight; ++y) 
+        for (int i = 0; i < tsx_source.size(); i++)
         {
-            for (int x = 0; x < m_mapWidth; ++x)
+            auto& tsx = tsx_source[i];
+            auto& tileset_texture = m_tileset[i];
+            bool is_base_set = tsx.source == "ExtendedMapSet.tsx" || tsx.source == "DefaultMapSet.tsx";
+
+            int next_first_gid = -1;
+            if (i < tsx_source.size() - 1)
+                next_first_gid = tsx_source[i + 1].firstgid;
+            bool exist_next_tsx = false;
+            bool is_empty = true;
+            sf::VertexArray vertices;
+            vertices.setPrimitiveType(sf::Quads);
+            vertices.resize(m_mapWidth * m_mapHeight * 4);
+
+            // 填充顶点数组
+            for (int y = 0; y < m_mapHeight; ++y)
             {
-                uint32_t rawTileData = tileData[y * m_mapWidth + x];
-                int tileNumber = rawTileData & 0x1FFFFFFF; // 获取图块 ID（去除标志位）
-                tileNumber -= 1; // Tiled ID 从 1 开始，SFML 需要 0-based
-
-                if (tileNumber < 0)
-                    continue; // 忽略空白图块
-
-                //将第一个图层视为Wall层
-                if (tileData == layersData[0])
+                for (int x = 0; x < m_mapWidth; ++x)
                 {
-                    //设置碰撞
-                    if (tileNumber == 9 - 1 || tileNumber == 10 - 1) //单独设置地刺的碰撞
+                    uint32_t rawTileData = tileData[y * m_mapWidth + x];
+                    int tileNumber = rawTileData & 0x1FFFFFFF; // 获取图块 ID（去除标志位）
+                    tileNumber -= 1; // Tiled ID 从 1 开始，SFML 需要 0-based
+                    int textureTileNumber = tileNumber - (tsx.firstgid - 1);    //得到去除纹理标志的number
+                    if (tileNumber > next_first_gid - 2)
+                        exist_next_tsx = true;
+
+                    if (textureTileNumber < 0)
+                        continue; // 忽略空白图块
+                    is_empty = false;
+
+                    //将第一个图层视为Wall层
+                    if (tileData == layersData[0])
                     {
-                        MapCollision::setCell(x, y, Thorn);
+                        //设置碰撞
+                        if (textureTileNumber == 9 - 1 || textureTileNumber == 10 - 1) //单独设置地刺的碰撞
+                        {
+                            if (is_base_set)
+                                MapCollision::setCell(x, y, Thorn);
+                        }
+                        else
+                        {
+                            MapCollision::setCell(x, y, Wall);
+                        }
                     }
+
+                    // 计算图块在纹理中的位置
+                    int tu = textureTileNumber % (tileset_texture.getSize().x / m_tileWidth);
+                    int tv = textureTileNumber / (tileset_texture.getSize().x / m_tileWidth);
+
+                    // 判断翻转和旋转标志
+                    bool index1 = (rawTileData & 0x80000000) != 0;   //左右翻转
+                    bool index2 = (rawTileData & 0x40000000) != 0; //上下翻转
+                    bool index3 = (rawTileData & 0x20000000) != 0; //旋转
+
+                    /*
+                    编码规则如下：
+                    fff：不进行任何操作
+                    fft：先左右翻转，再顺时针旋转270度
+                    ftf：上下翻转
+                    ftt：顺时针旋转270度
+                    tff：左右翻转
+                    tft：顺时针旋转90度
+                    ttf：旋转180度（等同于上下翻转后左右翻转）
+                    ttt：先左右翻转，再顺时针旋转90度
+                    */
+                    short flip_case = (index1 << 2) + (index2 << 1) + index3;
+
+                    //将第二个图层视为Object层，记录信息
+                    if (layersData.size() >= 2 && tileData == layersData[1])
+                    {
+                        // 将纹理复制到一个Image对象中
+                        sf::Image tilesetImage = tileset_texture.copyToImage();
+
+                        // 计算图块左上角点在纹理中的坐标
+                        int tilePixelX = tu * m_tileWidth;
+                        int tilePixelY = tv * m_tileHeight;
+
+                        ObjectInfo info;
+                        info.coord = { x * CELL_SIZE, y * CELL_SIZE };
+                        // 获取该图块左上角的像素颜色
+                        info.color = tilesetImage.getPixel(tilePixelX, tilePixelY);
+                        info.flip = flip_case;
+
+                        object_spawn_info.push_back(info);
+                    }
+                    //Object层的内容不会绘制
                     else
                     {
-                        MapCollision::setCell(x, y, Wall);
+                        sf::Vertex* quad = &vertices[(x + y * m_mapWidth) * 4];
+
+                        // 设置顶点位置
+                        quad[0].position = sf::Vector2f(x * m_tileWidth, y * m_tileHeight);
+                        quad[1].position = sf::Vector2f((x + 1) * m_tileWidth, y * m_tileHeight);
+                        quad[2].position = sf::Vector2f((x + 1) * m_tileWidth, (y + 1) * m_tileHeight);
+                        quad[3].position = sf::Vector2f(x * m_tileWidth, (y + 1) * m_tileHeight);
+
+                        //根据翻转和旋转标志调整顶点顺序
+                        switch (flip_case)
+                        {
+                        case 0:
+                            break;
+                        case 1:
+                            flipHorizontally(quad);
+                            flipDiagonally(quad);
+                            flipDiagonally(quad);
+                            flipDiagonally(quad);
+                            break;
+                        case (1 << 1):
+                            flipVertiaclly(quad);
+                            break;
+                        case (1 << 1) + 1:
+                            flipDiagonally(quad);
+                            break;
+                        case (1 << 2):
+                            flipHorizontally(quad);
+                            break;
+                        case (1 << 2) + 1:
+                            flipDiagonally(quad);
+                            flipDiagonally(quad);
+                            flipDiagonally(quad);
+                            break;
+                        case (1 << 2) + (1 << 1) :
+                            flipHorizontally(quad);
+                            flipVertiaclly(quad);
+                            break;
+                        case (1 << 2) + (1 << 1) + 1:
+                            flipHorizontally(quad);
+                            flipDiagonally(quad);
+                            break;
+                        default:
+                            break;
+                        }
+
+
+                        // 设置纹理坐标
+                        quad[0].texCoords = sf::Vector2f(tu * m_tileWidth, tv * m_tileHeight);
+                        quad[1].texCoords = sf::Vector2f((tu + 1) * m_tileWidth, tv * m_tileHeight);
+                        quad[2].texCoords = sf::Vector2f((tu + 1) * m_tileWidth, (tv + 1) * m_tileHeight);
+                        quad[3].texCoords = sf::Vector2f(tu * m_tileWidth, (tv + 1) * m_tileHeight);
                     }
-                }
-
-                // 计算图块在纹理中的位置
-                int tu = tileNumber % (m_tileset.getSize().x / m_tileWidth);
-                int tv = tileNumber / (m_tileset.getSize().x / m_tileWidth);
-
-                // 判断翻转和旋转标志
-                bool index1 = (rawTileData & 0x80000000) != 0;   //左右翻转
-                bool index2 = (rawTileData & 0x40000000) != 0; //上下翻转
-                bool index3 = (rawTileData & 0x20000000) != 0; //旋转
-
-                /*
-                编码规则如下：
-                fff：不进行任何操作
-                fft：先左右翻转，再顺时针旋转270度
-                ftf：上下翻转
-                ftt：顺时针旋转270度
-                tff：左右翻转
-                tft：顺时针旋转90度
-                ttf：旋转180度（等同于上下翻转后左右翻转）
-                ttt：先左右翻转，再顺时针旋转90度
-                */
-                short flip_case = (index1 << 2) + (index2 << 1) + index3;
-
-                //将第二个图层视为Object层，记录信息
-                if (layersData.size() >= 2 && tileData == layersData[1])
-                {
-                    // 将纹理复制到一个Image对象中
-                    sf::Image tilesetImage = m_tileset.copyToImage();
-
-                    // 计算图块左上角点在纹理中的坐标
-                    int tilePixelX = tu * m_tileWidth;
-                    int tilePixelY = tv * m_tileHeight;
-
-                    ObjectInfo info;
-                    info.coord = { x * CELL_SIZE, y * CELL_SIZE };
-                    // 获取该图块左上角的像素颜色
-                    info.color = tilesetImage.getPixel(tilePixelX, tilePixelY);
-                    info.flip = flip_case;
-
-                    object_spawn_info.push_back(info);
-                }
-                //Object层的内容不会绘制
-                else
-                {
-                    sf::Vertex* quad = &vertices[(x + y * m_mapWidth) * 4];
-
-                    // 设置顶点位置
-                    quad[0].position = sf::Vector2f(x * m_tileWidth, y * m_tileHeight);
-                    quad[1].position = sf::Vector2f((x + 1) * m_tileWidth, y * m_tileHeight);
-                    quad[2].position = sf::Vector2f((x + 1) * m_tileWidth, (y + 1) * m_tileHeight);
-                    quad[3].position = sf::Vector2f(x * m_tileWidth, (y + 1) * m_tileHeight);
-
-                    //根据翻转和旋转标志调整顶点顺序
-                    switch (flip_case)
-                    {
-                    case 0:
-                        break;
-                    case 1:
-                        flipHorizontally(quad);
-                        flipDiagonally(quad);
-                        flipDiagonally(quad);
-                        flipDiagonally(quad);
-                        break;
-                    case (1 << 1):
-                        flipVertiaclly(quad);
-                        break;
-                    case (1 << 1) + 1:
-                        flipDiagonally(quad);
-                        break;
-                    case (1 << 2):
-                        flipHorizontally(quad);
-                        break;
-                    case (1 << 2) + 1:
-                        flipDiagonally(quad);
-                        flipDiagonally(quad);
-                        flipDiagonally(quad);
-                        break;
-                    case (1 << 2) + (1 << 1):
-                        flipHorizontally(quad);
-                        flipVertiaclly(quad);
-                        break;
-                    case (1 << 2) + (1 << 1) + 1:
-                        flipHorizontally(quad);
-                        flipDiagonally(quad);
-                        break;
-                    default:
-                        break;
-                    }
-                    
-
-                    // 设置纹理坐标
-                    quad[0].texCoords = sf::Vector2f(tu * m_tileWidth, tv * m_tileHeight);
-                    quad[1].texCoords = sf::Vector2f((tu + 1) * m_tileWidth, tv * m_tileHeight);
-                    quad[2].texCoords = sf::Vector2f((tu + 1) * m_tileWidth, (tv + 1) * m_tileHeight);
-                    quad[3].texCoords = sf::Vector2f(tu * m_tileWidth, (tv + 1) * m_tileHeight);
                 }
             }
-        }
 
-        m_layers.push_back(vertices);
+            if (!is_empty)
+                m_layers.push_back({ vertices, i });
+
+            if (!exist_next_tsx)
+                break;
+        }
     }
 
     return true;
 }
 
 // 解析 TMX 文件以获取地图宽度、高度、瓦片宽度、高度以及图层数据
-bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint32_t>>& layersData, std::string& tsx_file_name)
+bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint32_t>>& layersData, std::vector<SourceInfo>& tsx_source)
 {
     tinyxml2::XMLDocument doc;
     if (doc.LoadFile(tmxFile.c_str()) != tinyxml2::XML_SUCCESS)
     {
-        std::string str = "failed to parse tmx: " + tsx_file_name;
+        std::string str = "failed to parse tmx: " + tmxFile;
         std::cerr << str << std::endl;
         throw std::logic_error(str);
         return false;
@@ -206,24 +231,18 @@ bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint3
     if (!mapElement) return false;
 
     //获取.tsx文件
-    //找到<tileset>元素
+    //获取所有<tileset>元素
     tinyxml2::XMLElement* pTileset = mapElement->FirstChildElement("tileset");
-    if (pTileset == nullptr)
+    
+    while (pTileset != nullptr)
     {
-        tsx_file_name = "DefaultMapSet.tsx";
-    }
-    else
-    {
-        //获取source属性
+        //获取source和firstgid
         const char* source = pTileset->Attribute("source");
+        int firstgid = std::stoi(pTileset->Attribute("firstgid"));
         if (source == nullptr) 
-        {
-            tsx_file_name = "DefaultMapSet.tsx";
-        }
-        else
-        {
-            tsx_file_name = source;
-        }
+            source = "DefaultMapSet.tsx";
+        tsx_source.push_back(SourceInfo{ firstgid, source });
+        pTileset = pTileset->NextSiblingElement("tileset");
     }
 
     mapElement->QueryIntAttribute("width", &m_mapWidth);
@@ -285,7 +304,6 @@ bool TileMap::parseTSX(const std::string& tsxFile, std::string& tilesetImage)
 void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
-    states.texture = &m_tileset;
 
     // 计算可视范围的图块索引
     int startX = std::max((view.getCenter().x - view.getSize().x * LOADING_FACTOR)  / m_tileWidth, 0.f);
@@ -293,13 +311,10 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
     int startY = std::max((view.getCenter().y - view.getSize().y * LOADING_FACTOR) / m_tileWidth, 0.f);
     int endY = std::min((view.getCenter().y + view.getSize().y * LOADING_FACTOR) / m_tileWidth, static_cast<float>(m_mapHeight));
 
-    //int startX = std::max(left / m_tileWidth, 0);
-    //int endX = std::min(right / m_tileWidth, m_mapWidth);
-    //int startY = std::max(top / m_tileHeight, 0);
-    //int endY = std::min(bottom / m_tileHeight, m_mapHeight);
-
     for (const auto& layer : m_layers) 
     {
+        states.texture = &m_tileset[layer.texture_id];
+
         sf::VertexArray visibleVertices;
         visibleVertices.setPrimitiveType(sf::Quads);
 
@@ -308,10 +323,10 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
             for (int x = startX; x < endX; ++x) 
             {
                 int index = (x + y * m_mapWidth) * 4;
-                visibleVertices.append(layer[index]);
-                visibleVertices.append(layer[index + 1]);
-                visibleVertices.append(layer[index + 2]);
-                visibleVertices.append(layer[index + 3]);
+                visibleVertices.append(layer.v_array[index]);
+                visibleVertices.append(layer.v_array[index + 1]);
+                visibleVertices.append(layer.v_array[index + 2]);
+                visibleVertices.append(layer.v_array[index + 3]);
             }
         }
 

@@ -1,0 +1,313 @@
+{
+    "act_id": 8,
+    "name": "",
+    "description":"继续深入",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "world10",
+            "description": "地图10 二周目分支",
+            "background": "",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 267,
+					"speaker": "AI",
+					"text": "已为您逆转时间至2012年7月14日13：00，地点为东京都千代田区，世界代码World 7X",
+					"choice" : [] ,
+					"next_dialogue" : 280
+				},
+				{
+					"dialogue_id": 280,
+					"speaker": "我",
+					"text": "终于没有追杀我的组织了。现在我要找到办法把他们扼杀在摇篮之中！或者把时空逆转器仅为我所用！",
+					"choice" : [] ,
+					"next_dialogue" : 281
+				},
+				{
+					"dialogue_id": 281,
+					"speaker": "AI",
+					"text": "你终于走到了这一步啊",
+					"choice" : [] ,
+					"next_dialogue" : 282
+				},
+				{
+					"dialogue_id": 282,
+					"speaker": "我",
+					"text": "你为什么会这么说？……不过倒也不奇怪。",
+					"choice" : [] ,
+					"next_dialogue" : 283
+				},
+				{
+					"dialogue_id": 283,
+					"speaker": "我",
+					"text": "你不是AI。我早已料到这一点",
+					"choice" : [] ,
+					"next_dialogue" : 284
+				},
+				{
+					"dialogue_id": 284,
+					"speaker": "AI",
+					"text": "的确。我是未来的你。我所作的这一切，都是为了未来的人类。",
+					"choice" : [] ,
+					"next_dialogue" : 285
+				},
+				{
+					"dialogue_id": 285,
+					"speaker": "AI",
+					"text": "你知道时空稳定局的真实目的吗？",
+					"choice" : [] ,
+					"next_dialogue" : 286
+				},
+				{
+					"dialogue_id": 286,
+					"speaker": "我",
+					"text": "组织世界大战？难道不是吗？——而且，你是未来的我？啊？",
+					"choice" : [] ,
+					"next_dialogue" : 287
+				},
+				{
+					"dialogue_id": 287,
+					"speaker": "AI",
+					"text": "……你无法理解也没关系，先说重点吧。那当然也是其一，但他们的最终目的是权力。",
+					"choice" : [] ,
+					"next_dialogue" : 288
+				},
+				{
+					"dialogue_id": 288,
+					"speaker": "AI",
+					"text": "谁掌握过去，谁就掌握未来。谁掌握现在，谁就掌握过去。",
+					"choice" : [] ,
+					"next_dialogue" : 289
+				},
+				{
+					"dialogue_id": 289,
+					"speaker": "我",
+					"text": "那是《1984》。你什么意思？等等……该不会……",
+					"choice" : [] ,
+					"next_dialogue" : 290
+				},
+				{
+					"dialogue_id": 290,
+					"speaker": "AI",
+					"text": "不愧是过去的我，天才物理学家。时空稳定局作为唯一掌握时间逆转器的组织，他们同时掌握了现在、过去与未来。",
+					"choice" : [] ,
+					"next_dialogue" : 291
+				},
+				{
+					"dialogue_id": 291,
+					"speaker": "AI",
+					"text": "他们的最终目的，是权力，是掌握全世界。他们当然能做到，通过不断地修正时间线，一步步走向世界权力的中心。",
+					"choice" : [] ,
+					"next_dialogue" : 292
+				},
+				{
+					"dialogue_id": 292,
+					"speaker": "我",
+					"text": "而且，只要他们是第一个拥有时间逆转器的组织，他们就能够永远唯一拥有它。",
+					"choice" : [] ,
+					"next_dialogue" : 293
+				},
+				{
+					"dialogue_id": 293,
+					"speaker": "AI",
+					"text": "是的。而且在这个世界上，不会有任何人反抗他们。因为只要出现反抗，他们就会回溯世界线，让抗争从未发生。",
+					"choice" : [] ,
+					"next_dialogue" : 294
+				},
+				{
+					"dialogue_id": 294,
+					"speaker": "我",
+					"text": "天哪……——不过，你为什么能告诉我这些？为什么你……未来的我不会被抹杀？",
+					"choice" : [] ,
+					"next_dialogue" : 295
+				},
+				{
+					"dialogue_id": 295,
+					"speaker": "AI",
+					"text": "因为，未来的你，在这个世界线上，加入了这个组织。未来的你，也是帮凶之一。",
+					"choice" : [] ,
+					"next_dialogue" : 296
+				},
+				{
+					"dialogue_id": 296,
+					"speaker": "AI",
+					"text": "我告诉你这一切，是因为我后悔了。我希望你有能力阻止这一切。",
+					"choice" : [] ,
+					"next_dialogue" : 297
+				},
+				{
+					"dialogue_id": 297,
+					"speaker": "我",
+					"text": "……我明白了。既然第一个掌握时间逆转器的组织，就是唯一掌握的。那么如果我先创造出它呢？",
+					"choice" : [] ,
+					"next_dialogue" : 298
+				},
+				{
+					"dialogue_id": 298,
+					"speaker": "AI",
+					"text": "很好的思路，我可以从其他世界线为你提供图纸，现在虫洞论文也马上发表了，三年时间，你能做出来吧。三年之后，时空稳定局就要成立了。还有，这个机器的能量要耗尽了，祝你成功。",
+					"choice" : [] ,
+					"next_dialogue" : 299
+				},
+				{
+					"dialogue_id": 299,
+					"speaker": "我",
+					"text": "我尽量吧。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}	
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+						"left": 129,
+						"right": 160,
+						"top": 353,
+						"bottom": 384
+					  },
+					"trigger_id": 80101,
+					"trigger_dialouge_id": 267
+				}
+            ]
+        },
+		{
+            "map_id": 2,
+            "name": "world8",
+            "description": "地图8 研发成功之后",
+            "background": "",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 262,
+					"speaker": "我",
+					"text": "终于研发成功了！现在时空稳定局可以彻底不复存在了！",
+					"choice" : [] ,
+					"next_dialogue" : 263
+				},
+				{
+					"dialogue_id": 263,
+					"speaker": "",
+					"text": "现在，终于不会走向那个《1984》般的世界了。我将会不断修正世界线使得其他组织无法研制新的时间逆转器，除此之外，我会允许一切发生，文明的发展需要波折。",
+					"choice" : [] ,
+					"next_dialogue" : 264
+				},
+				{
+					"dialogue_id": 264,
+					"speaker": "",
+					"text": "……等等，世界大战啊……数十亿人丧生的世界大战。这个还是不能发生的。但是要是像组织一样阻止它，我的Mnema就不存在了。",
+					"choice" : [] ,
+					"next_dialogue" : 265
+				},
+				{
+					"dialogue_id": 265,
+					"speaker": "我",
+					"text": "我要用事实说服他们，不要发表反物质创生的论文。——可是我忘记从其他世界线获取优秀成果作为筹码了……",
+					"choice" : [] ,
+					"next_dialogue" : 266
+				},
+				{
+					"dialogue_id": 266,
+					"speaker": "我",
+					"text": "试试看吧。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+			],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 129,
+					  "right": 160,
+					  "top": 353,
+					  "bottom": 384
+					},
+					"trigger_id": 80201,
+					"trigger_dialouge_id": 280
+				}
+            ]
+        },
+		{
+            "map_id": 3,
+            "name": "dream2_TE",
+            "description": "地图3",
+            "background": "",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 300,
+					"speaker": "我",
+					"text": "抱歉，我尊重您们的选择，是我证据不足。失礼了。",
+					"choice" : [] ,
+					"next_dialogue" : 301
+				},
+				{
+					"dialogue_id": 301,
+					"speaker": "我",
+					"text": "……不出所料，失败了。说到底我也没有办法凭空说服他们不去发表如此重要的成果啊。",
+					"choice" : [] ,
+					"next_dialogue" : 302
+				},
+				{
+					"dialogue_id": 302,
+					"speaker": "我",
+					"text": "唉，事到如今，Mnema和阻止世界大战，看来我只能二选一了。",
+					"choice" : [] ,
+					"next_dialogue" : 303
+				},
+				{
+					"dialogue_id": 303,
+					"speaker": "",
+					"text": "怎么办呢？两边都是我最不希望放弃的事情啊。",
+					"choice" :
+					[
+						[
+							{
+								"choice_id": 3031,
+								"text": "Mnema Sorel",
+								"next_dialogue": -1,
+								"effects":
+								{
+									"variable": "opt_dilemma",
+									"operator": "=",
+									"value": 1
+								}
+							},
+							{
+								"choice_id": 3032,
+								"text": "阻止世界大战",
+								"next_dialogue": -1,
+								"effects":
+								{
+									"variable": "opt_dilemma",
+									"operator": "=",
+									"value": 2
+								}
+							}
+						]
+					],
+					"next_dialogue" : -1
+				}
+			],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+						"left": 129,
+						"right": 160,
+						"top": 353,
+						"bottom": 384
+					  },
+					"trigger_id": 80301,
+					"trigger_dialouge_id": 300
+				}
+            ]
+        }
+    ]
+}

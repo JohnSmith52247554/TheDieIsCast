@@ -1,0 +1,54 @@
+{
+    "MovableWall":
+    [
+        {
+            "x": 1,
+            "y": 15,
+            "structure_direction": "down",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 6,
+            "speed": 1,
+            "can_be_affected_by_time_control": false
+        },
+        {
+            "x": 7,
+            "y": 3,
+            "structure_direction": "down",
+            "move_direction": "null",
+            "move_distance": 1,
+            "length": 4,
+            "speed": 1,
+            "can_be_affected_by_time_control": true
+        },
+        {
+            "x": 11,
+            "y": 21,
+            "structure_direction": "right",
+            "move_direction": "up",
+            "move_distance": 5,
+            "length": 4,
+            "speed": 0.8,
+            "can_be_affected_by_time_control": true
+        }
+    ],
+    "ReceptorAndEffectors":
+    [
+        {
+            "receptor":
+            {
+                "type": "drawbar",
+                "activation_message": "move left 14",
+                "release_message": "move right 14",
+                "x": 4,
+                "y": 2,
+                "can_be_affected_by_time_control": false
+            },
+            "effector_postal_codes":
+            [
+               603979776
+            ]
+        }
+    ],
+    "NPCs": []
+}

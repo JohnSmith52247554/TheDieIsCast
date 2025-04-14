@@ -53,42 +53,35 @@ Linux目前尚未测试最低兼容的系统版本，不过只要不是太老的
 
 ## 文件结构
 
-	2025软设终审_66/
-	|--Releases/              # 适用于不同系统的发布版
-	|   |--windows/
-	|   |--macOS_x64/
-	|   |--macOS_arm/
-	|   └--Linux_64/
-	|--Source/                # 源代码、脚本及资源文件
-	|   |--External/
-	|   |   |--include/       # 附加库头文件
-	|   |   |--Frameworks_64/ #macOS动态链接所需，请根据版本修改目录名
-	|   |   |--Frameworks_arm/
-	|   |   |--lib_win32/     # 适用于不同系统的SFML库文件
-	|   |   |--lib_mac_64/ 
-	|   |   |--lib_mac_arm/
-	|   |   └--lib_linux/
-	|   |--History/
-	|   |   |--save.bin       # 用户存档
-	|   |   └--timeline.bin   # 用于实现时间逆转的记录文件
-	|   |--Include/           # 头文件
-	|   |--Resources/         # 资源文件
-	|   |   |--Background/    # 场景背景
-	|   |   |--CG/
-	|   |   |--Fonts/
-	|   |   |--Icon/
-	|   |   |--Images/        # 实体贴图和动画
-	|   |   |--Maps/
-	|   |   |--Music/         # 背景音乐
-	|   |   |--Shader/        # 着色器
-	|   |   |--Sounds/        # 音效
-	|   |   └--Info.plist     # 用于在macOS中创建应用 
-	|   |--Script/            # 脚本
-	|   |--Source/            # 源文件
-	|   |--*.dll
-	|   └--CMakeLists.txt
+	TheDieIsCast/         # 源代码、脚本及资源文件
+	|--External/
+	|   |--include/       # 附加库头文件
+	|   |--Frameworks_64/ #macOS动态链接所需
+	|   |--Frameworks_arm/
+	|   |--lib_win32/     # 适用于不同系统的SFML库文件
+	|   |--lib_mac_64/ 
+	|   |--lib_mac_arm/
+	|   └--lib_linux/
+	|--History/
+	|   |--save.bin       # 用户存档
+	|   └--timeline.bin   # 用于实现时间逆转的记录文件
+	|--Include/           # 头文件
+	|--Resources/         # 资源文件
+	|   |--Background/    # 场景背景
+	|   |--CG/
+	|   |--Fonts/
+	|   |--Icon/
+	|   |--Images/        # 实体贴图和动画
+	|   |--Maps/
+	|   |--Music/         # 背景音乐
+	|   |--Shader/        # 着色器
+	|   |--Sounds/        # 音效
+	|   └--Info.plist     # 用于在macOS中创建应用 
+	|--Script/            # 脚本
+	|--Source/            # 源文件
+	|--*.dll
+	|--CMakeLists.txt
 	|--EncodingConverter.py   # 赠品，用于批量转换编码
-	|--2025软设终审-AveMujica-66.pptx
 	|--README.md
 	└--LICENSE.md
 
@@ -128,7 +121,7 @@ make
 可以使用附赠的编码转换工具进行批量处理
 
 ```bash
-python EncodingConverter.py Source/Source -e utf-8
+python EncodingConverter.py Source -e utf-8
 ```
 
 编译完成后，请务必将输出的可执行文件复制至**CMakeLists所在的目录**，以确保游戏可以读取资源文件

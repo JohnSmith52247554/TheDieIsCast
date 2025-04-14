@@ -1,0 +1,144 @@
+{
+    "act_id": 9,
+    "name": "True Ending 2",
+    "description":"Mnema",
+    "maps":
+    [
+        {
+            "map_id": 1,
+            "name": "dream2_TE",
+            "description": "地图3-TE2",
+            "background": "",
+            "dialogues":
+            [
+                {
+					"dialogue_id": 313,
+					"speaker": "我",
+					"text": "我觉得还是不能就这样让反物质炸弹杀死几十亿无辜的民众。",
+					"choice" : [] ,
+					"next_dialogue" : 314
+				},
+				{
+					"dialogue_id": 314,
+					"speaker": "我",
+					"text": "启动时间逆转器，帮我回退至2012年。",
+					"choice" : [] ,
+					"next_dialogue" : 315
+				},
+				{
+					"dialogue_id": 315,
+					"speaker": "我",
+					"text": "对不住了，Mnema，我的挚爱。那以后，整个世界，恐怕只有我记得你了。",
+					"choice" : [] ,
+					"next_dialogue" : 316
+				},
+				{
+					"dialogue_id": 316,
+					"speaker": "",
+					"text": "…………",
+					"choice" : [] ,
+					"next_dialogue" : 317
+				}
+			],
+			"dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 1665,
+					  "right": 1696,
+					  "top": 769,
+					  "bottom": 800
+					},
+					"trigger_id": 100101,
+					"trigger_dialouge_id": 313
+				}
+            ]
+        },
+		{
+            "map_id": 2,
+            "name": "black",
+            "description": "地图3-TE2",
+            "background": "",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 317,
+					"speaker": "",
+					"text": "（2047年）",
+					"choice" : [] ,
+					"next_dialogue" : 318
+				},
+				{
+					"dialogue_id": 318,
+					"speaker": "我",
+					"text": "回退至3天前，帮我买一张去赫尔辛基的机票。有人竟敢上街游行反抗我们中央时空局！",
+					"choice" : [] ,
+					"next_dialogue" : 319
+				},
+				{
+					"dialogue_id": 319,
+					"speaker": "",
+					"text": "果然，控制了时间就是控制了一切！现在我简直是这个时间的神明！而且是唯一的神明！",
+					"choice" : [] ,
+					"next_dialogue" : 320
+				},
+				{
+					"dialogue_id": 320,
+					"speaker": "",
+					"text": "回头向下属传达命令时，我余光中瞥到了房间一角的画框。那是我花重金在这个油画家已寥寥无几的后信息时代，凭借我的记忆绘制出的，Mnema的画像。",
+					"choice" : [] ,
+					"next_dialogue" : 321
+				},
+				{
+					"dialogue_id": 321,
+					"speaker": "",
+					"text": "她金色的发梢，依然如太阳般闪耀。不过，如今的太阳太刺目，恐怕会灼伤我的心灵。",
+					"choice" : [] ,
+					"next_dialogue" : 322
+				},
+				{
+					"dialogue_id": 322,
+					"speaker": "",
+					"text": "没有人感谢我，阻止了那场战争，甚至不会有人记得——那是当然。我的心恐怕也不会再为另一个人敞开了。毕竟，藏在时空裂缝中的秘密实在是太多太多。",
+					"choice" : [] ,
+					"next_dialogue" : 323
+				},
+				{
+					"dialogue_id": 323,
+					"speaker": "",
+					"text": "这大概也是成为神明，所背负的过去吧——或许是罪恶，或许是不纯洁的善，或许是纯粹的欲望。总而言之，是只属于我——这个时空旅行家的故事。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						},
+						{
+                            "variable": "True Ending 2",
+                            "operator": "=",
+                            "value": 1
+                        }
+                    ]
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+					  "left": 929,
+					  "right": 960,
+					  "top": 929,
+					  "bottom": 960
+					},
+					"trigger_id": 100201,
+					"trigger_dialouge_id": 317
+				}
+            ]
+        }
+    ]
+}

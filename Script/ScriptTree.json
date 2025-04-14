@@ -4,44 +4,129 @@
     {
         "act_id": 1,
         "act_file_name": "Act_1.json",
-        "act_name": "第一幕",
+        "act_name": "map1-3",
         "next_act":
         [
             {
                 "next_act_id": 2,
-                "enter_condition":[
-                    {
-                        "variable": "ending_has_achieved",
-                        "operator": "<<!&",
-                        "value": 0
-                    }
-                ]
-            },
-            {
-                "next_act_id": 3,
-                "enter_condition":[
-                    {
-                        "variable": "ending_has_achieved",
-                        "operator": "<<&",
-                        "value": 0
-                    }
-                ]
+                "enter_condition": []
             }
         ]
     },
     {
         "act_id": 2,
         "act_file_name": "Act_2.json",
-        "act_name": "第二幕",
-        "next_act": [],
-        "end_name": "Bad Ending 1"
+        "act_name": "map4-6",
+        "next_act":
+        [
+            {
+                "next_act_id": 3,
+                "enter_condition":
+                [
+                    {
+                        "variable": "opt_join_association",
+                        "operator": "==",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "next_act_id": 4,
+                "enter_condition":
+                [
+                    {
+                        "variable": "opt_join_association",
+                        "operator": "==",
+                        "value": 0
+                    },
+                    {
+                        "variable": "Normal Ending 1",
+                        "operator": "<<&",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "next_act_id": 6,
+                "enter_condition":
+                [
+                    {
+                        "variable": "opt_join_association",
+                        "operator": "==",
+                        "value": 0
+                    },
+                    {
+                        "variable": "Normal Ending 1",
+                        "operator": "<<!&",
+                        "value": 2
+                    }
+                ]
+            }
+        ]
     },
     {
         "act_id": 3,
-        "act_file_name": "Act_3.json",
-        "act_name": "第三幕",
+        "act_file_name": "Act_3_Normal_Ending.json",
+        "act_name": "NE",
+        "next_act": []
+    },
+    {
+        "act_id": 6,
+        "act_file_name": "Act_6_Bad_Ending.json",
+        "act_name": "BE",
         "next_act": [],
-        "end_name": "end2"
+        "end_name":"Bad Ending"
+    },
+    {
+        "act_id": 7,
+        "act_file_name": "Act_7_Normal_Ending_2.json",
+        "act_name": "NE2",
+        "next_act": [],
+        "end_name":"Normal Ending 2"
+    },
+    {
+        "act_id": 8,
+        "act_file_name": "Act_8.json",
+        "act_name": "second cycle",
+        "next_act":
+        [
+            {
+                "next_act_id": 9,
+                "enter_condition":
+                [
+                    {
+                        "variable": "opt_dilemma",
+                        "operator": "==",
+                        "value": 1
+                    }
+                ]
+            },
+            {
+                "next_act_id": 10,
+                "enter_condition":
+                [
+                    {
+                        "variable": "opt_dilemma",
+                        "operator": "==",
+                        "value": 2
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "act_id": 9,
+        "act_file_name": "Act_9_True_Ending_1.json",
+        "act_name": "TE1",
+        "next_act": [],
+        "end_name":"True Ending 1"
+    },
+    {
+        "act_id": 10,
+        "act_file_name": "Act_10_True_Ending_2.json",
+        "act_name": "TE2",
+        "next_act": [],
+        "end_name": "True Ending 2"
     }
     ]
 }

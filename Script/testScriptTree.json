@@ -1,0 +1,12 @@
+{
+    "script_tree":
+    [
+    {
+        "act_id": 1,
+        "act_file_name": "Act_6_Bad_Ending.json",
+        "act_name": "test maps",
+        "next_act": [],
+        "end_name": "test"
+    }
+    ]
+}
