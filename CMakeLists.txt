@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-project(TheDieIsCast VERSION 0.9)
+project(TheDieIsCast VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
@@ -47,12 +47,15 @@ elseif(APPLE)
         message(FATAL_ERROR "CoreFoundation framework not found")
     endif()
     if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
-        file(COPY ${CMAKE_SOURCE_DIR}/External/Frameworks_64
-        ${CMAKE_SOURCE_DIR}/External/lib_mac_64
-        DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External)
         if (EXISTS ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks)
             file(DELETE ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks)
         endif()
+        if (EXISTS ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks_64)
+            file(DELETE ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks_64)
+        endif()
+        file(COPY ${CMAKE_SOURCE_DIR}/External/Frameworks_64
+        ${CMAKE_SOURCE_DIR}/External/lib_mac_64
+        DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External)
         file(RENAME ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks_64
         ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks)
         set(SFML_ROOT "${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/lib_mac_64")
@@ -72,12 +75,15 @@ elseif(APPLE)
         ${SFML_ROOT}/libsfml-graphics.2.6.2.dylib 
         ${SFML_ROOT}/libsfml-window.2.6.2.dylib)
     elseif(CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
-        file(COPY ${CMAKE_SOURCE_DIR}/External/Frameworks_arm
-        ${CMAKE_SOURCE_DIR}/External/lib_mac_arm
-        DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External)
         if (EXISTS ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks)
             file(DELETE ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks)
         endif()
+        if (EXISTS ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks_arm)
+            file(DELETE ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks_arm)
+        endif()
+        file(COPY ${CMAKE_SOURCE_DIR}/External/Frameworks_arm
+        ${CMAKE_SOURCE_DIR}/External/lib_mac_arm
+        DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External)
         file(RENAME ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks_arm
         ${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/Frameworks)
         set(SFML_ROOT "${CMAKE_BINARY_DIR}/${CMAKE_PROJECT_NAME}.app/Contents/External/lib_mac_arm")
@@ -104,4 +110,13 @@ elseif(UNIX AND NOT APPLE)
     ${SFML_ROOT}/libsfml-audio.so.2.6.2 
     ${SFML_ROOT}/libsfml-graphics.so.2.6.2 
     ${SFML_ROOT}/libsfml-window.so.2.6.2)
+endif()
+
+if(MSVC)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /O2")
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
 endif()

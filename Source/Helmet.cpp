@@ -13,7 +13,7 @@ Helmet::Helmet(int i_x, int i_y, ObjectManagement* i_object_manager)
 
 	this->activation_message = "helmet on";
 	this->release_message = "";
-	this->effectors_list.push_back(0U);
+	this->effectors_list.push_back(2 << 26);
 
 	this->can_be_affected_by_time_control = false;
 

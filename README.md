@@ -13,6 +13,8 @@
 
 由于中文输入法往往会拦截键盘事件，请在游玩时**切换至英文输入法**。
 
+此外，由于游玩本游戏时可能会频繁按下shift，推荐您**关闭windows粘滞键**。具体方法为：设置->辅助功能->键盘->粘滞键->粘滞键的键盘快捷方式，设置为关。
+
 | **功能** | **键位**                                        |
 | ------ | --------------------------------------------- |
 | 移动     | AD或左右方向键                                      |
@@ -181,6 +183,23 @@ python EncodingConverter.py Source -e utf-8
 ## github repository
 
 https://github.com/JohnSmith52247554/TheDieIsCast
+
+## 使用的其他开源项目
+
+### SFML
+https://github.com/SFML/SFML
+
+Zlib license
+
+### tinyXML2
+https://github.com/leethomason/tinyxml2
+
+Zlib license
+
+### nlohmann/json
+https://github.com/nlohmann/json
+
+MIT license
 
 ## 贡献
 

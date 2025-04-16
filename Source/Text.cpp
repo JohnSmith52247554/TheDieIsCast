@@ -146,8 +146,15 @@ sf::FloatRect Text::getGloabalBounds() const
 	textBounds.top -= margin + 2;
 	if (background_width > textBounds.width)
 	{
-		textBounds.left -= (background_width - textBounds.width) / 2;
-		textBounds.width = background_width;
+		if (this->mode == 0)
+		{
+			textBounds.left -= (background_width - textBounds.width) / 2;
+			textBounds.width = background_width;
+		}
+		else if (this->mode == 1)
+		{
+			textBounds.width = background_width;
+		}
 	}
 	return textBounds;
 }

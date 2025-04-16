@@ -7,7 +7,7 @@
         {
             "map_id": 1,
             "name": "world6-world2",
-            "description": "二周目地图2",
+            "description": "地图2",
             "background": "city",
 			"be_able_to_rewind_time": false,
             "dialogues":
@@ -38,12 +38,7 @@
 							"variable": "switch_to_next_scene",
 							"operator": "=",
 							"value": 1
-						},
-						{
-                            "variable": "Bad Ending 1",
-                            "operator": "=",
-                            "value": 1
-                        }
+						}
                     ]
 				}
             ],

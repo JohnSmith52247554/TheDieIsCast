@@ -30,7 +30,7 @@
             "can_be_affected_by_time_control": false
         },
         {
-            "x": 64,
+            "x": 62,
             "y": 15,
             "structure_direction": "right",
             "length": 4,
@@ -39,7 +39,7 @@
             "speed": 1
         },
         {
-            "x": 62,
+            "x": 60,
             "y": 17,
             "structure_direction": "right",
             "length": 4,

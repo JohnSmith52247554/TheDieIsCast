@@ -373,5 +373,13 @@ namespace Script
             *value += (1 << expression.value);
             return true;
         }
+        else if (expression.i_operator == "-<<")
+        {
+            if (!(*value & (1 << expression.value)))
+                return false;
+            *value -= (1 << expression.value);
+            return true;
+        }
+        return false;
     }
 }

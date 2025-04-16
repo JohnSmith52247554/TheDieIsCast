@@ -6,10 +6,12 @@
     [
         {
             "map_id": 1,
-            "name": "world6-world2",
+            "name": "world4",
             "background": "city",
+            "global_mode": true,
             "dialogues":[],
             "dialogue_trigger": []
+
         }
     ]
 }

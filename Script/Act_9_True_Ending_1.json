@@ -6,9 +6,9 @@
     [
         {
             "map_id": 1,
-            "name": "3",
-            "description": "地图3-TE1",
-            "background": "",
+            "name": "dream2_TE",
+            "description": "梦世界",
+            "background": "night",
             "dialogues":
             [
                 {
@@ -72,12 +72,7 @@
 							"variable":"switch_to_next_scene",
 							"operator": "=",
 							"value":1
-						},
-						{
-                            "variable": "True Ending 1",
-                            "operator": "=",
-                            "value": 1
-                        }
+						}
                     ]
 				}
             ],

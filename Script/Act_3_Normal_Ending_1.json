@@ -8,7 +8,7 @@
             "map_id": 1,
             "name": "world7",
             "description": "地图7",
-            "background": "",
+            "background": "base",
 			"global_mode": true,
             "dialogues":
             [
@@ -57,8 +57,8 @@
                 {
 					"trigger_zone":
 					{
-					  "left": 705,
-					  "right": 768,
+					  "left": 801,
+					  "right": 832,
 					  "top": 65,
 					  "bottom": 128
 					},
@@ -71,9 +71,10 @@
             "map_id": 2,
             "name": "world7-world6",
             "description": "地图6",
-            "background": "",
+            "background": "base",
+			"global_mode": true,
             "dialogues":[],
-            "dialogue_trigger": []
+            "dialogue_trigger":[]
         },
         {
             "map_id": 3,
@@ -136,23 +137,11 @@
 					"speaker": "我",
 					"text": "……是不是发生了什么重要的事情？——唉算了不管了，先接着做实验吧，再不完成要延毕了。",
 					"choice" : [] ,
-					"next_dialogue" : 260
-				},
-				{
-					"dialogue_id": 260,
-					"speaker": "我",
-					"text": "这里，似乎发生过很多奇妙的事情。像是一个无限循环的梦境一样。——唉，不想这些了，一定都是我没做出成果的幻觉罢了。",
-					"choice" : [] ,
 					"next_dialogue" : -1,
 					"effects":
 					[
 						{
 							"variable": "switch_to_next_scene",
-							"operator": "=",
-							"value": 1
-						},
-						{
-							"variable": "Normal Ending 1",
 							"operator": "=",
 							"value": 1
 						}
@@ -171,6 +160,44 @@
 					},
 					"trigger_id": 30301,
 					"trigger_dialouge_id": 252
+				}
+            ]
+        },
+		{
+            "map_id": 3,
+            "name": "world8-world2",
+            "description": "地图2",
+            "background": "city",
+            "dialogues":
+            [
+				{
+					"dialogue_id": 260,
+					"speaker": "我",
+					"text": "这里，似乎发生过很多奇妙的事情。像是一个无限循环的梦境一样。——唉，不想这些了，一定都是我没做出成果的幻觉罢了。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				}
+            ],
+            "dialogue_trigger":
+            [
+                {
+					"trigger_zone":
+					{
+						"left": 1569,
+						"right": 1600,
+						"top": 609,
+						"bottom": 640
+					},
+					"trigger_id": 30401,
+					"trigger_dialouge_id": 260
 				}
             ]
         }

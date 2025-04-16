@@ -9,20 +9,42 @@
             "name": "world9",
             "description": "地图9",
             "background": "",
-            "dialogues":[],
-            "dialogue_trigger": [],
+            "dialogues":
+			[
+				{
+					"dialogue_id": 530,
+					"speaker": "AI",
+					"text": "因为你已经收集到特殊能源，可以进行更大跨度的时间回溯，如果你只是倒流到捡起时间逆转器的时刻，他们还是能从正向时间继续追杀你！你需要继续倒流直至组织彻底不存在为止！",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+			],
+            "dialogue_trigger":
+			[
+				{
+					"trigger_zone":
+					{
+					  "left": 1473,
+					  "right": 1504,
+					  "top": 609,
+					  "bottom": 640
+					},
+					"trigger_id": 40101,
+					"trigger_dialouge_id": 530
+				}
+			],
             "global_mode": true,
             "recorded_timeline_filename": "timeline_world_9.bin",
             "forward_time_limit":
             {
-                "second": 10,
-                "message": "他们要追上来了！快倒流时间阻止他们！"
+                "second": 30,
+                "message": "他们真的追上了！不过，这是记忆，我还有机会……"
             }
         },
         {
             "map_id": 2,
             "name": "black",
-            "description": "地图9",
+            "description": "",
             "background": "",
             "dialogues":
             [
@@ -59,7 +81,15 @@
 					"speaker": "我",
 					"text": "理论上并不是……他们依然拥有时间逆转器，因为这是从平行世界回退时间的机器，并不随现实世界时间点变动。——不过他们确实找不到你了，因为还未创造出时间逆转器的时空中，他们无法获取完整的世界情报数据，你的行踪对于他们而言是不透明的。",
 					"choice" : [] ,
-					"next_dialogue" : -1
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
 				}
             ],
             "dialogue_trigger":
@@ -72,8 +102,8 @@
 					  "top": 929,
 					  "bottom": 960
 					},
-					"trigger_id": 40101,
-					"trigger_dialouge_id": -1
+					"trigger_id": 40201,
+					"trigger_dialouge_id": 500
 				}
             ]
         }

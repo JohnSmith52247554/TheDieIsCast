@@ -39,6 +39,12 @@ void Interface::draw(sf::RenderTarget& target, sf::RenderStates states) const
 		};
 		text_list.at(i)->setCenter(text_center);
 		target.draw(*text_list.at(i), states);
+
+		/*auto bounds = text_list.at(i)->getGloabalBounds();
+		sf::RectangleShape rect({bounds.width, bounds.height});
+		rect.setPosition(bounds.left, bounds.top);
+		rect.setFillColor(sf::Color(255, 255, 255, 100));
+		target.draw(rect);*/
 	}
 
 	if (button_num > 0)
@@ -479,12 +485,13 @@ void DialogueInterface::initChoices()
 
 		text_list.push_back(text);
 	}
+
 	for (int i = 0; i < element_list.size(); i++)
 	{
 		if (element_list.at(i).align)
 		{
 			//??????
-			text_list.at(i)->setBackgroundWidthForcely(max_width + CELL_SIZE * 4);
+			text_list.at(i)->setBackgroundWidthForcely(max_width + CELL_SIZE * 3);
 		}
 	}
 
@@ -495,6 +502,17 @@ void DialogueInterface::initChoices()
 		choose_box->setFillColor(sf::Color(0, 0, 0, 0));
 		choose_box->setOutlineColor(sf::Color::White);
 		choose_box->setOutlineThickness(1);
+	}
+
+	if (text_list.size() > 1)
+	{
+		auto choice_box_left_edge = text_list.at(1)->getGloabalBounds().left;
+		float dialogue_box_left_edge = text_list.at(0)->getGloabalBounds().left;
+		float delta = choice_box_left_edge - dialogue_box_left_edge;
+		for (int i = 1; i < text_list.size(); i++)
+		{
+			element_list.at(i).center.x -= delta;
+		}
 	}
 }
 
@@ -644,7 +662,7 @@ void DialogueInterface::update(sf::RenderWindow* window)
 				prev_char_num++)
 			{
 				if (text_list.at(0)->getTextBounds().width > 740)
-					text.insert(std::max(text.size() - 1U, static_cast<size_t>(0)), L"\n");
+					text.insert(std::max(text.size() - 2U, static_cast<size_t>(0)), L"\n");
 				text += dialogue.text[prev_char_num];
 				text_list.at(0)->setMessage(text);
 			}
@@ -682,9 +700,9 @@ void DialogueInterface::update(sf::RenderWindow* window)
 					};
 					element_list.push_back(choice_text);
 				}
-			}
 
-			initChoices();
+				initChoices();
+			}
 		}
 	}
 	else
@@ -696,6 +714,8 @@ void DialogueInterface::update(sf::RenderWindow* window)
 			{
 				sf::Vector2i mousePosWindow = sf::Mouse::getPosition(*window);
 				sf::Vector2f mousePosView = window->mapPixelToCoords(mousePosWindow);
+				float scale_factor = view.getSize().x / SCREEN_WIDTH;
+				sf::FloatRect choice_bounds;
 
 				for (int i = 0; i < text_list.size(); i++)
 				{
@@ -703,7 +723,12 @@ void DialogueInterface::update(sf::RenderWindow* window)
 						continue;
 
 					Text* text = text_list.at(i);
-					if (text->getGloabalBounds().contains(mousePosView))
+					choice_bounds = text->getGloabalBounds();
+					choice_bounds.left *= scale_factor;
+					choice_bounds.top *= scale_factor;
+					choice_bounds.width *= scale_factor;
+					choice_bounds.height *= scale_factor;
+					if (choice_bounds.contains(mousePosView))
 					{
 						element_list.at(i).function();
 					}
@@ -714,8 +739,6 @@ void DialogueInterface::update(sf::RenderWindow* window)
 				delay--;
 
 			setChooseBox();
-
-			
 		}
 		
 	}

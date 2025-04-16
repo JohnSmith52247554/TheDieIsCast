@@ -1,14 +1,14 @@
 {
     "act_id": 8,
-    "name": "",
-    "description":"继续深入",
+    "name": "Act_8",
+    "description":"111",
     "maps":
     [
         {
             "map_id": 1,
             "name": "world10",
-            "description": "地图10 二周目分支",
-            "background": "",
+            "description": "地图10",
+            "background": "city",
             "dialogues":
             [
 				{
@@ -156,7 +156,15 @@
 					"speaker": "我",
 					"text": "我尽量吧。",
 					"choice" : [] ,
-					"next_dialogue" : -1
+					"next_dialogue" : -1,
+					"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						}
+                    ]
 				}	
             ],
             "dialogue_trigger":
@@ -164,10 +172,10 @@
                 {
 					"trigger_zone":
 					{
-						"left": 129,
-						"right": 160,
-						"top": 353,
-						"bottom": 384
+						"left": 161,
+						"right": 192,
+						"top": 673,
+						"bottom": 704
 					  },
 					"trigger_id": 80101,
 					"trigger_dialouge_id": 267
@@ -178,7 +186,7 @@
             "map_id": 2,
             "name": "world8",
             "description": "地图8 研发成功之后",
-            "background": "",
+            "background": "lab",
             "dialogues":
             [
 				{
@@ -214,7 +222,15 @@
 					"speaker": "我",
 					"text": "试试看吧。",
 					"choice" : [] ,
-					"next_dialogue" : -1
+					"next_dialogue" : -1,
+					"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						}
+                    ]
 				}
 			],
             "dialogue_trigger":
@@ -228,14 +244,14 @@
 					  "bottom": 384
 					},
 					"trigger_id": 80201,
-					"trigger_dialouge_id": 280
+					"trigger_dialouge_id": 262
 				}
             ]
         },
 		{
             "map_id": 3,
             "name": "dream2_TE",
-            "description": "地图3",
+            "description": "梦世界",
             "background": "",
             "dialogues":
             [
@@ -266,30 +282,24 @@
 					"text": "怎么办呢？两边都是我最不希望放弃的事情啊。",
 					"choice" :
 					[
-						[
+						{
+							"choice_id": 3031,
+							"text": "Mnema Sorel",
+							"next_dialogue": -1,
+							"effects":
+							[
 							{
-								"choice_id": 3031,
-								"text": "Mnema Sorel",
-								"next_dialogue": -1,
-								"effects":
-								{
-									"variable": "opt_dilemma",
-									"operator": "=",
-									"value": 1
-								}
-							},
-							{
-								"choice_id": 3032,
-								"text": "阻止世界大战",
-								"next_dialogue": -1,
-								"effects":
-								{
-									"variable": "opt_dilemma",
-									"operator": "=",
-									"value": 2
-								}
+								"variable": "ending",
+								"operator": "+<<",
+								"value": 3
 							}
-						]
+							]
+						},
+						{
+							"choice_id": 3032,
+							"text": "阻止世界大战",
+							"next_dialogue": -1
+						}
 					],
 					"next_dialogue" : -1
 				}

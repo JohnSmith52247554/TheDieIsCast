@@ -2,10 +2,10 @@
     "MovableWall":
     [
         {
-            "x": 10,
+            "x": 8,
             "y": 4,
             "structure_direction": "right",
-            "length": 3,
+            "length": 4,
             "move_direction": "right",
             "move_distance": 3,
             "speed": 0.6

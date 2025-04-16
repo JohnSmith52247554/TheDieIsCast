@@ -197,6 +197,7 @@ void Player::update()
 			return;
 		}
 
+		bool auto_jump = false;
 		//水平移动
 		if (dialogue_mode == false)	//剧情模式下无法控制
 		{
@@ -213,6 +214,12 @@ void Player::update()
 						is_walking = true;
 					}
 				}
+				else if (MapCollision::getCell(cell_x, cell_y - CELL_SIZE) != Wall && MapCollision::getCell(coord.x, coord.y - CELL_SIZE) != Wall)
+				{
+					vertical_speed += PLAYER_AUTO_JUMP_SPEED;
+					auto_jump = true;
+				}
+
 			}
 			else if (walk_right_key_pressed)
 			{
@@ -225,6 +232,11 @@ void Player::update()
 							this->horizontal_speed += PLAYER_ACCELERATION;
 						is_walking = true;
 					}
+				}
+				else if (MapCollision::getCell(cell_x, cell_y - CELL_SIZE) != Wall && MapCollision::getCell(coord.x, coord.y - CELL_SIZE) != Wall)
+				{
+					vertical_speed += PLAYER_AUTO_JUMP_SPEED;
+					auto_jump = true;
 				}
 			}
 			else
@@ -302,7 +314,8 @@ void Player::update()
 				jump_coolen = 20;
 				jump_timer = 0;
 			}
-			this->vertical_speed = reference_system_vertical_speed;
+			if (!auto_jump)
+				this->vertical_speed = reference_system_vertical_speed;
 
 			if (!stand_on_movable_wall)
 				coord.y = static_cast<short>(coord.y - CELL_SIZE / 2) / CELL_SIZE * CELL_SIZE + CELL_SIZE / 2;
@@ -324,7 +337,7 @@ void Player::update()
 			jump_coolen--;
 
 		//头顶撞墙
-		if (collision & (1 << 2) && vertical_speed < 0)
+		if (vertical_speed < 0 && collision & (1 << 2) && !auto_jump)
 		{
 			this->vertical_speed = 0.01;
 		}

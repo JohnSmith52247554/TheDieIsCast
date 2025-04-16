@@ -2,8 +2,8 @@
     "MovableWall":
     [
         {
-            "x": 27,
-            "y": 22,
+            "x": 32,
+            "y": 21,
             "structure_direction": "up",
             "move_direction": "null",
             "move_distance": 1,
@@ -12,8 +12,8 @@
             "can_be_affected_by_time_control": true
         },
         {
-            "x": 29,
-            "y": 22,
+            "x": 34,
+            "y": 21,
             "structure_direction": "up",
             "move_direction": "null",
             "move_distance": 1,
@@ -22,8 +22,8 @@
             "can_be_affected_by_time_control": true
         },
         {
-            "x": 12,
-            "y": 6,
+            "x": 17,
+            "y": 5,
             "structure_direction": "up",
             "move_direction": "null",
             "move_distance": 1,
@@ -32,8 +32,8 @@
             "can_be_affected_by_time_control": true
         },
         {
-            "x": 14,
-            "y": 6,
+            "x": 19,
+            "y": 5,
             "structure_direction": "up",
             "move_direction": "null",
             "move_distance": 1,
@@ -42,8 +42,8 @@
             "can_be_affected_by_time_control": true
         },
         {
-            "x": 16,
-            "y": 6,
+            "x": 21,
+            "y": 5,
             "structure_direction": "up",
             "move_direction": "null",
             "move_distance": 1,
@@ -60,8 +60,8 @@
                 "type": "pressure_plate",
                 "activation_message": "move down 3",
                 "release_message": "move up 3",
-                "x": 30,
-                "y": 18
+                "x": 35,
+                "y": 17
             },
             "effector_postal_codes":
             [
@@ -74,8 +74,8 @@
                 "type": "pressure_plate",
                 "activation_message": "move down 3",
                 "release_message": "move up 3",
-                "x": 30,
-                "y": 14
+                "x": 35,
+                "y": 13
             },
             "effector_postal_codes":
             [
@@ -88,8 +88,8 @@
                 "type": "pressure_plate",
                 "activation_message": "move up 3",
                 "release_message": "move down 3",
-                "x": 30,
-                "y": 18
+                "x": 35,
+                "y": 17
             },
             "effector_postal_codes":
             [
@@ -102,8 +102,8 @@
                 "type": "pressure_plate",
                 "activation_message": "move up 3",
                 "release_message": "move down 3",
-                "x": 30,
-                "y": 14
+                "x": 35,
+                "y": 13
             },
             "effector_postal_codes":
             [
@@ -116,8 +116,8 @@
                 "type": "pressure_plate",
                 "activation_message": "move up 3",
                 "release_message": "move down 3",
-                "x": 30,
-                "y": 10
+                "x": 35,
+                "y": 9
             },
             "effector_postal_codes":
             [
@@ -129,10 +129,10 @@
     [
         {
             "npc_id": 2,
-            "npc_skin_id": 18,
+            "npc_skin_id": 9,
             "name": "？？？",
-            "x": 33,
-            "y": 26,
+            "x": 44,
+            "y": 3,
             "dialogues":
             [
                 {
@@ -144,9 +144,9 @@
                     "effects":
                     [
                         {
-                            "variable": "bonus_energy",
-                            "operator": "=",
-                            "value": 1
+                            "variable": "ending",
+                            "operator": "+<<",
+                            "value": 2
                         },
                         {
                             "variable": "switch_to_next_scene",

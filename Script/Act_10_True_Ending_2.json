@@ -1,5 +1,5 @@
 {
-    "act_id": 9,
+    "act_id": 10,
     "name": "True Ending 2",
     "description":"Mnema",
     "maps":
@@ -7,8 +7,8 @@
         {
             "map_id": 1,
             "name": "dream2_TE",
-            "description": "地图3-TE2",
-            "background": "",
+            "description": "梦世界",
+            "background": "night",
             "dialogues":
             [
                 {
@@ -37,7 +37,15 @@
 					"speaker": "",
 					"text": "…………",
 					"choice" : [] ,
-					"next_dialogue" : 317
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable":"switch_to_next_scene",
+							"operator":"=",
+							"value":1
+						}
+					]
 				}
 			],
 			"dialogue_trigger":
@@ -116,12 +124,7 @@
 							"variable":"switch_to_next_scene",
 							"operator": "=",
 							"value":1
-						},
-						{
-                            "variable": "True Ending 2",
-                            "operator": "=",
-                            "value": 1
-                        }
+						}
                     ]
 				}
             ],

@@ -30,7 +30,7 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
     MapCollision::clear();
     MapCollision::setMapSize(m_mapWidth, m_mapHeight);
 
-    // 解析 TSX 文件获取纹理路径
+    //解析TSX文件获取纹理
     for(const auto& tsx : tsx_source)
     {
         full_dir = EXE_DIR / "Resources" / "Maps" / tsx.source;
@@ -47,8 +47,9 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
         sf::Texture tileset;
         if (!tileset.loadFromFile(full_dir.string()))
         {
-
-            std::cerr << "Failed to load texture: " << full_dir << std::endl;
+            std::string str = "Failed to load texture: " + full_dir.string();
+            std::cerr << str << std::endl;
+            throw std::logic_error(str);
             return false;
         }
         m_tileset.push_back(tileset);
@@ -57,6 +58,7 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
     // 清空旧的图层数据
     m_layers.clear();
 
+    int flag = 0;
     // 处理每个图层的数据
     for (const auto& tileData : layersData)
     {
@@ -76,29 +78,30 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
             vertices.resize(m_mapWidth * m_mapHeight * 4);
 
             // 填充顶点数组
-            for (int y = 0; y < m_mapHeight; ++y)
+            for (int y = 0; y < m_mapHeight; y++)
             {
-                for (int x = 0; x < m_mapWidth; ++x)
+                for (int x = 0; x < m_mapWidth; x++)
                 {
                     uint32_t rawTileData = tileData[y * m_mapWidth + x];
                     int tileNumber = rawTileData & 0x1FFFFFFF; // 获取图块 ID（去除标志位）
                     tileNumber -= 1; // Tiled ID 从 1 开始，SFML 需要 0-based
                     int textureTileNumber = tileNumber - (tsx.firstgid - 1);    //得到去除纹理标志的number
-                    if (tileNumber > next_first_gid - 2)
+                    if (next_first_gid != -1 && tileNumber >= next_first_gid)
                         exist_next_tsx = true;
 
                     if (textureTileNumber < 0)
                         continue; // 忽略空白图块
+                    if (next_first_gid != -1 && tileNumber >= next_first_gid - 1)
+                        continue;
                     is_empty = false;
 
                     //将第一个图层视为Wall层
                     if (tileData == layersData[0])
                     {
                         //设置碰撞
-                        if (textureTileNumber == 9 - 1 || textureTileNumber == 10 - 1) //单独设置地刺的碰撞
+                        if (is_base_set && (textureTileNumber == 9 - 1 || textureTileNumber == 10 - 1)) //单独设置地刺的碰撞
                         {
-                            if (is_base_set)
-                                MapCollision::setCell(x, y, Thorn);
+                            MapCollision::setCell(x, y, Thorn);
                         }
                         else
                         {
@@ -111,7 +114,7 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
                     int tv = textureTileNumber / (tileset_texture.getSize().x / m_tileWidth);
 
                     // 判断翻转和旋转标志
-                    bool index1 = (rawTileData & 0x80000000) != 0;   //左右翻转
+                    bool index1 = (rawTileData & 0x80000000) != 0; //左右翻转
                     bool index2 = (rawTileData & 0x40000000) != 0; //上下翻转
                     bool index3 = (rawTileData & 0x20000000) != 0; //旋转
 
@@ -129,7 +132,7 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
                     short flip_case = (index1 << 2) + (index2 << 1) + index3;
 
                     //将第二个图层视为Object层，记录信息
-                    if (layersData.size() >= 2 && tileData == layersData[1])
+                    if (flag == 1)
                     {
                         // 将纹理复制到一个Image对象中
                         sf::Image tilesetImage = tileset_texture.copyToImage();
@@ -204,12 +207,13 @@ bool TileMap::loadFromFile(const std::string& tmxFile, ObjectManagement* i_enemy
                 }
             }
 
-            if (!is_empty)
+            if (!is_empty && flag != 1)
                 m_layers.push_back({ vertices, i });
 
             if (!exist_next_tsx)
                 break;
         }
+        flag++;
     }
 
     return true;
@@ -232,9 +236,9 @@ bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint3
 
     //获取.tsx文件
     //获取所有<tileset>元素
-    tinyxml2::XMLElement* pTileset = mapElement->FirstChildElement("tileset");
-    
-    while (pTileset != nullptr)
+    for (auto pTileset = mapElement->FirstChildElement("tileset"); 
+        pTileset != nullptr;
+        pTileset = pTileset->NextSiblingElement("tileset"))
     {
         //获取source和firstgid
         const char* source = pTileset->Attribute("source");
@@ -242,7 +246,6 @@ bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint3
         if (source == nullptr) 
             source = "DefaultMapSet.tsx";
         tsx_source.push_back(SourceInfo{ firstgid, source });
-        pTileset = pTileset->NextSiblingElement("tileset");
     }
 
     mapElement->QueryIntAttribute("width", &m_mapWidth);
@@ -252,7 +255,7 @@ bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint3
 
     // 解析所有的 layer
     for (auto layerElement = mapElement->FirstChildElement("layer");
-        layerElement;
+        layerElement != nullptr;
         layerElement = layerElement->NextSiblingElement("layer"))
     {
         auto dataElement = layerElement->FirstChildElement("data");
@@ -269,7 +272,7 @@ bool TileMap::parseTMX(const std::string& tmxFile, std::vector<std::vector<uint3
             tileData.push_back(static_cast<uint32_t>(std::stoul(tile)));
         }
 
-        layersData.push_back(tileData);
+        layersData.push_back(std::move(tileData));
     }
 
     return true;
@@ -288,13 +291,16 @@ bool TileMap::parseTSX(const std::string& tsxFile, std::string& tilesetImage)
     }
 
     auto tilesetElement = doc.FirstChildElement("tileset");
-    if (!tilesetElement) return false;
+    if (!tilesetElement) 
+        return false;
 
     auto imageElement = tilesetElement->FirstChildElement("image");
-    if (!imageElement) return false;
+    if (!imageElement) 
+        return false;
 
     const char* source = imageElement->Attribute("source");
-    if (!source) return false;
+    if (!source) 
+        return false;
 
     tilesetImage = source;
     return true;
@@ -304,6 +310,7 @@ bool TileMap::parseTSX(const std::string& tsxFile, std::string& tilesetImage)
 void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
     states.transform *= getTransform();
+    states.blendMode = sf::BlendAlpha;
 
     // 计算可视范围的图块索引
     int startX = std::max((view.getCenter().x - view.getSize().x * LOADING_FACTOR)  / m_tileWidth, 0.f);
@@ -374,8 +381,6 @@ void TileMap::spawnObject(ObjectManagement* i_enemy_manager, const std::string& 
         //读取地图注释
         MapNote::parseMapNote(file_dir.string(), map_note);
 
-        /*std::cout << "Parse map note success." << std::endl;*/
-
         //生成movable wall
         for (const auto& i_movable_wall : map_note.movable_walls)
         {
@@ -404,10 +409,6 @@ void TileMap::spawnObject(ObjectManagement* i_enemy_manager, const std::string& 
             receptors.push_back(r);
         }
     }
-    //else
-    //{
-    //    /* std::cout << "Map note " << map_name << " doesn't exist." << std::endl;*/
-    //}
 
     std::vector<std::array<int, 2>> final_coord;  //将会选取第一个和最后一个张成的矩形
 

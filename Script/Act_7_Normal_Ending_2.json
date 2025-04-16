@@ -16,7 +16,14 @@
 					"speaker": "AI",
 					"text": "已为您逆转时间至2012年7月14日13：00，地点为东京都千代田区，世界代码World 7X",
 					"choice" : [] ,
-					"next_dialogue" : 268
+					"next_dialogue" :540 
+				},
+				{
+					"dialogue_id": 540,
+					"speaker": "我",
+					"text": "到实验室去看看吧。",
+					"choice" : [] ,
+					"next_dialogue" : -1
 				},
 				{
 					"dialogue_id": 268,
@@ -51,8 +58,50 @@
 					"speaker": "我",
 					"text": "对了，我还能和Mnema重逢。这么想，平凡的一生也很好嘛！",
 					"choice" : [] ,
-					"next_dialogue" : 273
+					"next_dialogue" : -1,
+					"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						}
+                    ]
+				}
+			],
+            "dialogue_trigger":
+            [
+				{
+					"trigger_zone":
+					{
+					  "left": 161,
+					  "right": 192,
+					  "top": 673,
+					  "bottom": 704
+					},
+					"trigger_id": 70101,
+					"trigger_dialouge_id": 267
 				},
+                {
+					"trigger_zone":
+					{
+					  "left": 1505,
+					  "right": 1536,
+					  "top": 673,
+					  "bottom": 704
+					},
+					"trigger_id": 70201,
+					"trigger_dialouge_id": 268
+				}
+            ]
+        },
+		{
+            "map_id": 2,
+            "name": "black",
+            "description": "Normal Ending 2",
+            "background": "",
+            "dialogues":
+            [
 				{
 					"dialogue_id": 273,
 					"speaker": "",
@@ -93,45 +142,29 @@
 					"speaker": "",
 					"text": "【2095年，时空稳定局依靠反复的时空回溯，毫无错漏地成为世界权力的中心。】",
 					"choice" : [] ,
-					"next_dialogue" : 279,
+					"next_dialogue" : -1,
 					"effects":
                     [
 						{
 							"variable":"switch_to_next_scene",
 							"operator": "=",
 							"value":1
-						},
-						{
-                            "variable": "Normal Ending 2",
-                            "operator": "=",
-                            "value": 1
-                        }
+						}
                     ]
 				}
             ],
             "dialogue_trigger":
             [
-				{
-					"trigger_zone":
-					{
-					  "left": 161,
-					  "right": 192,
-					  "top": 673,
-					  "bottom": 704
-					},
-					"trigger_id": 70101,
-					"trigger_dialouge_id": 267
-				},
                 {
 					"trigger_zone":
 					{
-					  "left": 129,
-					  "right": 160,
-					  "top": 353,
-					  "bottom": 384
+					  "left": 929,
+					  "right": 960,
+					  "top": 929,
+					  "bottom": 960
 					},
-					"trigger_id": 70201,
-					"trigger_dialouge_id": 268
+					"trigger_id": 100201,
+					"trigger_dialouge_id": 273
 				}
             ]
         }

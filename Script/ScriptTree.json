@@ -24,8 +24,8 @@
                 "enter_condition":
                 [
                     {
-                        "variable": "opt_join_association",
-                        "operator": "==",
+                        "variable": "ending",
+                        "operator": "<<&",
                         "value": 1
                     }
                 ]
@@ -35,12 +35,12 @@
                 "enter_condition":
                 [
                     {
-                        "variable": "opt_join_association",
-                        "operator": "==",
-                        "value": 0
+                        "variable": "ending",
+                        "operator": "<<!&",
+                        "value": 1
                     },
                     {
-                        "variable": "Normal Ending 1",
+                        "variable": "ending",
                         "operator": "<<&",
                         "value": 2
                     }
@@ -51,12 +51,12 @@
                 "enter_condition":
                 [
                     {
-                        "variable": "opt_join_association",
-                        "operator": "==",
-                        "value": 0
+                        "variable": "ending",
+                        "operator": "<<!&",
+                        "value": 1
                     },
                     {
-                        "variable": "Normal Ending 1",
+                        "variable": "ending",
                         "operator": "<<!&",
                         "value": 2
                     }
@@ -69,6 +69,35 @@
         "act_file_name": "Act_3_Normal_Ending.json",
         "act_name": "NE",
         "next_act": []
+    },
+    {
+        "act_id": 4,
+        "act_file_name": "Act_4.json",
+        "next_act":
+        [
+            {
+                "next_act_id": 7,
+                "enter_condition":
+                [
+                    {
+                        "variable": "ending_has_achieved",
+                        "operator": "<<!&",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "next_act_id": 8,
+                "enter_condition":
+                [
+                    {
+                        "variable": "ending_has_achieved",
+                        "operator": "<<&",
+                        "value": 2
+                    }
+                ]
+            }
+        ]
     },
     {
         "act_id": 6,
@@ -95,9 +124,9 @@
                 "enter_condition":
                 [
                     {
-                        "variable": "opt_dilemma",
-                        "operator": "==",
-                        "value": 1
+                        "variable": "ending",
+                        "operator": "<<&",
+                        "value": 3
                     }
                 ]
             },
@@ -106,9 +135,9 @@
                 "enter_condition":
                 [
                     {
-                        "variable": "opt_dilemma",
-                        "operator": "==",
-                        "value": 2
+                        "variable": "ending",
+                        "operator": "<<!&",
+                        "value": 3
                     }
                 ]
             }

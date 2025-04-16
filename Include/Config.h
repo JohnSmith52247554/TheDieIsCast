@@ -36,6 +36,7 @@ constexpr float PLAYER_JUMP_SPEED = -10;
 constexpr float PLAYER_ACCELERATION = 0.15;
 constexpr float GOOMBA_SPEED = 2.5;
 constexpr float PLAYER_BOUNCE_SPEED = -14;
+constexpr float PLAYER_AUTO_JUMP_SPEED = -1.4;
 
 //物理
 constexpr float GRAVITY = 0.6;

@@ -5,73 +5,241 @@
     [
         {
             "npc_id": 1,
-            "npc_skin_id": 9,
-            "name": "Ichigo",
-            "x": 4,
-            "y": 7,
+            "npc_skin_id": 19,
+            "name": "？？？",
+            "x": 8,
+            "y": 14,
             "dialogues":
             [
                 {
-					"dialogue_id": 244,
-					"speaker": "Asami",
-					"text": "恭喜你完成任务。核事故被阻止了，我们挽救了上千人的生命。你是不是觉得像是成为救世主了一样？",
+					"dialogue_id": 213,
+					"speaker": "？？？",
+					"text": "你终于来了",
 					"choice" : [] ,
-					"next_dialogue" : 245
+					"next_dialogue" : 214
 				},
 				{
-					"dialogue_id": 245,
-					"speaker": "Asami",
-					"text": "那么，接下来，我们要彻底杀灭反物质炸弹产生的可能性。",
-					"choice" : [] ,
-					"next_dialogue" : 246
-				},
-				{
-					"dialogue_id": 246,
-					"speaker": "",
-					"text": "我开始有点隐隐的担心。",
-					"choice" : [] ,
-					"next_dialogue" : 247
-				},
-				{
-					"dialogue_id": 247,
-					"speaker": "Asami",
-					"text": "请你回到你博士毕业前，把你的论文删掉。不要让任何物理学家看到你的成果。",
-					"choice" : [] ,
-					"next_dialogue" : 248
-				},
-				{
-					"dialogue_id": 248,
-					"speaker": "",
-					"text": "果然。",
-					"choice" : [] ,
-					"next_dialogue" : 249
-				},
-				{
-					"dialogue_id": 249,
+					"dialogue_id": 214,
 					"speaker": "我",
-					"text": "那可是我花了整整四年才做出的成果啊！",
+					"text": "你就是这个该死的组织头目？把我的人生还给我！",
 					"choice" : [] ,
-					"next_dialogue" : 250
+					"next_dialogue" : 215
 				},
 				{
-					"dialogue_id": 250,
+					"dialogue_id": 215,
+					"speaker": "？？？",
+					"text": "别急。——我先自我介绍一下。我是「时空稳定局」的负责人，Asami。",
+					"choice" : [] ,
+					"next_dialogue" : 216
+				},
+				{
+					"dialogue_id": 216,
 					"speaker": "Asami",
-					"text": "那可是几十亿人的生命啊。——不过没关系，我理解你的心情，慢慢来，不着急。放心，你删掉之后，你的邮箱里会多出一篇很棒的论文，足够你博士毕业了。那篇论文来自其他世界线，所以你不必担心抄袭。",
+					"text": "你知道我们为什么要一遍遍逆转时空吗？",
 					"choice" : [] ,
-					"next_dialogue" : 251
+					"next_dialogue" : 217
 				},
 				{
-					"dialogue_id": 251,
+					"dialogue_id": 217,
 					"speaker": "我",
-					"text": "……好，我删掉它。",
+					"text": "就为了整我？",
+					"choice" : [] ,
+					"next_dialogue" : 218
+				},
+				{
+					"dialogue_id": 218,
+					"speaker": "Asami",
+					"text": "当然不是。不过确实和你有关。你还记得你在曾经的世界线做了什么研究吗？",
+					"choice" : [] ,
+					"next_dialogue" : 219
+				},
+				{
+					"dialogue_id": 219,
+					"speaker": "",
+					"text": "我努力回想着“重塑记忆”中的我的科研成就。我的博士论文。",
+					"choice" : [] ,
+					"next_dialogue" : 220
+				},
+				{
+					"dialogue_id": 220,
+					"speaker": "我",
+					"text": "反中子的快速稳定生成？",
+					"choice" : [] ,
+					"next_dialogue" : 221
+				},
+				{
+					"dialogue_id": 221,
+					"speaker": "Asami",
+					"text": "是的。你知道它在原来的世界线引发了多么恐怖的后果吗？",
+					"choice" : [] ,
+					"next_dialogue" : 222
+				},
+				{
+					"dialogue_id": 222,
+					"speaker": "Asami",
+					"text": "Mnema的父母，受到你的论文启发，合作在环形加速器中实现了反粒子的宏观构建。",
+					"choice" : [] ,
+					"next_dialogue" : 223
+				},
+				{
+					"dialogue_id": 223,
+					"speaker": "我",
+					"text": "那不是好事吗？以后高能物理学家再也不用头疼反粒子生成的问题了。",
+					"choice" : [] ,
+					"next_dialogue" : 224
+				},
+				{
+					"dialogue_id": 224,
+					"speaker": "Asami",
+					"text": "……别太天真了。你是物理学家，你应该知道宏观级别的反物质如果发生湮灭能释放多大的能量吧。",
+					"choice" : [] ,
+					"next_dialogue" : 225
+				},
+				{
+					"dialogue_id": 225,
+					"speaker": "",
+					"text": "10g左右的能量即可彻底摧毁一个中等大小国家。",
+					"choice" : [] ,
+					"next_dialogue" : 226
+				},
+				{
+					"dialogue_id": 226,
+					"speaker": "Asami",
+					"text": "我想你肯定明白。那之后，毁灭一个国家的代价，不过是七位数的人民币。如果你是第一个发明反物质炸弹的国家，你会引爆它，还是等到其他国家也研发出反物质炸弹，最后两败俱伤？",
+					"choice" : [] ,
+					"next_dialogue" : 227
+				},
+				{
+					"dialogue_id": 227,
+					"speaker": "Asami",
+					"text": "原本的世界，2038年发生了一场世界大战。我们失去了80%的人口。",
+					"choice" : [] ,
+					"next_dialogue" : 228
+				},
+				{
+					"dialogue_id": 228,
+					"speaker": "Asami",
+					"text": "现在你还觉得你的女朋友有那么重要吗？",
+					"choice" : [] ,
+					"next_dialogue" : 229
+				},
+				{
+					"dialogue_id": 229,
+					"speaker": "我",
+					"text": "……那为什么你们要让她从未存在？",
+					"choice" : [] ,
+					"next_dialogue" : 230
+				},
+				{
+					"dialogue_id": 230,
+					"speaker": "",
+					"text": "话音刚落，我就明白为什么了。",
+					"choice" : [] ,
+					"next_dialogue" : 231
+				},
+				{
+					"dialogue_id": 231,
+					"speaker": "",
+					"text": "我能猜到，他们阻止战争的方式是阻碍Mnema的父母相遇、相恋。这样，Mnema当然也不会出生了。",
+					"choice" : [] ,
+					"next_dialogue" : 232
+				},
+				{
+					"dialogue_id": 232,
+					"speaker": "Asami",
+					"text": "你已经猜到了吧。毕竟你是被我们选中的人。我正式向你发出邀请，欢迎你加入时空稳定局。",
+					"choice" : [] ,
+					"next_dialogue" : 233
+				},
+				{
+					"dialogue_id": 233,
+					"speaker": "我",
+					"text": "什么？",
+					"choice" : [] ,
+					"next_dialogue" : 234
+				},
+				{
+					"dialogue_id": 234,
+					"speaker": "Asami",
+					"text": "在更遥远的未来，这场战争依旧会发生。如果要彻底阻止它，有些事情只有你能做到。我希望你加入我们。",
+					"choice" : [] ,
+					"next_dialogue" : 235
+				},
+				{
+					"dialogue_id": 235,
+					"speaker": "我",
+					"text": "请容我思考一下。",
+					"choice" :
+                    [
+                        {
+							"choice_id": 2351,
+							"text": "加入",
+							"next_dialogue": 236
+						},
+                        {
+							"choice_id": 2352,
+							"text": "不加入",
+							"next_dialogue": 238
+						}
+                    ],
+					"next_dialogue" : -1
+				},
+				{
+					"dialogue_id": 236,
+					"speaker": "Asami",
+					"text": "很好。现在你是我们的一员了。接下来我会带领你做一些简单的时空逆转操作，帮助你熟悉一下你的工作。",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+					"effects":
+					[
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+					]
+				},
+				{
+					"dialogue_id": 237,
+					"speaker": "Asami",
+					"text": "你还记得福岛核事故吗？现在你有机会阻止它。我将为你配备更高效的逆转能源，帮助你回溯到更早的过去。",
 					"choice" : [] ,
 					"next_dialogue" : -1,
                     "effects":
-                    {
-                        "variable": "switch_to_next_scene",
-                        "operator": "=",
-                        "value": true
-                    }
+                    [
+                        {
+                            "variable": "ending",
+                            "operator": "+<<",
+                            "value": 1
+                        },
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+                    ]
+				},
+				{
+					"dialogue_id": 238,
+					"speaker": "Asami",
+					"text": "很遗憾。你真的不考虑加入吗？——若是这样，我们只好将你抹杀了。",
+					"choice" : [] ,
+					"next_dialogue" : 239
+				},
+				{
+					"dialogue_id": 239,
+					"speaker": "AI",
+					"text": "别怕，你还有一条路！快逆转时间！",
+					"choice" : [] ,
+					"next_dialogue" : -1,
+                    "effects":
+                    [
+						{
+							"variable": "switch_to_next_scene",
+							"operator": "=",
+							"value": 1
+						}
+                    ]
 				}
             ]
         }

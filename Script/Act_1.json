@@ -7,7 +7,7 @@
         {
             "map_id": 1,
             "name": "world1",
-            "description": "地图一",
+            "description": "地图1",
             "background": "day",
 			"be_able_to_rewind_time": false,
             "dialogues":
@@ -149,7 +149,7 @@
                 "trigger_zone":
                 {
                   "left": 737,
-                  "right": 864,
+                  "right": 896,
                   "top": 833,
                   "bottom": 864
                 },
@@ -159,8 +159,8 @@
               {
                 "trigger_zone":
                 {
-                  "left": 897,
-                  "right": 928,
+                  "left": 929,
+                  "right": 960,
                   "top": 705,
                   "bottom": 864
                 },
@@ -170,23 +170,12 @@
               {
                 "trigger_zone":
                 {
-                  "left": 1057,
-                  "right": 1088,
-                  "top": 833,
-                  "bottom": 864
-                },
-                "trigger_id": 10104,
-                "trigger_dialouge_id": 12
-              },
-              {
-                "trigger_zone":
-                {
                   "left": 1377,
                   "right": 1408,
                   "top": 641,
                   "bottom": 800
                 },
-                "trigger_id": 10105,
+                "trigger_id": 10104,
                 "trigger_dialouge_id": 18
               }
             ]
@@ -195,6 +184,7 @@
             "map_id": 2,
             "name": "world2",
             "background": "city",
+			"description": "地图2",
 			"be_able_to_rewind_time": false,
             "dialogues":
 			[
@@ -236,7 +226,7 @@
 				{
 					"dialogue_id": 49,
 					"speaker": "",
-					"text": "（速报：Misumi市核聚变装置由于地震影响暂时关闭，无线供电系统将在7：40停止供电，请使用飞行汽车的市民尽快回到地面。今日全城暂停工作一天。此外，请广大市民尽量避免靠近地面大型基础设施，以免发生危险。）",
+					"text": "（速报：Misumi市核聚变装置由于地震影响暂时关闭，无线供电系统将在7：40停止\n供电，请使用飞行汽车的市民尽快回到地面。今日全城暂停工作一天。此外，请广大市民尽量避免靠近地面大型基础设施，以免发生危险。）",
 					"choice" : [] ,
 					"next_dialogue" : 50
 				},
@@ -522,7 +512,7 @@
 				},
 				{
 					"dialogue_id": 82,
-					"speaker": "下方文本框",
+					"speaker": "",
 					"text": "按住shift即可倒流时间，松开shift倒流终止，时间恢复正向。活用时间倒流，跳过前方的两个深坑吧！",
 					"choice" : [] ,
 					"next_dialogue" : -1
@@ -563,13 +553,6 @@
 					"next_dialogue" : -1
 				},
 				{
-					"dialogue_id": 97,
-					"speaker": "我",
-					"text": "算了不想这些了，今天可是难得的休假！我要好好放松一下，换换脑子！",
-					"choice" : [] ,
-					"next_dialogue" : 98
-				},
-				{
 					"dialogue_id": 98,
 					"speaker": "我",
 					"text": "那我就来探索一下是不是有其他功能吧。",
@@ -588,7 +571,7 @@
 					"speaker": "AI",
 					"text": "欢迎使用“重塑记忆”功能！在此功能模块下，保存着每一次时间倒流操作留下的世界线数据，您可以使用该功能进入原世界线内进行观测，恢复时间倒流前的记忆。",
 					"choice" : [] ,
-					"next_dialogue" : -1
+					"next_dialogue" : 100
 				},
 				{
 					"dialogue_id": 100,
@@ -598,17 +581,17 @@
 					[
 						{
 							"choice_id": 1001,
-							"text": "World 42. 回溯日期：2008.01.22 17：32：27：256. 持续时间：9825day 05h 52min 29s",
+							"text": "World 42 回溯日期：2008.01.22",
 							"next_dialogue": 102
 						},
 						{
 							"choice_id": 1002,
-							"text": "World 42. 回溯日期：2008.01.22 17：32：27：256. 持续时间：9825day 05h 52min 29s",
+							"text": "World 42 回溯日期：2008.01.22",
 							"next_dialogue": 101
 						},
 						{
 							"choice_id": 1003,
-							"text": "World 42. 回溯日期：2008.01.22 17：32：27：256. 持续时间：9825day 05h 52min 29s",
+							"text": "World 42 回溯日期：2008.01.22",
 							"next_dialogue": 101
 						}
 					] ,
@@ -665,9 +648,9 @@
 			  {
                 "trigger_zone":
                 {
-                  "left": 1377,
-                  "right": 1408,
-                  "top": 545,
+                  "left": 1409,
+                  "right": 1440,
+                  "top": 577,
                   "bottom": 640
                 },
                 "trigger_id": 10207,
@@ -682,7 +665,7 @@
                   "bottom": 640
                 },
                 "trigger_id": 10208,
-                "trigger_dialouge_id": 97
+                "trigger_dialouge_id": 98
               }
             ]
         },
@@ -762,7 +745,7 @@
 					  "bottom": 960
 					},
 					"trigger_id": 10311,
-					"trigger_dialouge_id": 99
+					"trigger_dialouge_id": 103
 				}
 				
 			]
@@ -1011,7 +994,7 @@
 		{
             "map_id": 6,
             "name": "black",
-            "background": "factory",
+            "background": "",
 			"description": "记忆结束，全黑",
 			"dialogues":
 			[
