@@ -6,12 +6,12 @@
     [
         {
             "map_id": 1,
-            "name": "world4",
+            "name": "world9",
             "background": "city",
             "global_mode": true,
+            "recorded_timeline_filename": "timeline_world_9.bin",
             "dialogues":[],
             "dialogue_trigger": []
-
         }
     ]
 }

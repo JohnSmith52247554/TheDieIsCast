@@ -9,7 +9,16 @@
             "name": "Mnema",
             "x": 55,
             "y": 24,
-            "dialogues":[]
+            "dialogues":
+            [
+                {
+					"dialogue_id": 550,
+					"speaker": "Mnema",
+					"text": "那边的白鸽正在绕着我们盘旋欸，好像还有海豚在歌唱。——想必你心中已经有答案了吧，无论如何，我都会永远支持你的哦。",
+					"choice" : [] ,
+					"next_dialogue" : -1
+				}
+            ]
         }
     ]
 }

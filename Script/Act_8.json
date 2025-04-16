@@ -185,7 +185,7 @@
 		{
             "map_id": 2,
             "name": "world8",
-            "description": "地图8 研发成功之后",
+            "description": "地图8研发成功之后",
             "background": "lab",
             "dialogues":
             [
@@ -292,13 +292,26 @@
 								"variable": "ending",
 								"operator": "+<<",
 								"value": 3
+							},
+							{
+								"variable":"switch_to_next_scene",
+								"operator": "=",
+								"value":1
 							}
 							]
 						},
 						{
 							"choice_id": 3032,
 							"text": "阻止世界大战",
-							"next_dialogue": -1
+							"next_dialogue": -1,
+							"effects":
+                    [
+						{
+							"variable":"switch_to_next_scene",
+							"operator": "=",
+							"value":1
+						}
+                    ]
 						}
 					],
 					"next_dialogue" : -1
@@ -309,10 +322,10 @@
                 {
 					"trigger_zone":
 					{
-						"left": 129,
-						"right": 160,
-						"top": 353,
-						"bottom": 384
+						"left": 1665,
+						"right": 1696,
+						"top": 769,
+						"bottom": 800
 					  },
 					"trigger_id": 80301,
 					"trigger_dialouge_id": 300

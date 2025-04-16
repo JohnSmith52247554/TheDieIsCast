@@ -19,7 +19,7 @@
             "move_distance": 5,
             "length": 4,
             "speed": 0.8,
-            "can_be_affected_by_time_control": true
+            "can_be_affected_by_time_control": false
         }
     ],
     "ReceptorAndEffectors":

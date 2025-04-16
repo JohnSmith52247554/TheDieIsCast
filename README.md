@@ -201,6 +201,12 @@ https://github.com/nlohmann/json
 
 MIT license
 
+### Tiled
+
+https://github.com/mapeditor/tiled
+
+GPL license
+
 ## 贡献
 
 | 姓名  | 分工      | 联系方式                          |

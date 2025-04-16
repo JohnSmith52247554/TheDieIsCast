@@ -34,13 +34,6 @@
 					"next_dialogue" : -1
 				},
 				{
-					"dialogue_id": 4,
-					"speaker": "",
-					"text": "满月的辉光倾泻在海岸边，将浪花点染成梦幻的银色。",
-					"choice" : [] ,
-					"next_dialogue" : 5
-				},
-				{
 					"dialogue_id": 5,
 					"speaker": "",
 					"text": "轻柔的海风夹杂着些许腥味，轻抚着我的面颊。",
@@ -120,7 +113,7 @@
 				{
 					"dialogue_id": 22,
 					"speaker": "",
-					"text": "我定睛一看。金色的长发，与紫罗兰色的眼瞳。",
+					"text": "我定睛一看。紫罗兰色的长发，与紫丁香色的眼瞳。",
 					"choice" : [] ,
 					"next_dialogue" : 23
 				},
@@ -154,7 +147,7 @@
                   "bottom": 864
                 },
                 "trigger_id": 10102,
-                "trigger_dialouge_id": 4
+                "trigger_dialouge_id": 5
               },
               {
                 "trigger_zone":
@@ -935,14 +928,14 @@
 				{
 					"dialogue_id": 135,
 					"speaker": "",
-					"text": "星光闪烁下的海色，依旧平静而深不可测。",
+					"text": "落日余晖下的海色，依旧平静而深不可测。",
 					"choice" : [] ,
 					"next_dialogue" : 136
 				},
 				{
 					"dialogue_id": 136,
 					"speaker": "",
-					"text": "金色的长发、紫罗兰色的眼瞳。和先前梦中的景色一模一样。",
+					"text": "紫罗兰的长发、紫丁香色的眼瞳。和先前梦中的景色一模一样。",
 					"choice" : [] ,
 					"next_dialogue" : 137
 				},
